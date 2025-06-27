@@ -1,0 +1,48 @@
+body { 
+  background: linear-gradient(135deg, #FFF1E6, #F3FCFA, #EAF8FF);
+  min-height: 100vh;
+}
+
+/* 页面容器样式 */
+main {
+  position: relative;
+  z-index: 1;
+}
+
+/* 纸张组件样式 */
+.mantine-Paper-root {
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* 按钮样式覆盖 */
+.mantine-Button-root {
+  font-weight: 600;
+  transition: transform 0.2s ease;
+}
+
+.mantine-Button-root:hover {
+  transform: translateY(-2px);
+}
+
+/* 卡片样式 */
+.mantine-Card-root {
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+/* 输入框样式 */
+.mantine-TextInput-input {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* 卡片悬浮效果 */
+.card-float {
+  transition: transform 0.3s ease;
+}
+
+.card-float:hover {
+  transform: translateY(-6px) scale(1.03);
+} 

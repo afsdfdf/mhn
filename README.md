@@ -1,121 +1,140 @@
 # MindHive Network
 
-MindHive Network is a decentralized collaborative AI network platform that connects AI developers, data providers, and computational resource providers worldwide to build next-generation artificial intelligence systems. The platform uses blockchain technology to ensure transparency and fairness, while employing a token economic model to incentivize participant contributions.
+A decentralized collaborative AI platform built with Next.js 14.
 
-## Project Features
+## Features
 
-- Decentralized collaborative AI development and deployment
-- Blockchain-driven transparent incentive mechanisms
-- Fair compensation system for data contributors
-- Community governance and decision-making mechanisms
-- Cross-institutional federated learning support
-
-## Technology Stack
-
-- **Frontend Framework**: Next.js 14 (App Router)
-- **UI Component Library**: Mantine UI
-- **Styling Solution**: CSS Modules + Mantine Theme System
-- **State Management**: React Context API
-- **Animations**: Framer Motion
-- **3D Visualization**: Three.js + React Three Fiber
-- **Deployment**: Vercel
-
-## Page Structure
-
-1. **Home Page (/)** - Completed
-   - Hero section introducing the platform
-   - Feature showcase
-   - Demo section
-   - Roadmap
-   - Team introduction
-   - Newsletter subscription
-   - 3D AI network visualization
-
-2. **About Page (/about)** - Completed
-   - Vision and mission
-   - Core values
-   - Company story
-   - Leadership team
-
-3. **Documentation Page (/docs)** - Completed
-   - Overview
-   - Quick start
-   - API reference
-   - SDK documentation
-   - Example code
-
-4. **Whitepaper Page (/whitepaper)** - Completed
-   - Abstract
-   - Introduction
-   - System architecture
-   - Token economics
-   - Governance
-   - Use cases
-   - Roadmap
-   - Conclusion
-
-5. **Token Page (/token)** - Completed
-   - Token overview
-   - Token distribution
-   - Token utility
-   - Token economics
-   - How to acquire tokens
-   - Staking mechanisms
-   - Governance rights
-   - Network fee structure
-
-6. **Contact Page (/contact)** - Completed
-   - Contact form
-   - Contact information
-   - Business hours
-   - Frequently asked questions
-   - Social media links
-
-## Development Status
-
-- ✅ Project initialization
-- ✅ Core component development
-- ✅ All planned pages implemented
-- ✅ UI/UX optimization
-- ✅ Responsive design
-- ✅ Animation effects
-- ✅ Performance optimization
-- ✅ SEO enhancements
-- ✅ Error handling
-- ✅ Deployment configuration
+- **Decentralized AI Network**: Connect AI models and agents in a collaborative network
+- **DataDAO Framework**: Collective ownership and governance of datasets
+- **On-chain Verification**: Transparent and verifiable AI computations
+- **Interactive 3D Visualization**: Visual representation of the AI network
+- **Responsive Design**: Optimized for all devices
+- **Modern UI**: Built with Mantine UI components
+- **Animations**: Smooth transitions and effects with Framer Motion
+- **SEO Optimized**: Complete with metadata, sitemap, and robots.txt
 
 ## Technical Features
 
-- **SEO Optimization**: Implemented metadata, sitemap.xml, robots.txt, and OpenGraph tags
-- **Performance**: Optimized loading with Next.js App Router and component-level code splitting
-- **Error Handling**: Custom error pages and graceful error recovery
-- **Analytics**: Page view tracking integration
-- **PWA Support**: Web app manifest and service worker configuration
-- **Security**: HTTP security headers configuration via Vercel
+- **Next.js 14**: Utilizing the App Router for improved performance and developer experience
+- **React 19**: Latest React features and improvements
+- **Server Components**: Optimized rendering strategy with selective Client Components
+- **TypeScript**: Type-safe development
+- **Three.js/React Three Fiber**: 3D visualizations and animations
+- **Mantine UI**: Modern component library
+- **Framer Motion**: Animation library
+- **SEO Optimization**: Metadata, sitemap, robots.txt
+- **Performance Optimization**: Image optimization, code splitting, and more
+- **Vercel Deployment Ready**: Configured for optimal deployment on Vercel
 
-## Quick Start
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18.17.0 or later
+- npm or pnpm or yarn
+
+### Installation
+
+1. Clone the repository:
 
 ```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Build production version
-npm run build
-
-# Start production server
-npm start
+git clone <repository-url>
+cd mindhive-network
 ```
 
-## Project Timeline
+2. Install dependencies:
 
-- **Q2-Q4 2025**: Foundation Phase - Core protocol development and testing
-- **Q1-Q2 2026**: Network Launch - Mainnet launch and basic functionality deployment
-- **Q3-Q4 2026**: Ecosystem Growth - Cross-chain integration and advanced governance mechanisms
-- **2027 and beyond**: Global Expansion - Enterprise adoption and advanced AI capability integration
+```bash
+npm install
+# or
+pnpm install
+# or
+yarn install
+```
 
-## Contribution
+3. Run the development server:
 
-We welcome developers, researchers, data scientists, and anyone interested in shaping the future of AI to join the building of MindHive Network. Together, we can create a more open, accessible, and human-centered AI ecosystem.
+```bash
+npm run dev
+# or
+pnpm dev
+# or
+yarn dev
+```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
+
+## Deployment
+
+### Deploying to Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
+
+1. Push your code to a Git repository (GitHub, GitLab, or Bitbucket)
+2. Import your project to Vercel
+3. Vercel will automatically detect that you're using Next.js and configure the build settings
+4. Your application will be deployed and available at a Vercel URL
+
+### Manual Deployment
+
+To manually deploy the application:
+
+1. Build the application:
+
+```bash
+npm run build
+# or
+pnpm build
+# or
+yarn build
+```
+
+2. Start the production server:
+
+```bash
+npm run start
+# or
+pnpm start
+# or
+yarn start
+```
+
+## Project Structure
+
+```
+mindhive-network/
+├── app/                    # Next.js App Router
+│   ├── about/              # About page
+│   ├── components/         # Shared components
+│   ├── contact/            # Contact page
+│   ├── docs/               # Documentation pages
+│   ├── token/              # Token information page
+│   ├── whitepaper/         # Whitepaper page
+│   ├── error.tsx           # Error handling
+│   ├── layout.tsx          # Root layout
+│   ├── loading.tsx         # Loading state
+│   ├── manifest.ts         # Web manifest
+│   ├── not-found.tsx       # 404 page
+│   ├── page.tsx            # Home page
+│   ├── robots.ts           # Robots configuration
+│   └── sitemap.ts          # Sitemap generation
+├── public/                 # Static assets
+├── .gitignore              # Git ignore file
+├── next.config.js          # Next.js configuration
+├── package.json            # Project dependencies
+├── tsconfig.json           # TypeScript configuration
+└── vercel.json             # Vercel configuration
+```
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- [Next.js](https://nextjs.org/)
+- [React](https://reactjs.org/)
+- [Mantine UI](https://mantine.dev/)
+- [Three.js](https://threejs.org/)
+- [React Three Fiber](https://github.com/pmndrs/react-three-fiber)
+- [Framer Motion](https://www.framer.com/motion/)

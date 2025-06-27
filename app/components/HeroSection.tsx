@@ -3,6 +3,7 @@ import { Box, Container, Title, Text, Button, Group, rem, Paper, Badge } from '@
 import { motion, Variants } from 'framer-motion';
 import { useMediaQuery } from '@mantine/hooks';
 import { Brain, Network, Bot, Lock } from 'lucide-react';
+import React from 'react';
 
 // Motion div for animations
 const MotionDiv = motion.div;
@@ -44,7 +45,13 @@ const slideInVariants: Variants = {
 };
 
 // Gradient text component
-const GradientText = ({ children, from = '#FF6F61', to = '#3DF5C6' }) => (
+interface GradientTextProps {
+  children: React.ReactNode;
+  from?: string;
+  to?: string;
+}
+
+const GradientText = ({ children, from = '#FF6F61', to = '#3DF5C6' }: GradientTextProps) => (
   <span style={{ 
     background: `linear-gradient(135deg, ${from}, ${to})`,
     WebkitBackgroundClip: 'text',

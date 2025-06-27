@@ -3,6 +3,7 @@ import './styles/global.css';
 import { MantineProvider, createTheme } from '@mantine/core';
 import { Inter, Playfair_Display } from 'next/font/google';
 import Analytics from './components/Analytics';
+import { Suspense } from 'react';
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -110,7 +111,9 @@ export default function RootLayout({
       </head>
       <body>
         <MantineProvider theme={theme} defaultColorScheme="light">
-          <Analytics />
+          <Suspense fallback={null}>
+            <Analytics />
+          </Suspense>
           {children}
         </MantineProvider>
       </body>

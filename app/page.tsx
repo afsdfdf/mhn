@@ -38,9 +38,9 @@ export default function Home() {
       
       {/* 动态蜂巢背景 */}
       <HoneycombBackground 
-        opacity={0.15} 
-        primaryColor="#FF6F61" 
-        secondaryColor="#3DF5C6" 
+        opacity={0.1} 
+        primaryColor="var(--mantine-color-coral-6)" 
+        secondaryColor="var(--mantine-color-mint-6)" 
         density={25}
         scrollSpeed={0.3}
       />
@@ -68,8 +68,8 @@ export default function Home() {
                 height={500}
                 nodeCount={12}
                 dataPacketCount={20}
-                primaryColor="#FF6F61"
-                secondaryColor="#3DF5C6"
+                primaryColor="var(--mantine-color-coral-6)"
+                secondaryColor="var(--mantine-color-mint-6)"
               />
             </div>
           </Box>
@@ -93,13 +93,13 @@ export default function Home() {
             }}
           >
             <Text component="span" style={{ 
-              background: 'linear-gradient(135deg, #FF6F61, #3DF5C6)', 
+              background: 'linear-gradient(135deg, var(--mantine-color-coral-6), var(--mantine-color-mint-6))', 
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
             }}>
-              蜂巢网络
+              Hivemind Network
             </Text>
-            <Text component="span"> 核心特点</Text>
+            <Text component="span"> Core Features</Text>
             
             {/* 装饰性六边形 */}
             <div style={{
@@ -109,51 +109,51 @@ export default function Home() {
               transform: 'translateX(-50%)',
               width: 150,
               height: 3,
-              background: 'linear-gradient(90deg, transparent, #FF6F61, #3DF5C6, transparent)',
+              background: 'linear-gradient(90deg, transparent, var(--mantine-color-coral-6), var(--mantine-color-mint-6), transparent)',
             }} />
           </Title>
           
           <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing={30}>
             <HexagonInfoCard
-              title="集体智能"
-              description="利用分布式节点网络的协同能力，实现比单一AI更强大的集体智能"
+              title="Collective Intelligence"
+              description="Leverage the collaborative power of distributed nodes to achieve intelligence beyond single AI capabilities"
               icon={<Brain size={40} />}
-              color="#FF6F61"
+              color="var(--mantine-color-coral-6)"
               delay={0}
             />
             <HexagonInfoCard
-              title="去中心化网络"
-              description="基于区块链技术构建的完全去中心化网络，无单点故障风险"
+              title="Decentralized Network"
+              description="Built on blockchain technology for a fully decentralized network with no single point of failure"
               icon={<Network size={40} />}
-              color="#3DF5C6"
+              color="var(--mantine-color-mint-6)"
               delay={1}
             />
             <HexagonInfoCard
-              title="链上验证"
-              description="所有AI计算和交互都在链上验证，确保透明度和可信度"
+              title="On-chain Verification"
+              description="All AI computations and interactions are verified on-chain for transparency and trust"
               icon={<Lock size={40} />}
-              color="#9FEFFF"
+              color="var(--mantine-color-ice-6)"
               delay={2}
             />
             <HexagonInfoCard
-              title="分布式计算"
-              description="利用全球节点的计算资源，实现高效且可扩展的AI训练和推理"
+              title="Distributed Computing"
+              description="Utilize computing resources from nodes worldwide for efficient and scalable AI training and inference"
               icon={<Cpu size={40} />}
-              color="#6B76FF"
+              color="var(--mantine-color-blue-6)"
               delay={3}
             />
             <HexagonInfoCard
-              title="数据主权"
-              description="用户完全控制自己的数据，同时能够安全地参与协作训练"
+              title="Data Sovereignty"
+              description="Users maintain complete control over their data while safely participating in collaborative training"
               icon={<Database size={40} />}
-              color="#FF6F61"
+              color="var(--mantine-color-coral-6)"
               delay={4}
             />
             <HexagonInfoCard
-              title="社区治理"
-              description="通过代币经济和DAO机制，实现网络的民主化治理和激励"
+              title="Community Governance"
+              description="Democratic governance and incentives through token economics and DAO mechanisms"
               icon={<Users size={40} />}
-              color="#3DF5C6"
+              color="var(--mantine-color-mint-6)"
               delay={5}
             />
           </SimpleGrid>

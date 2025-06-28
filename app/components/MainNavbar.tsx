@@ -29,11 +29,14 @@ export default function MainNavbar() {
       <Link
         key={link.label}
         href={link.link}
-        className={`py-2 px-4 rounded-md font-medium text-base transition-colors ${
+        className={`py-2 px-5 rounded-md font-medium text-lg transition-colors ${
           isActive 
             ? 'text-coral-6 bg-coral-0 font-bold' 
-            : 'text-gray-700 hover:bg-gray-50 hover:text-coral-6'
+            : 'text-gray-800 hover:bg-gray-50 hover:text-coral-6'
         }`}
+        style={{
+          letterSpacing: '0.02em',
+        }}
         onClick={close}
       >
         {link.label}
@@ -83,7 +86,7 @@ export default function MainNavbar() {
             </motion.div>
 
             <Group 
-              gap={10} 
+              gap={16} 
               className="hidden md:flex"
             >
               {items}

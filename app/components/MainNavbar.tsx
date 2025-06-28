@@ -1,139 +1,144 @@
 "use client";
-import { useEffect, useState } from 'react';
-import { Container, Group, rem, Button, Burger, Drawer, Stack } from '@mantine/core';
+import { useState } from 'react';
+import { Container, Group, Burger, Paper, Transition, Text, Button, Box, rem } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import ColorSchemeToggle from './ColorSchemeToggle';
+import { motion } from 'framer-motion';
 
-// 导航链接数据
-const links = [
-  { link: '/', label: 'Home' },
-  { link: '/about', label: 'About' },
-  { link: '/docs', label: 'Docs' },
-  { link: '/whitepaper', label: 'Whitepaper' },
-  { link: '/token', label: 'Token' },
-  { link: '/contact', label: 'Contact' },
-];
+const HEADER_HEIGHT = rem(60);
 
 export default function MainNavbar() {
   const [opened, { toggle, close }] = useDisclosure(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  // 监听滚动事件和窗口大小变化
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      setIsScrolled(scrollPosition > 10);
-    };
-
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    handleScroll();
-    handleResize();
+  const pathname = usePathname();
+  
+  const links = [
+    { link: '/', label: 'Home' },
+    { link: '/about', label: 'About' },
+    { link: '/docs', label: 'Docs' },
+    { link: '/whitepaper', label: 'Whitepaper' },
+    { link: '/token', label: 'Token' },
+    { link: '/contact', label: 'Contact' },
+  ];
+  
+  const items = links.map((link) => {
+    const isActive = pathname === link.link;
     
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleResize);
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
-  // 导航链接项
-  const navItems = links.map((link) => (
-    <Link
-      key={link.label}
-      href={link.link}
-      onClick={close}
-      style={{ 
-        textDecoration: 'none', 
-        color: 'inherit',
-        fontWeight: 500,
-        padding: '8px 12px',
-        borderRadius: '4px',
-        transition: 'all 0.2s ease',
-      }}
-    >
-      {link.label}
-    </Link>
-  ));
+    return (
+      <Link
+        key={link.label}
+        href={link.link}
+        className={`py-2 px-3 rounded-md font-medium text-sm transition-colors ${
+          isActive 
+            ? 'text-coral-6 bg-coral-0' 
+            : 'text-gray-700 hover:bg-gray-50'
+        }`}
+        onClick={close}
+      >
+        {link.label}
+      </Link>
+    );
+  });
 
   return (
-    <header 
-      style={{
-        position: 'sticky',
-        top: 0,
-        zIndex: 100,
-        transition: 'all 0.3s ease',
-        backdropFilter: isScrolled ? 'blur(10px)' : 'none',
-        backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.8)' : 'transparent',
-        boxShadow: isScrolled ? '0 2px 10px rgba(0, 0, 0, 0.1)' : 'none',
-      }}
-    >
-      <Container size="lg" style={{ height: rem(60), display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <Link href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-          <span style={{ 
-            fontWeight: 700, 
-            fontSize: rem(24),
-            background: 'linear-gradient(45deg, var(--mantine-color-coral-6), var(--mantine-color-mint-6))',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent'
-          }}>
-            MindHive Network
-          </span>
-        </Link>
-
-        {/* 桌面导航链接 */}
-        {!isMobile ? (
-          <Group gap={10}>
-            {navItems}
-            <Button 
-              component="a"
-              href="https://github.com/mindhive-network" 
-              target="_blank"
-              variant="gradient"
-              gradient={{ from: 'coral.6', to: 'mint.6', deg: 45 }}
-              radius="xl"
-              size="sm"
-              style={{ marginLeft: '8px' }}
+    <Box pb={30}>
+      <Paper 
+        shadow="sm" 
+        p="md"
+        style={{
+          height: HEADER_HEIGHT,
+          backgroundColor: 'var(--color-cream)',
+          borderRadius: 'var(--border-radius-lg)',
+          margin: '20px',
+          border: '1px solid rgba(255, 255, 255, 0.3)',
+          backdropFilter: 'blur(10px)'
+        }}
+      >
+        <Container style={{ height: '100%', maxWidth: '1200px' }}>
+          <Group position="apart" style={{ height: '100%' }}>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
             >
-              GitHub
-            </Button>
+              <Link href="/" style={{ textDecoration: 'none' }}>
+                <Group>
+                  <Box 
+                    style={{ 
+                      width: '30px', 
+                      height: '30px', 
+                      backgroundColor: 'var(--color-mint)',
+                      borderRadius: '8px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center'
+                    }}
+                  >
+                    <Text fw={700} c="white">M</Text>
+                  </Box>
+                  <Text fw={700} size="lg" className="gradient-text">MindHive</Text>
+                </Group>
+              </Link>
+            </motion.div>
+
+            <Group 
+              spacing={5} 
+              className="hidden md:flex"
+            >
+              {items}
+            </Group>
+
+            <Group>
+              <ColorSchemeToggle />
+              <Button 
+                className="connect-wallet-btn hidden md:block"
+                radius="xl"
+              >
+                Connect Wallet
+              </Button>
+              <Burger
+                opened={opened}
+                onClick={toggle}
+                className="md:hidden"
+                size="sm"
+              />
+            </Group>
           </Group>
-        ) : (
-          <Burger opened={opened} onClick={toggle} size="sm" />
-        )}
-      </Container>
+        </Container>
+      </Paper>
 
-      {/* 移动端抽屉菜单 */}
-      {isMobile && (
-        <Drawer
-          opened={opened}
-          onClose={close}
-          size="100%"
-          padding="md"
-          title="Menu"
-          zIndex={1000}
-        >
-          <Stack>
-            {navItems}
-            <Button 
-              component="a"
-              href="https://github.com/mindhive-network" 
-              target="_blank"
-              variant="gradient"
-              gradient={{ from: 'coral.6', to: 'mint.6', deg: 45 }}
-              radius="xl"
-              fullWidth
-            >
-              GitHub
-            </Button>
-          </Stack>
-        </Drawer>
-      )}
-    </header>
+      <Transition transition="pop-top-right" duration={200} mounted={opened}>
+        {(styles) => (
+          <Paper
+            withBorder
+            style={{
+              ...styles,
+              position: 'absolute',
+              top: HEADER_HEIGHT,
+              left: 0,
+              right: 0,
+              zIndex: 1,
+              margin: '0 20px',
+              backgroundColor: 'var(--color-cream)',
+              borderRadius: 'var(--border-radius-md)',
+            }}
+          >
+            <Container p="md">
+              <div className="flex flex-col space-y-2">
+                {items}
+                <Button 
+                  className="connect-wallet-btn mt-4"
+                  radius="xl"
+                  fullWidth
+                >
+                  Connect Wallet
+                </Button>
+              </div>
+            </Container>
+          </Paper>
+        )}
+      </Transition>
+    </Box>
   );
 } 

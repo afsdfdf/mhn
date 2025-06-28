@@ -1,9 +1,11 @@
 "use client";
-import { Box, Container, Title, Text, Button, Group, rem, Paper, Badge } from '@mantine/core';
+import { useState, useEffect } from 'react';
+import { Box, Container, Title, Text, Button, Group, rem, Paper, Badge, Grid } from '@mantine/core';
 import { motion, Variants } from 'framer-motion';
 import { useMediaQuery } from '@mantine/hooks';
-import { Brain, Network, Bot, Lock } from 'lucide-react';
+import { Brain, Network, Bot, Lock, Shield, Gift } from 'lucide-react';
 import React from 'react';
+import { TypeAnimation } from 'react-type-animation';
 
 // Motion div for animations
 const MotionDiv = motion.div;
@@ -20,45 +22,43 @@ const containerVariants: Variants = {
   },
 };
 
-const fadeInVariants: Variants = {
+const itemVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.8,
-      ease: "easeOut",
-    },
-  },
+    transition: { duration: 0.5 }
+  }
 };
 
-const slideInVariants: Variants = {
-  hidden: { opacity: 0, x: -30 },
-  visible: {
-    opacity: 1,
-    x: 0,
+const floatVariants = {
+  initial: { y: 0 },
+  float: {
+    y: [0, -10, 0],
     transition: {
-      duration: 0.8,
-      ease: "easeOut",
-    },
-  },
+      duration: 3,
+      repeat: Infinity,
+      repeatType: "reverse",
+      ease: "easeInOut"
+    }
+  }
 };
 
 // Gradient text component
 interface GradientTextProps {
   children: React.ReactNode;
-  from?: string;
-  to?: string;
+  gradient?: string;
 }
 
-const GradientText = ({ children, from = '#FF6F61', to = '#3DF5C6' }: GradientTextProps) => (
-  <span style={{ 
-    background: `linear-gradient(135deg, ${from}, ${to})`,
-    WebkitBackgroundClip: 'text',
-    WebkitTextFillColor: 'transparent',
-    backgroundClip: 'text',
-    display: 'inline-block'
-  }}>
+const GradientText = ({ children, gradient = "linear-gradient(135deg, var(--color-coral), #FF9F7D)" }: GradientTextProps) => (
+  <span
+    style={{
+      background: gradient,
+      WebkitBackgroundClip: "text",
+      WebkitTextFillColor: "transparent",
+      backgroundClip: "text",
+    }}
+  >
     {children}
   </span>
 );
@@ -66,12 +66,18 @@ const GradientText = ({ children, from = '#FF6F61', to = '#3DF5C6' }: GradientTe
 export default function HeroSection() {
   const isMobile = useMediaQuery('(max-width: 768px)');
   const isTablet = useMediaQuery('(max-width: 992px)');
+  const [mounted, setMounted] = useState(false);
   
-  const titleSize = isMobile ? rem(40) : rem(64);
-  const textSize = isMobile ? rem(16) : rem(18);
-  const buttonSize = isMobile ? 'sm' : 'md';
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  
+  const titleSize = isMobile ? rem(36) : rem(60);
+  const subtitleSize = isMobile ? rem(16) : rem(20);
   const containerPadding = isMobile ? rem(40) : rem(80);
   const maxWidth = isMobile ? '100%' : rem(550);
+  
+  if (!mounted) return null;
   
   return (
     <Box
@@ -177,129 +183,136 @@ export default function HeroSection() {
           animate="visible"
           variants={containerVariants}
         >
-          <MotionDiv variants={fadeInVariants}>
-            <Title 
-              order={1} 
-              fz={titleSize} 
-              lh={1.1} 
-            >
-              <GradientText from="#FF6F61" to="#9FEFFF">
-                Decentralized
-              </GradientText>
-              <br /> 
-              <GradientText from="#3DF5C6" to="#6B76FF">
-                AI Hivemind
-              </GradientText>
-            </Title>
-          </MotionDiv>
-          
-          <MotionDiv variants={fadeInVariants}>
-            <Text 
-              fz={textSize} 
-              mt="md" 
-              maw={maxWidth}
-              fw={500}
-              className="typing-effect"
-              style={{ marginBottom: '1rem' }}
-            >
-              Build, monetize, and govern collaborative AI agents on-chain through the power of decentralized intelligence.
-            </Text>
-            <Text
-              fz={textSize}
-              maw={maxWidth}
-              c="dimmed"
-            >
-              Join thousands of developers and AI enthusiasts building the future of collective intelligence.
-            </Text>
-          </MotionDiv>
-          
-          {/* Feature badges */}
-          <MotionDiv variants={fadeInVariants}>
-            <Group mt="md" gap="xs" wrap="wrap">
-              <Badge size="lg" color="coral" leftSection={<Brain size={12} />}>
-                Collective Intelligence
-              </Badge>
-              <Badge size="lg" color="mint" leftSection={<Network size={12} />}>
-                Decentralized Network
-              </Badge>
-              <Badge size="lg" color="ice" leftSection={<Bot size={12} />}>
-                AI Agents
-              </Badge>
-              <Badge size="lg" color="blue" leftSection={<Lock size={12} />}>
-                On-chain Verification
-              </Badge>
-            </Group>
-          </MotionDiv>
-          
-          {/* Call to action buttons */}
-          <MotionDiv variants={fadeInVariants}>
-            <Group mt={40}>
-              <Button 
-                radius="xl" 
-                size={buttonSize} 
-                color="coral"
-                gradient={{ from: 'coral.6', to: 'mint.6', deg: 45 }}
-                variant="gradient"
-                style={{ animation: 'float 3s infinite ease-in-out' }}
-              >
-                Get Started
-              </Button>
-              
-              <Button 
-                radius="xl" 
-                size={buttonSize} 
-                variant="outline"
-                color="dark"
-              >
-                Learn More
-              </Button>
-            </Group>
-          </MotionDiv>
-          
-          {/* Mobile visualization preview */}
-          {isMobile && (
-            <MotionDiv variants={slideInVariants}>
-              <Paper 
-                mt="xl" 
-                radius="xl" 
-                p="xs" 
-                style={{
-                  background: 'rgba(255, 255, 255, 0.1)',
-                  backdropFilter: 'blur(10px)',
-                  border: '1px solid rgba(255, 255, 255, 0.2)',
-                  height: rem(200),
-                  overflow: 'hidden',
-                  position: 'relative',
-                }}
-              >
-                <div 
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    background: 'linear-gradient(135deg, rgba(255,111,97,0.3), rgba(61,245,198,0.3))',
-                    zIndex: 1,
-                  }}
-                />
-                <Text 
-                  ta="center" 
-                  c="white" 
-                  fw={500} 
-                  style={{
-                    position: 'absolute',
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    zIndex: 2,
+          <Grid gutter={40}>
+            <Grid.Col span={{ base: 12, md: 7 }}>
+              <MotionDiv variants={itemVariants}>
+                <Title 
+                  order={1} 
+                  style={{ 
+                    fontSize: titleSize,
+                    lineHeight: 1.2,
+                    marginBottom: rem(20),
+                    fontWeight: 800
                   }}
                 >
-                  AI Network Visualization
+                  <GradientText>Decentralized</GradientText> <br />
+                  <GradientText>AI Hivemind</GradientText>
+                </Title>
+              </MotionDiv>
+              
+              <MotionDiv variants={itemVariants}>
+                <Text size={subtitleSize} mb={30} style={{ maxWidth: rem(600) }}>
+                  <TypeAnimation
+                    sequence={[
+                      'Build, monetize and govern collaborative AI agents on-chain.',
+                      2000,
+                      'Deploy your AI models and earn rewards from the community.',
+                      2000,
+                      'Join the decentralized future of artificial intelligence.',
+                      2000
+                    ]}
+                    wrapper="span"
+                    speed={50}
+                    repeat={Infinity}
+                  />
                 </Text>
-              </Paper>
-            </MotionDiv>
-          )}
+              </MotionDiv>
+              
+              <MotionDiv variants={itemVariants}>
+                <Group mt={30}>
+                  <Button 
+                    className="connect-wallet-btn"
+                    size="lg"
+                  >
+                    Get Started
+                  </Button>
+                  <Button 
+                    variant="light" 
+                    size="lg"
+                    radius="xl"
+                  >
+                    Learn More
+                  </Button>
+                </Group>
+              </MotionDiv>
+            </Grid.Col>
+            
+            <Grid.Col span={{ base: 12, md: 5 }}>
+              <Grid>
+                <Grid.Col span={{ base: 12, sm: 6 }}>
+                  <MotionDiv 
+                    variants={floatVariants}
+                    initial="initial"
+                    animate="float"
+                    style={{ marginTop: isMobile ? 0 : rem(40) }}
+                  >
+                    <Paper 
+                      p="md" 
+                      radius="md" 
+                      className="feature-card-coral"
+                      style={{ height: rem(180) }}
+                    >
+                      <Group mb="xs">
+                        <Brain size={24} />
+                        <Text fw={700} size="lg">Collaborate</Text>
+                      </Group>
+                      <Text size="sm">
+                        Deploy AI agents & share models with the community
+                      </Text>
+                    </Paper>
+                  </MotionDiv>
+                </Grid.Col>
+                
+                <Grid.Col span={{ base: 12, sm: 6 }}>
+                  <MotionDiv 
+                    variants={floatVariants}
+                    initial="initial"
+                    animate="float"
+                    style={{ animationDelay: '0.2s' }}
+                  >
+                    <Paper 
+                      p="md" 
+                      radius="md" 
+                      className="feature-card-mint"
+                      style={{ height: rem(180) }}
+                    >
+                      <Group mb="xs">
+                        <Shield size={24} />
+                        <Text fw={700} size="lg">Secure</Text>
+                      </Group>
+                      <Text size="sm">
+                        Immutable, auditable blockchain verification
+                      </Text>
+                    </Paper>
+                  </MotionDiv>
+                </Grid.Col>
+                
+                <Grid.Col span={{ base: 12, sm: 12 }}>
+                  <MotionDiv 
+                    variants={floatVariants}
+                    initial="initial"
+                    animate="float"
+                    style={{ animationDelay: '0.4s' }}
+                  >
+                    <Paper 
+                      p="md" 
+                      radius="md" 
+                      className="feature-card-yellow"
+                      style={{ height: rem(180) }}
+                    >
+                      <Group mb="xs">
+                        <Gift size={24} />
+                        <Text fw={700} size="lg">Earn Rewards</Text>
+                      </Group>
+                      <Text size="sm">
+                        Get paid for meaningful contributions to the network
+                      </Text>
+                    </Paper>
+                  </MotionDiv>
+                </Grid.Col>
+              </Grid>
+            </Grid.Col>
+          </Grid>
         </MotionDiv>
       </Container>
     </Box>

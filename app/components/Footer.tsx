@@ -1,69 +1,160 @@
 "use client";
-import { Container, Group, Text, rem } from '@mantine/core';
+
+import { Container, Group, ActionIcon, Text, Title, SimpleGrid, Stack, Anchor, Box } from '@mantine/core';
+import { Github, Twitter, Linkedin, Mail } from 'lucide-react';
 import Link from 'next/link';
 
+const links = [
+  { title: 'Product', links: [
+    { label: 'Features', link: '/#features' },
+    { label: 'Roadmap', link: '/#roadmap' },
+    { label: 'Token', link: '/token' },
+    { label: 'Whitepaper', link: '/whitepaper' },
+  ]},
+  { title: 'Resources', links: [
+    { label: 'Documentation', link: '/docs' },
+    { label: 'API Reference', link: '/docs#api' },
+    { label: 'SDK', link: '/docs#sdk' },
+    { label: 'Examples', link: '/docs#examples' },
+  ]},
+  { title: 'Company', links: [
+    { label: 'About', link: '/about' },
+    { label: 'Team', link: '/about#team' },
+    { label: 'Contact', link: '/contact' },
+    { label: 'Blog', link: 'https://blog.mindhive.network' },
+  ]},
+];
+
 export default function Footer() {
+  const groups = links.map((group) => {
+    const items = group.links.map((link) => (
+      <Link key={link.label} href={link.link} passHref>
+        <Anchor
+          component="a"
+          c="dimmed"
+          style={{ 
+            textDecoration: 'none',
+            transition: 'color 0.2s ease',
+            '&:hover': {
+              color: 'var(--color-coral)',
+            },
+          }}
+        >
+          {link.label}
+        </Anchor>
+      </Link>
+    ));
+
+    return (
+      <div key={group.title}>
+        <Text fw={700} mb="xs" className="gradient-text">{group.title}</Text>
+        <Stack spacing="xs" style={{ marginTop: '1rem' }}>
+          {items}
+        </Stack>
+      </div>
+    );
+  });
+
   return (
-    <footer style={{
-      marginTop: rem(120),
-      borderTop: '1px solid rgba(255, 255, 255, 0.3)',
-      backgroundColor: 'rgba(255, 255, 255, 0.7)',
-      backdropFilter: 'blur(10px)',
-    }}>
-      <Container size="lg" py={rem(30)}>
-        <Group justify="space-between" wrap="wrap">
-          <Group gap={rem(30)}>
-            <Link href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-              <Text fw={700} size="lg" style={{
-                background: 'linear-gradient(45deg, var(--mantine-color-coral-6), var(--mantine-color-mint-6))',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-              }}>
-                MindHive Network
-              </Text>
-            </Link>
-          </Group>
-
-          <Group gap={rem(30)} wrap="wrap">
-            <Link href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-              <Text size="sm">Home</Text>
-            </Link>
-            <Link href="/about" style={{ textDecoration: 'none', color: 'inherit' }}>
-              <Text size="sm">About</Text>
-            </Link>
-            <Link href="/docs" style={{ textDecoration: 'none', color: 'inherit' }}>
-              <Text size="sm">Docs</Text>
-            </Link>
-            <Link href="/whitepaper" style={{ textDecoration: 'none', color: 'inherit' }}>
-              <Text size="sm">Whitepaper</Text>
-            </Link>
-            <Link href="/token" style={{ textDecoration: 'none', color: 'inherit' }}>
-              <Text size="sm">Token</Text>
-            </Link>
-            <Link href="/contact" style={{ textDecoration: 'none', color: 'inherit' }}>
-              <Text size="sm">Contact</Text>
-            </Link>
-          </Group>
-        </Group>
-
-        <Group justify="space-between" mt={rem(30)} wrap="wrap">
-          <Text size="xs" c="dimmed">
-            © 2023 MindHive Network. All rights reserved.
-          </Text>
-
-          <Group gap={rem(20)} wrap="wrap">
-            <Link href="#" style={{ textDecoration: 'none' }}>
-              <Text size="xs" c="dimmed">Terms of Service</Text>
-            </Link>
-            <Link href="#" style={{ textDecoration: 'none' }}>
-              <Text size="xs" c="dimmed">Privacy Policy</Text>
-            </Link>
-            <Link href="#" style={{ textDecoration: 'none' }}>
-              <Text size="xs" c="dimmed">Cookie Policy</Text>
-            </Link>
-          </Group>
-        </Group>
+    <Box 
+      component="footer"
+      style={{
+        backgroundColor: 'var(--color-cream)',
+        borderTop: '1px solid rgba(255, 255, 255, 0.3)',
+        backdropFilter: 'blur(10px)',
+        borderRadius: '24px 24px 0 0',
+        marginTop: '4rem',
+      }}
+    >
+      <Container size="lg" py={50}>
+        <SimpleGrid cols={{ base: 1, sm: 2, md: 4 }} spacing={50}>
+          <Stack>
+            <Group>
+              <Box 
+                style={{ 
+                  width: '30px', 
+                  height: '30px', 
+                  backgroundColor: 'var(--color-mint)',
+                  borderRadius: '8px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+              >
+                <Text fw={700} c="white">M</Text>
+              </Box>
+              <Title order={4} className="gradient-text">MindHive</Title>
+            </Group>
+            <Text size="sm" c="dimmed" mt="md">
+              A collaborative network for decentralized artificial intelligence.
+              Build, monetize and govern AI agents on-chain.
+            </Text>
+            <Group mt="md">
+              <ActionIcon 
+                size="lg" 
+                variant="subtle" 
+                color="gray" 
+                radius="xl"
+                style={{
+                  '&:hover': {
+                    backgroundColor: 'var(--color-coral)',
+                    color: 'white',
+                  },
+                }}
+              >
+                <Twitter size={20} />
+              </ActionIcon>
+              <ActionIcon 
+                size="lg" 
+                variant="subtle" 
+                color="gray" 
+                radius="xl"
+                style={{
+                  '&:hover': {
+                    backgroundColor: 'var(--color-coral)',
+                    color: 'white',
+                  },
+                }}
+              >
+                <Github size={20} />
+              </ActionIcon>
+              <ActionIcon 
+                size="lg" 
+                variant="subtle" 
+                color="gray" 
+                radius="xl"
+                style={{
+                  '&:hover': {
+                    backgroundColor: 'var(--color-coral)',
+                    color: 'white',
+                  },
+                }}
+              >
+                <Linkedin size={20} />
+              </ActionIcon>
+              <ActionIcon 
+                size="lg" 
+                variant="subtle" 
+                color="gray" 
+                radius="xl"
+                style={{
+                  '&:hover': {
+                    backgroundColor: 'var(--color-coral)',
+                    color: 'white',
+                  },
+                }}
+              >
+                <Mail size={20} />
+              </ActionIcon>
+            </Group>
+          </Stack>
+          {groups}
+        </SimpleGrid>
+        
+        <Text c="dimmed" size="sm" ta="center" mt={50}>
+          © {new Date().getFullYear()} MindHive Network. All rights reserved.
+        </Text>
       </Container>
-    </footer>
+    </Box>
   );
 } 

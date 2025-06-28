@@ -1,146 +1,152 @@
 "use client";
-import { Container, SimpleGrid, Card, Text, Title, rem, Group, Badge, Box } from '@mantine/core';
-import { Brain, Network, Lock, Bot, Server, Database, Users, Shield } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { Container, Title, Text, SimpleGrid, Paper, Group, ThemeIcon, rem } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
+import { motion } from 'framer-motion';
+import { Brain, Network, Database, Cpu, Lock, Users, Coins, Zap } from 'lucide-react';
 
-const MotionCard = motion(Card);
+// Animation variants
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.3,
+    },
+  },
+};
 
-// Feature data with icons and descriptions
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5 }
+  }
+};
+
+// Feature data
 const features = [
   {
-    title: 'Decentralized AI Network',
-    description: 'Connect and collaborate with AI agents across a distributed network, ensuring no single point of failure or control.',
-    icon: <Network size={24} />,
-    color: 'coral',
-    badge: 'Core'
-  },
-  {
-    title: 'On-chain Verification',
-    description: 'All AI computations are verified and recorded on-chain, providing transparency and auditability.',
-    icon: <Lock size={24} />,
-    color: 'mint',
-    badge: 'Security'
-  },
-  {
-    title: 'Collaborative Intelligence',
-    description: 'Leverage the power of multiple AI models working together to solve complex problems.',
+    title: 'Collective Intelligence',
+    description: 'Combine the power of multiple AI models to solve complex problems that individual models cannot.',
     icon: <Brain size={24} />,
-    color: 'ice',
-    badge: 'Innovation'
+    color: 'coral'
   },
   {
-    title: 'AI Agent Marketplace',
-    description: 'Deploy, discover, and monetize specialized AI agents for various tasks and industries.',
-    icon: <Bot size={24} />,
-    color: 'blue',
-    badge: 'Ecosystem'
-  },
-  {
-    title: 'Compute Marketplace',
-    description: 'Access distributed computational resources for training and running AI models efficiently.',
-    icon: <Server size={24} />,
-    color: 'coral',
-    badge: 'Infrastructure'
+    title: 'Decentralized Network',
+    description: 'A fully decentralized network of AI agents that operate without central authority or control.',
+    icon: <Network size={24} />,
+    color: 'mint'
   },
   {
     title: 'DataDAO Framework',
-    description: 'Collectively own, govern, and monetize datasets through decentralized autonomous organizations.',
+    description: 'Community-owned and governed datasets with fair compensation for contributors.',
     icon: <Database size={24} />,
-    color: 'mint',
-    badge: 'Governance'
+    color: 'yellow'
+  },
+  {
+    title: 'Compute Marketplace',
+    description: 'Connect AI workloads with computational resources in an efficient, decentralized manner.',
+    icon: <Cpu size={24} />,
+    color: 'blue'
+  },
+  {
+    title: 'Privacy Preserving',
+    description: 'Advanced techniques for training AI models while preserving data privacy and security.',
+    icon: <Lock size={24} />,
+    color: 'coral'
   },
   {
     title: 'Community Governance',
-    description: 'Participate in protocol decisions through token-based voting and delegation mechanisms.',
+    description: 'Token-based governance allowing stakeholders to guide the development of the platform.',
     icon: <Users size={24} />,
-    color: 'ice',
-    badge: 'Participation'
+    color: 'mint'
   },
   {
-    title: 'Privacy-Preserving AI',
-    description: 'Utilize advanced techniques to train models while protecting sensitive data and user privacy.',
-    icon: <Shield size={24} />,
-    color: 'blue',
-    badge: 'Privacy'
+    title: 'Token Economics',
+    description: 'Carefully designed incentive structure to reward valuable contributions to the network.',
+    icon: <Coins size={24} />,
+    color: 'yellow'
+  },
+  {
+    title: 'Composable AI',
+    description: 'Build complex AI workflows by combining specialized agents with different capabilities.',
+    icon: <Zap size={24} />,
+    color: 'blue'
   }
 ];
 
 export default function FeatureCards() {
   const isMobile = useMediaQuery('(max-width: 768px)');
-  const cols = isMobile ? 1 : 4;
+  
+  const titleSize = isMobile ? rem(28) : rem(36);
+  const padding = isMobile ? rem(16) : rem(24);
+  const containerPadding = isMobile ? rem(40) : rem(60);
+  
+  // Map colors to CSS class names
+  const getColorClass = (color: string) => {
+    switch(color) {
+      case 'coral': return 'feature-card-coral';
+      case 'mint': return 'feature-card-mint';
+      case 'yellow': return 'feature-card-yellow';
+      case 'blue': return 'feature-card-blue';
+      default: return 'feature-card-coral';
+    }
+  };
   
   return (
-    <Container size="lg" py={rem(60)}>
-      <Title 
-        order={2} 
-        ta="center" 
-        mb={rem(50)} 
-        style={{
-          fontSize: isMobile ? rem(28) : rem(36),
-          background: 'linear-gradient(135deg, var(--mantine-color-coral-6), var(--mantine-color-mint-6))',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text',
-        }}
-      >
-        Platform Features
-      </Title>
-      
-      <SimpleGrid cols={cols} spacing={isMobile ? "md" : "lg"}>
-        {features.map((feature, index) => (
-          <MotionCard
-            key={index}
-            padding="xl"
-            radius="lg"
-            withBorder
-            shadow="sm"
-            style={{
-              height: '100%',
-              background: `linear-gradient(135deg, var(--mantine-color-${feature.color}-0), var(--mantine-color-${feature.color}-1))`,
-              border: `1px solid var(--mantine-color-${feature.color}-2)`,
-              transition: 'all 0.3s ease',
-            }}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            viewport={{ once: true, margin: "-100px" }}
-            whileHover={{ 
-              y: -5, 
-              boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
-              background: `linear-gradient(135deg, var(--mantine-color-${feature.color}-1), var(--mantine-color-${feature.color}-2))`,
-            }}
-          >
-            <Group mb="md">
-              <Box
-                style={{
-                  width: rem(50),
-                  height: rem(50),
-                  borderRadius: '50%',
-                  background: `var(--mantine-color-${feature.color}-1)`,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: `var(--mantine-color-${feature.color}-6)`,
-                }}
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      <Container size="lg" py={containerPadding}>
+        <Title 
+          order={2} 
+          ta="center" 
+          mb={rem(50)}
+          className="gradient-text"
+          style={{ fontSize: titleSize }}
+        >
+          Platform Features
+        </Title>
+        
+        <SimpleGrid cols={{ base: 1, sm: 2, md: 4 }} spacing={rem(20)}>
+          {features.map((feature, index) => (
+            <motion.div
+              key={index}
+              variants={itemVariants}
+              whileHover={{ y: -5 }}
+            >
+              <Paper
+                p={padding}
+                radius="md"
+                className={`${getColorClass(feature.color)} card-float`}
+                style={{ height: '100%' }}
               >
-                {feature.icon}
-              </Box>
-              <Badge color={feature.color} variant="light">
-                {feature.badge}
-              </Badge>
-            </Group>
-            
-            <Title order={3} fw={600} fz={rem(20)} mb="xs">
-              {feature.title}
-            </Title>
-            
-            <Text size="sm" c="dimmed" lh={1.6}>
-              {feature.description}
-            </Text>
-          </MotionCard>
-        ))}
-      </SimpleGrid>
-    </Container>
+                <Group mb="md">
+                  <ThemeIcon 
+                    size={44} 
+                    radius="md" 
+                    variant="light"
+                    color="white"
+                  >
+                    {feature.icon}
+                  </ThemeIcon>
+                  <Text fw={700} size="lg" c="white">
+                    {feature.title}
+                  </Text>
+                </Group>
+                
+                <Text size="sm" c={feature.color === 'yellow' ? '#333' : 'white'} lh={1.6}>
+                  {feature.description}
+                </Text>
+              </Paper>
+            </motion.div>
+          ))}
+        </SimpleGrid>
+      </Container>
+    </motion.div>
   );
 } 

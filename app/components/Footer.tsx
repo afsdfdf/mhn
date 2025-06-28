@@ -48,7 +48,7 @@ export default function Footer() {
     return (
       <div key={group.title}>
         <Text fw={700} mb="xs" className="gradient-text">{group.title}</Text>
-        <Stack spacing="xs" style={{ marginTop: '1rem' }}>
+        <Stack gap="xs" style={{ marginTop: '1rem' }}>
           {items}
         </Stack>
       </div>

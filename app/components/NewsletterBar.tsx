@@ -62,8 +62,8 @@ export default function NewsletterBar() {
           
           <form onSubmit={handleSubmit}>
             <Group 
-              position={isMobile ? 'apart' : 'center'} 
-              spacing={isMobile ? 'xs' : 'md'}
+              justify={isMobile ? 'apart' : 'center'} 
+              gap={isMobile ? 'xs' : 'md'}
               direction={isMobile ? 'column' : 'row'}
             >
               <TextInput
@@ -74,7 +74,7 @@ export default function NewsletterBar() {
                   flexGrow: 1,
                   maxWidth: isMobile ? '100%' : rem(400),
                 }}
-                icon={<Mail size={16} />}
+                leftSection={<Mail size={16} />}
                 error={isSubmitted ? false : undefined}
                 disabled={isSubmitted}
                 radius="xl"

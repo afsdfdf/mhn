@@ -1,11 +1,12 @@
 "use client";
-import { Container, Title, Text, Paper, Grid, Tabs, Anchor, List, Code, rem, Table, Blockquote, ThemeIcon, Group, Badge, Button, Divider } from '@mantine/core';
+import { Container, Title, Text, Paper, Grid, Tabs, Anchor, List, Code, rem, Table, Blockquote, ThemeIcon, Group, Badge, Button, Divider, Box, SimpleGrid } from '@mantine/core';
 import MainNavbar from '../components/MainNavbar';
 import Footer from '../components/Footer';
 import { useMediaQuery } from '@mantine/hooks';
 import { motion, Variants } from 'framer-motion';
-import { FileText, BookOpen, Network, Database, Cpu, Users, Coins, Shield, ChevronRight, Download, ExternalLink, Bot } from 'lucide-react';
+import { FileText, BookOpen, Network, Database, Cpu, Users, Coins, Shield, ChevronRight, Download, ExternalLink, Bot, Github } from 'lucide-react';
 import TechDemo from './TechDemo';
+import Link from 'next/link';
 
 // Motion components
 const MotionDiv = motion.div;
@@ -56,6 +57,15 @@ const floatVariants: Variants = {
       repeatType: "reverse",
       ease: "easeInOut"
     }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5 }
   }
 };
 
@@ -160,7 +170,7 @@ export default function WhitepaperPage() {
                 component="a" 
                 href="https://github.com/mindhive-network/whitepaper" 
                 target="_blank"
-                leftSection={<ExternalLink size={16} />} 
+                leftSection={<Github size={16} />} 
                 variant="light" 
                 color="mint"
                 radius="xl"

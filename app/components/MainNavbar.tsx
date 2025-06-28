@@ -56,7 +56,7 @@ export default function MainNavbar() {
         }}
       >
         <Container style={{ height: '100%', maxWidth: '1200px' }}>
-          <Group position="apart" style={{ height: '100%' }}>
+          <Group justify="space-between" style={{ height: '100%' }}>
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -83,7 +83,7 @@ export default function MainNavbar() {
             </motion.div>
 
             <Group 
-              spacing={5} 
+              gap={5} 
               className="hidden md:flex"
             >
               {items}

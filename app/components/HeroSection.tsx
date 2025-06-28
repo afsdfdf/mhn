@@ -5,7 +5,10 @@ import { motion, Variants } from 'framer-motion';
 import { useMediaQuery } from '@mantine/hooks';
 import { Brain, Network, Bot, Lock, Shield, Gift } from 'lucide-react';
 import React from 'react';
-import { TypeAnimation } from 'react-type-animation';
+import dynamic from 'next/dynamic';
+
+// 动态导入TypeAnimation组件
+const TypeAnimation = dynamic(() => import('react-type-animation'), { ssr: false });
 
 // Motion div for animations
 const MotionDiv = motion.div;
@@ -38,7 +41,7 @@ const floatVariants = {
     transition: {
       duration: 3,
       repeat: Infinity,
-      repeatType: "reverse",
+      repeatType: "reverse" as const,
       ease: "easeInOut"
     }
   }
@@ -202,19 +205,21 @@ export default function HeroSection() {
               
               <MotionDiv variants={itemVariants}>
                 <Text size={subtitleSize} mb={30} style={{ maxWidth: rem(600) }}>
-                  <TypeAnimation
-                    sequence={[
-                      'Build, monetize and govern collaborative AI agents on-chain.',
-                      2000,
-                      'Deploy your AI models and earn rewards from the community.',
-                      2000,
-                      'Join the decentralized future of artificial intelligence.',
-                      2000
-                    ]}
-                    wrapper="span"
-                    speed={50}
-                    repeat={Infinity}
-                  />
+                  {mounted && (
+                    <TypeAnimation
+                      sequence={[
+                        'Build, monetize and govern collaborative AI agents on-chain.',
+                        2000,
+                        'Deploy your AI models and earn rewards from the community.',
+                        2000,
+                        'Join the decentralized future of artificial intelligence.',
+                        2000
+                      ]}
+                      wrapper="span"
+                      speed={50}
+                      repeat={Infinity}
+                    />
+                  )}
                 </Text>
               </MotionDiv>
               

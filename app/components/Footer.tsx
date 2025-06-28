@@ -28,9 +28,9 @@ const links = [
 export default function Footer() {
   const groups = links.map((group) => {
     const items = group.links.map((link) => (
-      <Link key={link.label} href={link.link} passHref>
+      <Link key={link.label} href={link.link}>
         <Anchor
-          component="a"
+          component="span"
           c="dimmed"
           style={{ 
             textDecoration: 'none',

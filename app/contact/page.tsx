@@ -27,7 +27,6 @@ import { useMediaQuery } from '@mantine/hooks';
 import { Mail, MapPin, Phone, Send, Check, X, MessageCircle, ExternalLink, BrainCircuit, Users, Lightbulb, Rocket } from 'lucide-react';
 import MainNavbar from '../components/MainNavbar';
 import Footer from '../components/Footer';
-import { useForm } from '@mantine/form';
 
 // Motion div for animations
 const MotionDiv = motion.div;
@@ -43,8 +42,8 @@ const containerVariants: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.3,
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
     },
   },
 };
@@ -111,34 +110,29 @@ export default function ContactPage() {
   const padding = isMobile ? rem(16) : rem(24);
   const containerPadding = isMobile ? rem(40) : rem(60);
   
-  const form = useForm({
-    initialValues: {
-      name: '',
-      email: '',
-      subject: '',
-      message: '',
-      reason: 'general',
-    },
-    validate: {
-      name: (value) => value.trim().length < 2 ? 'Name must have at least 2 characters' : null,
-      email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
-      subject: (value) => value.trim().length < 5 ? 'Subject must have at least 5 characters' : null,
-      message: (value) => value.trim().length < 10 ? 'Message must have at least 10 characters' : null,
-    },
-  });
-  
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
   
-  const handleSubmit = async (values: typeof form.values) => {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     setSubmitting(true);
+    
     // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    console.log(values);
-    setSubmitted(true);
-    setSubmitting(false);
+    setTimeout(() => {
+      setSubmitting(false);
+      setSubmitted(true);
+      
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+        reason: 'general',
+      });
+    }, 1500);
   };
   
   const contactInfo = [
@@ -437,7 +431,13 @@ export default function ContactPage() {
                     radius="xl"
                     onClick={() => {
                       setSubmitted(false);
-                      form.reset();
+                      setFormData({
+                        name: '',
+                        email: '',
+                        subject: '',
+                        message: '',
+                        reason: 'general',
+                      });
                     }}
                   >
                     Send Another Message
@@ -454,7 +454,7 @@ export default function ContactPage() {
                     boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
                   }}
                 >
-                  <form onSubmit={form.onSubmit(handleSubmit)}>
+                  <form onSubmit={handleSubmit}>
                     <MotionTitle 
                       order={3} 
                       mb="md"
@@ -470,14 +470,16 @@ export default function ContactPage() {
                         label="Name"
                         placeholder="Your name"
                         required
-                        {...form.getInputProps('name')}
+                        value={formData.name}
+                        onChange={handleChange}
                       />
                       
                       <TextInput
                         label="Email"
                         placeholder="your.email@example.com"
                         required
-                        {...form.getInputProps('email')}
+                        value={formData.email}
+                        onChange={handleChange}
                       />
                     </SimpleGrid>
                     
@@ -486,7 +488,8 @@ export default function ContactPage() {
                       placeholder="How can we help you?"
                       required
                       mb="md"
-                      {...form.getInputProps('subject')}
+                      value={formData.subject}
+                      onChange={handleChange}
                     />
                     
                     <Textarea
@@ -495,7 +498,8 @@ export default function ContactPage() {
                       required
                       minRows={5}
                       mb="md"
-                      {...form.getInputProps('message')}
+                      value={formData.message}
+                      onChange={handleChange}
                     />
                     
                     <Group justify="space-between" mb="md">
@@ -504,19 +508,15 @@ export default function ContactPage() {
                     </Group>
                     
                     <Group justify="flex-end">
-                      <MotionButton 
-                        component={motion.button}
+                      <Button 
                         type="submit" 
                         size="md" 
                         radius="xl"
                         color="coral"
-                        leftSection={<MessageCircle size={18} />}
                         loading={submitting}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
                       >
                         {submitting ? 'Sending...' : 'Send Message'}
-                      </MotionButton>
+                      </Button>
                     </Group>
                   </form>
                 </MotionPaper>
@@ -584,14 +584,14 @@ export default function ContactPage() {
                 </Text>
                 <Tooltip label="Learn more about this service">
                   <Button 
-                    component={motion.button}
+                    component="a"
                     variant="light" 
                     color={option.color} 
                     radius="xl" 
                     compact
                     rightSection={<ExternalLink size={14} />}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+                    href={option.link}
+                    target="_blank"
                   >
                     Learn More
                   </Button>

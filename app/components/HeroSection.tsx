@@ -205,21 +205,7 @@ export default function HeroSection() {
               
               <MotionDiv variants={itemVariants}>
                 <Text size={subtitleSize} mb={30} style={{ maxWidth: rem(600) }}>
-                  {mounted && (
-                    <TypeAnimation
-                      sequence={[
-                        'Build, monetize and govern collaborative AI agents on-chain.',
-                        2000,
-                        'Deploy your AI models and earn rewards from the community.',
-                        2000,
-                        'Join the decentralized future of artificial intelligence.',
-                        2000
-                      ]}
-                      wrapper="span"
-                      speed={50}
-                      repeat={Infinity}
-                    />
-                  )}
+                  Build, monetize and govern collaborative AI agents on-chain.
                 </Text>
               </MotionDiv>
               

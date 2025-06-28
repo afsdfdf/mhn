@@ -1,129 +1,189 @@
 "use client";
-import { Container, Title, Timeline, Text, Paper, rem, useMantineColorScheme } from '@mantine/core';
+import { Container, Title, Text, Timeline, Paper, rem, ThemeIcon, Group, Badge } from '@mantine/core';
+import { motion } from 'framer-motion';
 import { useMediaQuery } from '@mantine/hooks';
-import { motion, Variants } from 'framer-motion';
+import { Check, Clock, Rocket, Code, Users, Zap, Server, Globe, Lock } from 'lucide-react';
 
-const roadmapItems = [
+const MotionPaper = motion(Paper);
+
+// Roadmap data with detailed information
+const roadmapData = [
   {
-    title: 'Phase 1: Foundation',
-    description: 'Core protocol development, community building, and initial token distribution',
-    date: 'Q2 2023',
-    active: true,
-    completed: true,
+    title: 'Protocol Development',
+    date: 'Q1 2023',
+    description: 'Development of core protocol architecture and smart contracts for on-chain verification of AI computations.',
+    status: 'completed',
+    icon: <Code size={16} />,
+    color: 'coral',
+    achievements: [
+      'Core protocol design',
+      'Smart contract architecture',
+      'On-chain verification mechanism',
+      'Whitepaper publication'
+    ]
   },
   {
-    title: 'Phase 2: Network Launch',
-    description: 'Mainnet launch, agent marketplace, and developer tools',
-    date: 'Q4 2023',
-    active: true,
-    completed: false,
+    title: 'Testnet Launch',
+    date: 'Q3 2023',
+    description: 'Launch of the MindHive testnet with initial AI agent deployment capabilities and basic network operations.',
+    status: 'completed',
+    icon: <Server size={16} />,
+    color: 'mint',
+    achievements: [
+      'Testnet deployment',
+      'Initial AI agent framework',
+      'Developer documentation',
+      'Early partner onboarding'
+    ]
   },
   {
-    title: 'Phase 3: Ecosystem Growth',
-    description: 'Cross-chain integration, advanced governance, and AI model marketplace',
-    date: 'Q2 2024',
-    active: false,
-    completed: false,
+    title: 'Mainnet Alpha',
+    date: 'Q1 2024',
+    description: 'Limited mainnet launch with core features and initial token distribution to early supporters and contributors.',
+    status: 'in-progress',
+    icon: <Rocket size={16} />,
+    color: 'ice',
+    achievements: [
+      'Mainnet security audit',
+      'Token generation event',
+      'Governance framework',
+      'Initial marketplace features'
+    ]
   },
   {
-    title: 'Phase 4: Global Expansion',
-    description: 'Enterprise partnerships, advanced AI capabilities, and global adoption',
+    title: 'DataDAO Framework',
+    date: 'Q3 2024',
+    description: 'Introduction of the DataDAO framework for collective ownership and governance of AI training datasets.',
+    status: 'planned',
+    icon: <Users size={16} />,
+    color: 'blue',
+    achievements: [
+      'DAO creation toolkit',
+      'Data contribution mechanism',
+      'Revenue distribution system',
+      'Privacy-preserving data access'
+    ]
+  },
+  {
+    title: 'Full Mainnet Launch',
     date: 'Q4 2024',
-    active: false,
-    completed: false,
+    description: 'Complete mainnet launch with all core features, expanded marketplace, and comprehensive developer tools.',
+    status: 'planned',
+    icon: <Globe size={16} />,
+    color: 'coral',
+    achievements: [
+      'Full feature set deployment',
+      'Expanded partner ecosystem',
+      'Developer grants program',
+      'Cross-chain interoperability'
+    ]
   },
+  {
+    title: 'Advanced Features',
+    date: 'Q2 2025',
+    description: 'Introduction of advanced features including zero-knowledge proofs for private AI computations and cross-chain integration.',
+    status: 'planned',
+    icon: <Lock size={16} />,
+    color: 'mint',
+    achievements: [
+      'Zero-knowledge AI computation',
+      'Cross-chain asset bridge',
+      'Advanced governance features',
+      'Enterprise integration tools'
+    ]
+  }
 ];
 
-// Motion div for animations
-const MotionDiv = motion.div;
-
 export default function RoadmapSection() {
-  const { colorScheme } = useMantineColorScheme();
-  const isDark = colorScheme === 'dark';
   const isMobile = useMediaQuery('(max-width: 768px)');
-  const isTablet = useMediaQuery('(max-width: 992px)');
   
-  // Responsive settings
-  const containerPadding = isMobile ? rem(40) : rem(80);
-  const titleSize = isMobile ? 24 : 32;
-  const titleMargin = isMobile ? rem(20) : rem(40);
-  const padding = isMobile ? 'md' : 'xl';
-  const bulletSize = isMobile ? 18 : 24;
-  const lineWidth = isMobile ? 1 : 2;
-  const textSize = isMobile ? 'xs' : 'sm';
-  const titleTextSize = isMobile ? 'sm' : 'md';
-
-  // 动画变体 - 只保留淡入效果
-  const containerVariants: Variants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.05
-      }
-    }
-  };
-
-  // 只保留淡入效果
-  const fadeInVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: { 
-      opacity: 1, 
-      transition: { 
-        duration: 0.5, 
-        ease: "easeOut" as const 
-      } 
-    }
-  };
-
   return (
-    <Container size="lg" py={containerPadding}>
-      <MotionDiv
-        initial="hidden"
-        animate="visible"
-        variants={containerVariants}
+    <Container size="lg" py={rem(60)}>
+      <Title 
+        order={2} 
+        ta="center" 
+        mb={rem(10)} 
+        style={{
+          fontSize: isMobile ? rem(28) : rem(36),
+          background: 'linear-gradient(135deg, var(--mantine-color-coral-6), var(--mantine-color-mint-6))',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+        }}
       >
-        <MotionDiv variants={fadeInVariants}>
-          <Title 
-            order={2} 
-            ta="center" 
-            mb={titleMargin} 
-            c="coral.6"
-            fz={titleSize}
-          >
-            Project Roadmap
-          </Title>
-        </MotionDiv>
-        
-        <MotionDiv variants={fadeInVariants}>
-          <Paper 
-            radius="xl" 
-            p={padding} 
-            shadow="md" 
-            style={{
-              background: isDark ? 'rgba(36, 36, 36, 0.7)' : 'rgba(255, 255, 255, 0.7)',
-              backdropFilter: 'blur(10px)',
-            }}
-          >
-            <Timeline active={1} bulletSize={bulletSize} lineWidth={lineWidth} color="coral">
-              {roadmapItems.map((item, index) => (
-                <Timeline.Item 
-                  key={index} 
-                  title={
-                    <Text fw={500} fz={titleTextSize}>
-                      {item.title}
-                    </Text>
-                  }
-                  color={item.completed ? 'coral' : item.active ? 'mint' : 'ice'}
+        Development Roadmap
+      </Title>
+      
+      <Text ta="center" mb={rem(50)} size="lg" maw={700} mx="auto">
+        Our journey to build the decentralized AI network of the future, with key milestones and upcoming features.
+      </Text>
+      
+      <MotionPaper
+        p={isMobile ? rem(20) : rem(40)}
+        radius="lg"
+        shadow="md"
+        style={{
+          background: 'rgba(255, 255, 255, 0.7)',
+          backdropFilter: 'blur(10px)',
+          border: '1px solid rgba(255, 255, 255, 0.3)',
+        }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true, margin: "-100px" }}
+      >
+        <Timeline active={2} bulletSize={28} lineWidth={2}>
+          {roadmapData.map((item, index) => (
+            <Timeline.Item
+              key={index}
+              bullet={
+                <ThemeIcon 
+                  size={28} 
+                  radius="xl" 
+                  color={item.color}
+                  variant={item.status === 'completed' ? 'filled' : 'light'}
                 >
-                  <Text c="dimmed" size={textSize}>{item.date}</Text>
-                  <Text size={textSize} mt={4}>{item.description}</Text>
-                </Timeline.Item>
-              ))}
-            </Timeline>
-          </Paper>
-        </MotionDiv>
-      </MotionDiv>
+                  {item.status === 'completed' ? <Check size={16} /> : item.icon}
+                </ThemeIcon>
+              }
+              title={
+                <Group mb={4}>
+                  <Text fw={700}>{item.title}</Text>
+                  <Badge 
+                    color={
+                      item.status === 'completed' ? 'green' : 
+                      item.status === 'in-progress' ? 'blue' : 
+                      'gray'
+                    }
+                    variant="light"
+                  >
+                    {item.status === 'completed' ? 'Completed' : 
+                     item.status === 'in-progress' ? 'In Progress' : 
+                     'Planned'}
+                  </Badge>
+                </Group>
+              }
+            >
+              <Text size="sm" c="dimmed">{item.date}</Text>
+              <Text size="sm" mt="xs" mb="md">{item.description}</Text>
+              
+              <Group gap="xs" mb="xs">
+                {item.achievements.map((achievement, i) => (
+                  <Badge key={i} size="sm" variant="dot" color={item.color}>
+                    {achievement}
+                  </Badge>
+                ))}
+              </Group>
+            </Timeline.Item>
+          ))}
+        </Timeline>
+      </MotionPaper>
+      
+      <Group position="center" mt={rem(40)}>
+        <Badge size="lg" leftSection={<Clock size={14} />}>
+          Last Updated: June 2025
+        </Badge>
+      </Group>
     </Container>
   );
 } 

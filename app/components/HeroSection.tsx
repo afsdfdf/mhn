@@ -137,6 +137,29 @@ export default function HeroSection() {
             transform: scale(1.05);
           }
         }
+        
+        @keyframes float {
+          0% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
+          100% {
+            transform: translateY(0px);
+          }
+        }
+        
+        @keyframes typing {
+          from { width: 0 }
+          to { width: 100% }
+        }
+        
+        .typing-effect {
+          overflow: hidden;
+          white-space: nowrap;
+          animation: typing 3.5s steps(40, end);
+        }
       `}</style>
 
       <Container 
@@ -176,8 +199,17 @@ export default function HeroSection() {
               mt="md" 
               maw={maxWidth}
               fw={500}
+              className="typing-effect"
+              style={{ marginBottom: '1rem' }}
             >
               Build, monetize, and govern collaborative AI agents on-chain through the power of decentralized intelligence.
+            </Text>
+            <Text
+              fz={textSize}
+              maw={maxWidth}
+              c="dimmed"
+            >
+              Join thousands of developers and AI enthusiasts building the future of collective intelligence.
             </Text>
           </MotionDiv>
           
@@ -208,6 +240,7 @@ export default function HeroSection() {
                 color="coral"
                 gradient={{ from: 'coral.6', to: 'mint.6', deg: 45 }}
                 variant="gradient"
+                style={{ animation: 'float 3s infinite ease-in-out' }}
               >
                 Get Started
               </Button>
@@ -260,7 +293,6 @@ export default function HeroSection() {
                     left: '50%',
                     transform: 'translate(-50%, -50%)',
                     zIndex: 2,
-                    textShadow: '0 2px 10px rgba(0,0,0,0.3)'
                   }}
                 >
                   AI Network Visualization

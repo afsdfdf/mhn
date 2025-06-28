@@ -1,111 +1,146 @@
 "use client";
-import { SimpleGrid, Card, Text, ThemeIcon, rem } from '@mantine/core';
-import { Brain, ShieldCheck, Gift } from 'lucide-react';
-import { motion, Variants } from 'framer-motion';
+import { Container, SimpleGrid, Card, Text, Title, rem, Group, Badge, Box } from '@mantine/core';
+import { Brain, Network, Lock, Bot, Server, Database, Users, Shield } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { useMediaQuery } from '@mantine/hooks';
 
-// Motion div for animations
-const MotionDiv = motion.div;
+const MotionCard = motion(Card);
 
-// Animation variants
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.3,
-    },
-  },
-};
-
-const fadeInVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.8,
-      ease: "easeOut",
-    },
-  },
-};
-
-// Feature data
+// Feature data with icons and descriptions
 const features = [
   {
-    icon: Brain,
-    title: 'Collaborate',
-    description: 'Deploy AI agents & share models',
-    gradient: 'coral',
-    rotate: '-4deg',
+    title: 'Decentralized AI Network',
+    description: 'Connect and collaborate with AI agents across a distributed network, ensuring no single point of failure or control.',
+    icon: <Network size={24} />,
+    color: 'coral',
+    badge: 'Core'
   },
   {
-    icon: ShieldCheck,
-    title: 'Secure',
-    description: 'Immutable, auditable',
-    gradient: 'mint',
-    rotate: '2deg',
+    title: 'On-chain Verification',
+    description: 'All AI computations are verified and recorded on-chain, providing transparency and auditability.',
+    icon: <Lock size={24} />,
+    color: 'mint',
+    badge: 'Security'
   },
   {
-    icon: Gift,
-    title: 'Earn Rewards',
-    description: 'Get paid for contributions',
-    gradient: 'ice',
-    rotate: '-3deg',
+    title: 'Collaborative Intelligence',
+    description: 'Leverage the power of multiple AI models working together to solve complex problems.',
+    icon: <Brain size={24} />,
+    color: 'ice',
+    badge: 'Innovation'
   },
+  {
+    title: 'AI Agent Marketplace',
+    description: 'Deploy, discover, and monetize specialized AI agents for various tasks and industries.',
+    icon: <Bot size={24} />,
+    color: 'blue',
+    badge: 'Ecosystem'
+  },
+  {
+    title: 'Compute Marketplace',
+    description: 'Access distributed computational resources for training and running AI models efficiently.',
+    icon: <Server size={24} />,
+    color: 'coral',
+    badge: 'Infrastructure'
+  },
+  {
+    title: 'DataDAO Framework',
+    description: 'Collectively own, govern, and monetize datasets through decentralized autonomous organizations.',
+    icon: <Database size={24} />,
+    color: 'mint',
+    badge: 'Governance'
+  },
+  {
+    title: 'Community Governance',
+    description: 'Participate in protocol decisions through token-based voting and delegation mechanisms.',
+    icon: <Users size={24} />,
+    color: 'ice',
+    badge: 'Participation'
+  },
+  {
+    title: 'Privacy-Preserving AI',
+    description: 'Utilize advanced techniques to train models while protecting sensitive data and user privacy.',
+    icon: <Shield size={24} />,
+    color: 'blue',
+    badge: 'Privacy'
+  }
 ];
 
 export default function FeatureCards() {
   const isMobile = useMediaQuery('(max-width: 768px)');
-  
-  const iconSize = isMobile ? rem(40) : rem(60);
-  const iconInnerSize = isMobile ? rem(24) : rem(32);
-  const titleSize = isMobile ? rem(18) : rem(20);
-  const descSize = isMobile ? rem(14) : rem(16);
-  const cardPadding = isMobile ? rem(16) : rem(24);
+  const cols = isMobile ? 1 : 4;
   
   return (
-    <MotionDiv
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-    >
-      <SimpleGrid cols={{ base: 1, sm: 3 }} spacing="xl">
+    <Container size="lg" py={rem(60)}>
+      <Title 
+        order={2} 
+        ta="center" 
+        mb={rem(50)} 
+        style={{
+          fontSize: isMobile ? rem(28) : rem(36),
+          background: 'linear-gradient(135deg, var(--mantine-color-coral-6), var(--mantine-color-mint-6))',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+        }}
+      >
+        Platform Features
+      </Title>
+      
+      <SimpleGrid cols={cols} spacing={isMobile ? "md" : "lg"}>
         {features.map((feature, index) => (
-          <MotionDiv
-            key={feature.title}
-            variants={fadeInVariants}
+          <MotionCard
+            key={index}
+            padding="xl"
+            radius="lg"
+            withBorder
+            shadow="sm"
+            style={{
+              height: '100%',
+              background: `linear-gradient(135deg, var(--mantine-color-${feature.color}-0), var(--mantine-color-${feature.color}-1))`,
+              border: `1px solid var(--mantine-color-${feature.color}-2)`,
+              transition: 'all 0.3s ease',
+            }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            whileHover={{ 
+              y: -5, 
+              boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
+              background: `linear-gradient(135deg, var(--mantine-color-${feature.color}-1), var(--mantine-color-${feature.color}-2))`,
+            }}
           >
-            <Card
-              radius="xl"
-              p={cardPadding}
-              shadow="lg"
-              style={{
-                transform: `rotate(${feature.rotate})`,
-                backgroundColor: `var(--mantine-color-${feature.gradient}-5)`,
-                transition: 'transform 0.3s ease',
-              }}
-              className="card-float"
-            >
-              <ThemeIcon 
-                variant="light" 
-                color="white" 
-                size={iconSize} 
-                radius="xl"
+            <Group mb="md">
+              <Box
+                style={{
+                  width: rem(50),
+                  height: rem(50),
+                  borderRadius: '50%',
+                  background: `var(--mantine-color-${feature.color}-1)`,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: `var(--mantine-color-${feature.color}-6)`,
+                }}
               >
-                <feature.icon size={iconInnerSize} />
-              </ThemeIcon>
-              <Text fw={600} fz={titleSize} mt="md" c="white">
-                {feature.title}
-              </Text>
-              <Text fz={descSize} mt={6} c="white" opacity={0.9}>
-                {feature.description}
-              </Text>
-            </Card>
-          </MotionDiv>
+                {feature.icon}
+              </Box>
+              <Badge color={feature.color} variant="light">
+                {feature.badge}
+              </Badge>
+            </Group>
+            
+            <Title order={3} fw={600} fz={rem(20)} mb="xs">
+              {feature.title}
+            </Title>
+            
+            <Text size="sm" c="dimmed" lh={1.6}>
+              {feature.description}
+            </Text>
+          </MotionCard>
         ))}
       </SimpleGrid>
-    </MotionDiv>
+    </Container>
   );
 } 

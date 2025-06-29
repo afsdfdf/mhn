@@ -36,6 +36,7 @@ export default function MainNavbar() {
         }`}
         style={{
           letterSpacing: '0.02em',
+          textDecoration: 'none',
         }}
         onClick={close}
       >
@@ -88,6 +89,7 @@ export default function MainNavbar() {
             <Group 
               gap={16} 
               className="hidden md:flex"
+              style={{ textDecoration: 'none' }}
             >
               {items}
             </Group>

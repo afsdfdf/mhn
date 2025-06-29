@@ -52,7 +52,19 @@ pnpm install
 yarn install
 ```
 
-3. Run the development server:
+3. Set up environment variables:
+
+Create a `.env.local` file in the root directory with the following variables:
+
+```
+# Google AI API Keys
+GEMINI_API_KEY=your_gemini_api_key_here
+
+# Other environment variables
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+```
+
+4. Run the development server:
 
 ```bash
 npm run dev
@@ -62,7 +74,7 @@ pnpm dev
 yarn dev
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 
 ## Deployment
 

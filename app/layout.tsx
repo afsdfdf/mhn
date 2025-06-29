@@ -1,5 +1,6 @@
-import '@mantine/core/styles.css';
 import './globals.css';
+import '@mantine/core/styles.css';
+import './styles/global.css';
 import { MantineProvider, createTheme } from '@mantine/core';
 import { Inter, Playfair_Display } from 'next/font/google';
 import Analytics from './components/Analytics';
@@ -61,7 +62,12 @@ const theme = createTheme({
   },
 });
 
+// 确保 URL 是有效的
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://mindhive.network';
+const baseUrl = siteUrl.startsWith('http') ? siteUrl : `https://${siteUrl}`;
+
 export const metadata = {
+  metadataBase: new URL(baseUrl),
   title: 'MindHive Network',
   description: 'Decentralized AI Hivemind - Build, monetize and govern collaborative AI agents on-chain',
   keywords: ['AI', 'blockchain', 'decentralized', 'artificial intelligence', 'web3', 'collaborative AI'],
@@ -69,7 +75,7 @@ export const metadata = {
   openGraph: {
     title: 'MindHive Network',
     description: 'Decentralized AI Hivemind - Build, monetize and govern collaborative AI agents on-chain',
-    url: 'https://mindhive.network',
+    url: process.env.NEXT_PUBLIC_SITE_URL || 'https://mindhive.network',
     siteName: 'MindHive Network',
     images: [
       {

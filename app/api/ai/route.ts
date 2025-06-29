@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-// 直接硬编码API密钥 - 由于网络问题无法访问Google API，仅作为参考保留
-const GEMINI_API_KEY = 'AIzaSyCpP3psMF58kYjbqgYnfP6VWlKJnTXasKk';
+// 使用环境变量获取API密钥
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY || '';
 
 // 创建GoogleGenerativeAI实例
 const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);

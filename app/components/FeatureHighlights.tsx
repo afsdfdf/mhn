@@ -44,20 +44,20 @@ const features = [
   {
     title: 'Collaborate',
     description: 'Deploy AI agents & share models with the community',
-    icon: <Brain size={24} />,
-    color: 'coral'
+    icon: <Brain size={24} color="white" />,
+    color: '#FF6F61' // 珊瑚色
   },
   {
     title: 'Secure',
     description: 'Immutable, auditable blockchain verification',
-    icon: <Shield size={24} />,
-    color: 'mint'
+    icon: <Shield size={24} color="white" />,
+    color: '#15D9AC' // 薄荷色
   },
   {
     title: 'Earn Rewards',
     description: 'Get paid for meaningful contributions to the network',
-    icon: <Gift size={24} />,
-    color: 'yellow'
+    icon: <Gift size={24} color="#333" />,
+    color: '#FFE86E' // 黄色
   }
 ];
 
@@ -68,16 +68,6 @@ export default function FeatureHighlights() {
   const titleSize = isMobile ? rem(28) : rem(36);
   const padding = isMobile ? rem(16) : rem(24);
   const containerPadding = isMobile ? rem(30) : rem(50);
-  
-  // 获取卡片颜色类名
-  const getColorClass = (color: string) => {
-    switch(color) {
-      case 'coral': return 'feature-card-coral';
-      case 'mint': return 'feature-card-mint';
-      case 'yellow': return 'feature-card-yellow';
-      default: return 'feature-card-coral';
-    }
-  };
   
   return (
     <Container size="lg" py={containerPadding}>
@@ -109,17 +99,23 @@ export default function FeatureHighlights() {
                 <Paper
                   p={padding}
                   radius="md"
-                  className={`${getColorClass(feature.color)} card-float`}
-                  style={{ height: '100%', minHeight: rem(180) }}
+                  className="card-float"
+                  style={{ 
+                    height: '100%', 
+                    minHeight: rem(180),
+                    backgroundColor: feature.color,
+                    boxShadow: '0 8px 20px rgba(0, 0, 0, 0.1)',
+                    border: '1px solid rgba(255, 255, 255, 0.2)'
+                  }}
                 >
                   <Group mb="md">
                     {feature.icon}
-                    <Text fw={700} size="lg" c="white">
+                    <Text fw={700} size="lg" c={feature.color === '#FFE86E' ? '#333' : 'white'}>
                       {feature.title}
                     </Text>
                   </Group>
                   
-                  <Text size="md" c={feature.color === 'yellow' ? '#333' : 'white'} lh={1.6}>
+                  <Text size="md" c={feature.color === '#FFE86E' ? '#333' : 'white'} lh={1.6}>
                     {feature.description}
                   </Text>
                 </Paper>

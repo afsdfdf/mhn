@@ -1,6 +1,6 @@
 "use client";
 import { useState } from 'react';
-import { Container, TextInput, Button, Group, Box, Text, rem } from '@mantine/core';
+import { Container, TextInput, Button, Group, Box, Text, rem, Stack } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { motion } from 'framer-motion';
 import { Mail } from 'lucide-react';
@@ -61,34 +61,58 @@ export default function NewsletterBar() {
           </Text>
           
           <form onSubmit={handleSubmit}>
-            <Group 
-              justify={isMobile ? 'apart' : 'center'} 
-              gap={isMobile ? 'xs' : 'md'}
-              direction={isMobile ? 'column' : 'row'}
-            >
-              <TextInput
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.currentTarget.value)}
-                style={{ 
-                  flexGrow: 1,
-                  maxWidth: isMobile ? '100%' : rem(400),
-                }}
-                leftSection={<Mail size={16} />}
-                error={isSubmitted ? false : undefined}
-                disabled={isSubmitted}
-                radius="xl"
-              />
-              
-              <Button 
-                type="submit"
-                className="connect-wallet-btn"
-                disabled={isSubmitted}
-                radius="xl"
+            {isMobile ? (
+              <Stack gap="xs">
+                <TextInput
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.currentTarget.value)}
+                  style={{ width: '100%' }}
+                  leftSection={<Mail size={16} />}
+                  error={isSubmitted ? false : undefined}
+                  disabled={isSubmitted}
+                  radius="xl"
+                />
+                
+                <Button 
+                  type="submit"
+                  className="connect-wallet-btn"
+                  disabled={isSubmitted}
+                  radius="xl"
+                  fullWidth
+                >
+                  {isSubmitted ? 'Subscribed!' : 'Subscribe'}
+                </Button>
+              </Stack>
+            ) : (
+              <Group 
+                justify="center" 
+                gap="md"
               >
-                {isSubmitted ? 'Subscribed!' : 'Subscribe'}
-              </Button>
-            </Group>
+                <TextInput
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.currentTarget.value)}
+                  style={{ 
+                    flexGrow: 1,
+                    maxWidth: rem(400),
+                  }}
+                  leftSection={<Mail size={16} />}
+                  error={isSubmitted ? false : undefined}
+                  disabled={isSubmitted}
+                  radius="xl"
+                />
+                
+                <Button 
+                  type="submit"
+                  className="connect-wallet-btn"
+                  disabled={isSubmitted}
+                  radius="xl"
+                >
+                  {isSubmitted ? 'Subscribed!' : 'Subscribe'}
+                </Button>
+              </Group>
+            )}
           </form>
         </motion.div>
       </Container>

@@ -1,14 +1,13 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { Container, Title, Text, Button, Group, Box, rem, Grid } from '@mantine/core';
+import { Container, Title, Text, Button, Group, Box, rem, Grid, Image } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
-import { motion, Variants } from 'framer-motion';
-import AINetworkVisualization from './AINetworkVisualization';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 
-// 定义动画变体
-const containerVariants: Variants = {
+// 简化的动画变体
+const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -19,67 +18,12 @@ const containerVariants: Variants = {
   },
 };
 
-const itemVariants: Variants = {
+const itemVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
     transition: { duration: 0.5 }
-  }
-};
-
-const floatVariants: Variants = {
-  initial: { y: 0 },
-  animate: {
-    y: [-10, 10, -10],
-    transition: {
-      duration: 6,
-      ease: "easeInOut",
-      repeat: Infinity,
-      repeatType: "reverse"
-    }
-  }
-};
-
-const pulseVariants: Variants = {
-  initial: { scale: 1 },
-  animate: {
-    scale: [1, 1.05, 1],
-    transition: {
-      duration: 3,
-      ease: "easeInOut",
-      repeat: Infinity,
-      repeatType: "reverse"
-    }
-  }
-};
-
-const shimmerVariants: Variants = {
-  initial: { 
-    backgroundPosition: '0% 0%',
-  },
-  animate: {
-    backgroundPosition: '100% 0%',
-    transition: {
-      duration: 2,
-      ease: "easeInOut",
-      repeat: Infinity,
-      repeatType: "reverse"
-    }
-  }
-};
-
-const glowVariants: Variants = {
-  initial: { 
-    boxShadow: '0 0 10px rgba(255,122,92,0.3)' 
-  },
-  animate: { 
-    boxShadow: ['0 0 10px rgba(255,122,92,0.3)', '0 0 30px rgba(255,122,92,0.6)', '0 0 10px rgba(255,122,92,0.3)'],
-    transition: {
-      duration: 3,
-      repeat: Infinity,
-      repeatType: "reverse"
-    }
   }
 };
 
@@ -90,14 +34,9 @@ interface GradientTextProps {
 }
 
 const GradientText = ({ children, gradient = "linear-gradient(135deg, var(--color-coral), #FF9F7D)" }: GradientTextProps) => (
-  <motion.span
-    initial="initial"
-    animate="animate"
-    variants={shimmerVariants}
-    className="shimmer-text"
+  <span
     style={{
       background: gradient,
-      backgroundSize: '200% 100%',
       WebkitBackgroundClip: "text",
       WebkitTextFillColor: "transparent",
       backgroundClip: "text",
@@ -105,7 +44,7 @@ const GradientText = ({ children, gradient = "linear-gradient(135deg, var(--colo
     }}
   >
     {children}
-  </motion.span>
+  </span>
 );
 
 interface HeroSectionProps {
@@ -169,95 +108,51 @@ export default function HeroSection({ isAIActive = false }: HeroSectionProps) {
               
               <motion.div variants={itemVariants}>
                 <Group justify={isMobile ? "center" : "flex-start"} mt={30}>
-                  <motion.div 
-                    whileHover={{ scale: 1.05, boxShadow: '0 5px 20px rgba(255,122,92,0.4)' }} 
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Link href="/chat" style={{ textDecoration: 'none' }}>
-                      <Button 
-                        className="connect-wallet-btn"
-                        size="lg"
-                      >
-                        Get Started
-                      </Button>
-                    </Link>
-                  </motion.div>
-                  <motion.div 
-                    whileHover={{ scale: 1.05, boxShadow: '0 5px 15px rgba(0,0,0,0.1)' }} 
-                    whileTap={{ scale: 0.95 }}
-                  >
+                  <Link href="/chat" style={{ textDecoration: 'none' }}>
                     <Button 
-                      variant="light" 
+                      className="connect-wallet-btn"
                       size="lg"
-                      radius="xl"
                     >
-                      Learn More
+                      Get Started
                     </Button>
-                  </motion.div>
+                  </Link>
+                  <Button 
+                    variant="light" 
+                    size="lg"
+                    radius="xl"
+                  >
+                    Learn More
+                  </Button>
                 </Group>
               </motion.div>
             </Grid.Col>
             
             <Grid.Col span={{ base: 12, md: 6 }} order={{ base: 1, md: 2 }}>
-              <motion.div
-                initial="initial"
-                animate="animate"
-                variants={floatVariants}
-                className="float-animation"
+              <Box
+                style={{ 
+                  height: isMobile ? rem(300) : rem(500),
+                  position: 'relative',
+                  overflow: 'hidden',
+                  borderRadius: '20px',
+                  boxShadow: '0 20px 40px rgba(0, 0, 0, 0.15)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: 'linear-gradient(135deg, rgba(255,111,97,0.1), rgba(61,245,198,0.1))',
+                  padding: '20px',
+                }}
               >
-                <Box
-                  className="hero-visualization"
+                <Image
+                  src="/logo1.png"
+                  alt="MindHive Network"
                   style={{ 
-                    height: isMobile ? rem(300) : rem(500),
-                    position: 'relative',
-                    overflow: 'hidden',
-                    borderRadius: '20px',
-                    boxShadow: '0 20px 40px rgba(0, 0, 0, 0.15)',
-                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                    maxWidth: '80%',
+                    maxHeight: '80%',
+                    objectFit: 'contain'
                   }}
-                >
-                  <motion.div
-                    variants={pulseVariants}
-                    initial="initial"
-                    animate="animate"
-                    style={{ 
-                      width: '100%',
-                      height: '100%',
-                      position: 'relative',
-                    }}
-                  >
-                    {!isMobile && <AINetworkVisualization />}
-                    {isMobile && (
-                      <div className="hero-visualization-mobile" style={{
-                        width: '100%',
-                        height: '100%',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        flexDirection: 'column',
-                        background: 'linear-gradient(135deg, rgba(255,111,97,0.1), rgba(61,245,198,0.1))',
-                        backdropFilter: 'blur(5px)',
-                      }}>
-                        <motion.div 
-                          className="ai-icon ai-icon-pulse"
-                          variants={glowVariants}
-                          initial="initial"
-                          animate="animate"
-                        >
-                          <Text size="xl" fw={700} c="white">AI</Text>
-                        </motion.div>
-                        <Text fw={500} ta="center">
-                          Interactive AI Network Visualization
-                          <br />
-                          <span style={{ fontSize: '0.9rem', opacity: 0.7 }}>
-                            View on desktop for full experience
-                          </span>
-                        </Text>
-                      </div>
-                    )}
-                  </motion.div>
-                </Box>
-              </motion.div>
+                />
+              </Box>
             </Grid.Col>
           </Grid>
         </motion.div>

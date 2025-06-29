@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from 'react';
-import { Container, Group, Burger, Paper, Transition, Text, Button, Box, rem, Image } from '@mantine/core';
+import { Container, Group, Burger, Paper, Transition, Text, Button, Box, rem, Image, Accordion } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -8,6 +8,7 @@ import ColorSchemeToggle from './ColorSchemeToggle';
 import { motion } from 'framer-motion';
 import classes from './MainNavbar.module.css';
 import { Stack, UnstyledButton } from '@mantine/core';
+import { ChevronDown } from 'lucide-react';
 
 const HEADER_HEIGHT = rem(60);
 
@@ -28,7 +29,7 @@ export default function MainNavbar() {
       link: '#', 
       label: 'Resources',
       links: [
-    { link: '/whitepaper', label: 'Whitepaper' },
+        { link: '/whitepaper', label: 'Whitepaper' },
         { link: '/docs', label: 'Documentation' },
       ],
     },
@@ -84,34 +85,6 @@ export default function MainNavbar() {
     );
   });
   
-  // 移动端导航项
-  const mobileItems = links.map((link) => {
-    const isActive = pathname === link.link;
-    
-    return (
-      <Link
-        key={link.label}
-        href={link.link}
-        className={`block w-full py-3 px-4 text-base font-medium transition-colors ${
-          isActive 
-            ? 'active-nav-link' 
-            : 'hover:opacity-80'
-        }`}
-        style={{
-          textDecoration: 'none',
-          fontFamily: 'var(--font-playfair)',
-          color: isActive ? 'var(--color-coral)' : '#3a3a3a',
-          textShadow: isActive ? '0 0 1px rgba(255,122,92,0.3)' : 'none',
-          borderLeft: isActive ? '2px solid var(--color-coral)' : 'none',
-          paddingLeft: isActive ? '10px' : '12px',
-        }}
-        onClick={close}
-      >
-        {link.label}
-      </Link>
-    );
-  });
-
   // 如果尚未挂载，返回null以避免水合错误
   if (!mounted) return null;
 
@@ -168,7 +141,7 @@ export default function MainNavbar() {
         </Container>
       </Paper>
 
-      {/* 移动端下拉菜单 */}
+      {/* 移动端风琴式导航菜单 */}
       <Transition transition="pop-top-right" duration={200} mounted={opened}>
         {(styles) => (
           <Paper
@@ -186,17 +159,96 @@ export default function MainNavbar() {
             }}
           >
             <Container p="md">
-              <div className="flex flex-col space-y-2">
-                {mobileItems}
-                <div className="my-2 border-t border-gray-200"></div>
-                <Button 
-                  className="connect-wallet-btn mt-3"
-                  radius="xl"
-                  fullWidth
-                >
-                  Connect Wallet
-                </Button>
-              </div>
+              <Accordion variant="separated" radius="md">
+                {links.map((link, index) => {
+                  const isActive = pathname === link.link;
+                  
+                  // 如果有子链接，创建一个手风琴项
+                  if (link.links) {
+                    return (
+                      <Accordion.Item 
+                        key={index} 
+                        value={link.label}
+                        style={{
+                          backgroundColor: 'transparent',
+                          border: 'none',
+                          marginBottom: '8px'
+                        }}
+                      >
+                        <Accordion.Control
+                          style={{
+                            fontFamily: 'var(--font-playfair)',
+                            color: '#3a3a3a',
+                            fontWeight: 500,
+                            padding: '10px 15px',
+                            borderRadius: '8px',
+                            backgroundColor: 'rgba(255, 255, 255, 0.5)'
+                          }}
+                        >
+                          {link.label}
+                        </Accordion.Control>
+                        <Accordion.Panel>
+                          <Stack spacing={8} mt={8}>
+                            {link.links.map((sublink, subIndex) => (
+                              <Link
+                                key={subIndex}
+                                href={sublink.link}
+                                style={{
+                                  textDecoration: 'none',
+                                  padding: '8px 15px',
+                                  borderRadius: '6px',
+                                  color: pathname === sublink.link ? 'var(--color-coral)' : '#3a3a3a',
+                                  fontWeight: 500,
+                                  display: 'block',
+                                  backgroundColor: pathname === sublink.link ? 'rgba(255, 122, 92, 0.1)' : 'transparent',
+                                  borderLeft: pathname === sublink.link ? '2px solid var(--color-coral)' : 'none',
+                                  paddingLeft: pathname === sublink.link ? '13px' : '15px',
+                                }}
+                                onClick={close}
+                              >
+                                {sublink.label}
+                              </Link>
+                            ))}
+                          </Stack>
+                        </Accordion.Panel>
+                      </Accordion.Item>
+                    );
+                  }
+                  
+                  // 如果没有子链接，创建一个普通链接
+                  return (
+                    <Link
+                      key={index}
+                      href={link.link}
+                      style={{
+                        textDecoration: 'none',
+                        padding: '15px',
+                        borderRadius: '8px',
+                        backgroundColor: isActive ? 'rgba(255, 122, 92, 0.1)' : 'rgba(255, 255, 255, 0.5)',
+                        color: isActive ? 'var(--color-coral)' : '#3a3a3a',
+                        fontFamily: 'var(--font-playfair)',
+                        fontWeight: 500,
+                        display: 'block',
+                        marginBottom: '8px',
+                        borderLeft: isActive ? '2px solid var(--color-coral)' : 'none',
+                        paddingLeft: isActive ? '13px' : '15px',
+                      }}
+                      onClick={close}
+                    >
+                      {link.label}
+                    </Link>
+                  );
+                })}
+              </Accordion>
+              
+              <div className="my-4 border-t border-gray-200"></div>
+              <Button 
+                className="connect-wallet-btn mt-3"
+                radius="xl"
+                fullWidth
+              >
+                Connect Wallet
+              </Button>
             </Container>
           </Paper>
         )}

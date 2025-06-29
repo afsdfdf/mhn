@@ -91,30 +91,25 @@ export default function MainNavbar() {
   if (!mounted) return null;
 
   return (
-    <Box pb={30} style={{ position: 'relative', zIndex: 1000 }}>
+    <Box style={{ position: 'relative', zIndex: 1000 }}>
+      {/* 导航栏 */}
       <Paper 
         shadow="sm" 
-        p="md"
         style={{
           height: HEADER_HEIGHT,
           backgroundColor: 'var(--color-cream)',
-          borderRadius: 'var(--border-radius-lg)',
-          margin: '10px',
+          borderRadius: '0',
+          margin: '0',
+          padding: '0 16px',
           border: '1px solid rgba(255, 255, 255, 0.3)',
           backdropFilter: 'blur(10px)'
         }}
       >
         <Container style={{ height: '100%', maxWidth: '1200px' }}>
           <Group justify="space-between" style={{ height: '100%' }}>
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Link href="/" className={classes.logoContainer}>
-                <Image src="/logo1.png" alt="MindHive Network" height={40} className={classes.logo} />
-              </Link>
-            </motion.div>
+            <Link href="/" className={classes.logoContainer}>
+              <Image src="/logo1.png" alt="MindHive Network" height={40} className={classes.logo} />
+            </Link>
 
             {/* 桌面端导航 */}
             <Group 
@@ -143,7 +138,7 @@ export default function MainNavbar() {
         </Container>
       </Paper>
 
-      {/* 移动端导航菜单 - 简化版 */}
+      {/* 移动端导航菜单 */}
       <Transition 
         transition={{
           in: { opacity: 1, transform: 'translateY(0)' },
@@ -159,15 +154,15 @@ export default function MainNavbar() {
             style={{
               ...styles,
               position: 'fixed',
-              top: `calc(${HEADER_HEIGHT} + 10px)`,
-              left: '10px',
-              right: '10px',
+              top: HEADER_HEIGHT,
+              left: 0,
+              right: 0,
               zIndex: 1000,
               backgroundColor: 'var(--color-cream)',
-              borderRadius: 'var(--border-radius-md)',
+              borderRadius: '0 0 16px 16px',
               boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)',
               overflow: 'hidden',
-              maxHeight: 'calc(100vh - 100px)',
+              maxHeight: 'calc(100vh - 60px)',
               overflowY: 'auto'
             }}
           >
@@ -187,18 +182,28 @@ export default function MainNavbar() {
               
               <Divider mb="md" />
               
-              {/* 简化的导航菜单 */}
-              <Stack spacing="xs">
+              {/* 导航菜单 */}
+              <Stack spacing="sm">
                 {links.map((link, index) => {
                   const isActive = pathname === link.link;
                   
                   // 如果有子链接，创建一个简单的下拉菜单
                   if (link.links) {
                     return (
-                      <Box key={index}>
+                      <Box key={index} mb={8}>
                         <Accordion
                           variant="filled"
                           defaultValue={pathname.includes('/whitepaper') || pathname.includes('/docs') ? link.label : undefined}
+                          styles={{
+                            item: { border: 'none', backgroundColor: 'transparent' },
+                            control: {
+                              padding: '10px',
+                              borderRadius: '8px',
+                              backgroundColor: 'rgba(255, 255, 255, 0.5)',
+                              '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.7)' }
+                            },
+                            panel: { padding: '0 0 0 10px' }
+                          }}
                         >
                           <Accordion.Item value={link.label}>
                             <Accordion.Control
@@ -211,7 +216,7 @@ export default function MainNavbar() {
                               <Text size="md" fw={500}>{link.label}</Text>
                             </Accordion.Control>
                             <Accordion.Panel>
-                              <Stack spacing="xs" pl="sm">
+                              <Stack mt={8}>
                                 {link.links.map((sublink, subIndex) => {
                                   const isSubActive = pathname === sublink.link;
                                   
@@ -221,7 +226,7 @@ export default function MainNavbar() {
                                       href={sublink.link}
                                       style={{
                                         textDecoration: 'none',
-                                        padding: '8px 12px',
+                                        padding: '10px',
                                         borderRadius: '6px',
                                         color: isSubActive ? 'var(--color-coral)' : '#3a3a3a',
                                         fontWeight: isSubActive ? 600 : 500,
@@ -250,7 +255,7 @@ export default function MainNavbar() {
                       href={link.link}
                       style={{
                         textDecoration: 'none',
-                        padding: '12px 16px',
+                        padding: '12px',
                         borderRadius: '8px',
                         backgroundColor: isActive ? 'rgba(255, 122, 92, 0.1)' : 'rgba(255, 255, 255, 0.5)',
                         color: isActive ? 'var(--color-coral)' : '#3a3a3a',
@@ -258,6 +263,7 @@ export default function MainNavbar() {
                         display: 'flex',
                         alignItems: 'center',
                         gap: '12px',
+                        marginBottom: '8px'
                       }}
                       onClick={close}
                     >

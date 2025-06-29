@@ -179,7 +179,7 @@ export default function RoadmapSection() {
         </Timeline>
       </MotionPaper>
       
-      <Group position="center" mt={rem(40)}>
+      <Group justify="center" mt={rem(40)}>
         <Badge size="lg" leftSection={<Clock size={14} />}>
           Last Updated: June 2025
         </Badge>

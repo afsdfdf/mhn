@@ -149,12 +149,12 @@ export default function WhitepaperPage() {
               A Decentralized Collaborative AI Network
             </MotionText>
             
-            <Group position="center" mb="xl">
+            <Group justify="center" mb="xl">
               <Badge color="coral" size="lg" variant="light">Version 1.0</Badge>
               <Badge color="mint" size="lg" variant="light">June 2025</Badge>
             </Group>
             
-            <Group position="center" mb="xl">
+            <Group justify="center" mb="xl">
               <Button 
                 component="a" 
                 href="/MindHive_Whitepaper.pdf" 
@@ -595,7 +595,7 @@ export default function WhitepaperPage() {
             }}
             variants={fadeInVariants}
           >
-            <Group position="center" mb="md">
+            <Group justify="center" mb="md">
               <Title order={2} fz={subtitleSize}>Join the MindHive Network</Title>
             </Group>
             
@@ -603,7 +603,7 @@ export default function WhitepaperPage() {
               Help build the future of decentralized collaborative AI. Join our community and contribute to the MindHive Network.
             </Text>
             
-            <Group position="center">
+            <Group justify="center">
               <Button 
                 component="a" 
                 href="/contact" 

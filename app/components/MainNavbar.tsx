@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from 'react';
-import { Container, Group, Burger, Paper, Transition, Text, Button, Box, rem, Image, Accordion } from '@mantine/core';
+import { Container, Group, Burger, Paper, Transition, Text, Button, Box, rem, Image, Accordion, Divider } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -8,7 +8,7 @@ import ColorSchemeToggle from './ColorSchemeToggle';
 import { motion } from 'framer-motion';
 import classes from './MainNavbar.module.css';
 import { Stack, UnstyledButton } from '@mantine/core';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Home, BookOpen, Coins, Info, Mail, Menu } from 'lucide-react';
 
 const HEADER_HEIGHT = rem(60);
 
@@ -23,19 +23,21 @@ export default function MainNavbar() {
     setMounted(true);
   }, []);
   
+  // 添加图标到导航项
   const links = [
-    { link: '/', label: 'Home' },
+    { link: '/', label: 'Home', icon: <Home size={18} /> },
     { 
       link: '#', 
       label: 'Resources',
+      icon: <BookOpen size={18} />,
       links: [
         { link: '/whitepaper', label: 'Whitepaper' },
         { link: '/docs', label: 'Documentation' },
       ],
     },
-    { link: '/token', label: 'Token' },
-    { link: '/about', label: 'About' },
-    { link: '/contact', label: 'Contact' },
+    { link: '/token', label: 'Token', icon: <Coins size={18} /> },
+    { link: '/about', label: 'About', icon: <Info size={18} /> },
+    { link: '/contact', label: 'Contact', icon: <Mail size={18} /> },
   ];
   
   // 桌面端导航项
@@ -141,8 +143,16 @@ export default function MainNavbar() {
         </Container>
       </Paper>
 
-      {/* 移动端风琴式导航菜单 */}
-      <Transition transition="pop-top-right" duration={200} mounted={opened}>
+      {/* 移动端风琴式导航菜单 - 优化版 */}
+      <Transition 
+        transition={{
+          in: { opacity: 1, transform: 'translateY(0)' },
+          out: { opacity: 0, transform: 'translateY(-20px)' },
+          transitionProperty: 'transform, opacity',
+        }} 
+        duration={300} 
+        mounted={opened}
+      >
         {(styles) => (
           <Paper
             withBorder
@@ -155,61 +165,110 @@ export default function MainNavbar() {
               zIndex: 100,
               backgroundColor: 'var(--color-cream)',
               borderRadius: 'var(--border-radius-md)',
-              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
+              boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)',
+              overflow: 'hidden',
+              maxHeight: 'calc(100vh - 120px)',
+              overflowY: 'auto'
             }}
           >
-            <Container p="md">
-              <Accordion variant="separated" radius="md">
+            <Box p="md">
+              {/* 移动导航标题 */}
+              <Group mb="md" position="apart">
+                <Text fw={600} size="lg" style={{ fontFamily: 'var(--font-playfair)' }}>
+                  Menu
+                </Text>
+                <Menu size={20} />
+              </Group>
+              
+              <Divider mb="md" />
+              
+              {/* 优化的风琴式菜单 */}
+              <Accordion 
+                variant="filled" 
+                radius="md"
+                styles={{
+                  item: {
+                    border: 'none',
+                    marginBottom: '8px',
+                    overflow: 'hidden',
+                    backgroundColor: 'transparent',
+                  },
+                  control: {
+                    padding: '12px 16px',
+                    borderRadius: '10px',
+                    backgroundColor: 'rgba(255, 255, 255, 0.5)',
+                    '&:hover': {
+                      backgroundColor: 'rgba(255, 255, 255, 0.7)',
+                    },
+                  },
+                  panel: {
+                    padding: '0',
+                    paddingTop: '8px',
+                  },
+                  chevron: {
+                    transition: 'transform 300ms ease',
+                  },
+                }}
+              >
                 {links.map((link, index) => {
                   const isActive = pathname === link.link;
                   
                   // 如果有子链接，创建一个手风琴项
                   if (link.links) {
+                    const hasActiveChild = link.links.some(sublink => pathname === sublink.link);
+                    
                     return (
                       <Accordion.Item 
                         key={index} 
                         value={link.label}
-                        style={{
-                          backgroundColor: 'transparent',
-                          border: 'none',
-                          marginBottom: '8px'
-                        }}
                       >
                         <Accordion.Control
+                          icon={
+                            <Box style={{ 
+                              color: hasActiveChild ? 'var(--color-coral)' : '#666',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center'
+                            }}>
+                              {link.icon}
+                            </Box>
+                          }
                           style={{
                             fontFamily: 'var(--font-playfair)',
-                            color: '#3a3a3a',
+                            color: hasActiveChild ? 'var(--color-coral)' : '#3a3a3a',
                             fontWeight: 500,
-                            padding: '10px 15px',
-                            borderRadius: '8px',
-                            backgroundColor: 'rgba(255, 255, 255, 0.5)'
                           }}
                         >
                           {link.label}
                         </Accordion.Control>
                         <Accordion.Panel>
-                          <Stack spacing={8} mt={8}>
-                            {link.links.map((sublink, subIndex) => (
-                              <Link
-                                key={subIndex}
-                                href={sublink.link}
-                                style={{
-                                  textDecoration: 'none',
-                                  padding: '8px 15px',
-                                  borderRadius: '6px',
-                                  color: pathname === sublink.link ? 'var(--color-coral)' : '#3a3a3a',
-                                  fontWeight: 500,
-                                  display: 'block',
-                                  backgroundColor: pathname === sublink.link ? 'rgba(255, 122, 92, 0.1)' : 'transparent',
-                                  borderLeft: pathname === sublink.link ? '2px solid var(--color-coral)' : 'none',
-                                  paddingLeft: pathname === sublink.link ? '13px' : '15px',
-                                }}
-                                onClick={close}
-                              >
-                                {sublink.label}
-                              </Link>
-                            ))}
-                          </Stack>
+                          <Box pl="md">
+                            {link.links.map((sublink, subIndex) => {
+                              const isSubActive = pathname === sublink.link;
+                              
+                              return (
+                                <Link
+                                  key={subIndex}
+                                  href={sublink.link}
+                                  style={{
+                                    textDecoration: 'none',
+                                    padding: '12px 16px',
+                                    borderRadius: '8px',
+                                    color: isSubActive ? 'var(--color-coral)' : '#3a3a3a',
+                                    fontWeight: isSubActive ? 600 : 500,
+                                    display: 'block',
+                                    marginBottom: '6px',
+                                    backgroundColor: isSubActive ? 'rgba(255, 122, 92, 0.1)' : 'transparent',
+                                    borderLeft: isSubActive ? '3px solid var(--color-coral)' : '3px solid transparent',
+                                    transition: 'all 0.2s ease',
+                                  }}
+                                  onClick={close}
+                                >
+                                  {sublink.label}
+                                </Link>
+                              );
+                            })}
+                          </Box>
                         </Accordion.Panel>
                       </Accordion.Item>
                     );
@@ -222,34 +281,48 @@ export default function MainNavbar() {
                       href={link.link}
                       style={{
                         textDecoration: 'none',
-                        padding: '15px',
-                        borderRadius: '8px',
+                        padding: '12px 16px',
+                        borderRadius: '10px',
                         backgroundColor: isActive ? 'rgba(255, 122, 92, 0.1)' : 'rgba(255, 255, 255, 0.5)',
                         color: isActive ? 'var(--color-coral)' : '#3a3a3a',
                         fontFamily: 'var(--font-playfair)',
-                        fontWeight: 500,
-                        display: 'block',
+                        fontWeight: isActive ? 600 : 500,
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '12px',
                         marginBottom: '8px',
-                        borderLeft: isActive ? '2px solid var(--color-coral)' : 'none',
-                        paddingLeft: isActive ? '13px' : '15px',
+                        borderLeft: isActive ? '3px solid var(--color-coral)' : '3px solid transparent',
+                        transition: 'all 0.2s ease',
                       }}
                       onClick={close}
                     >
+                      <Box style={{ 
+                        color: isActive ? 'var(--color-coral)' : '#666',
+                        display: 'flex'
+                      }}>
+                        {link.icon}
+                      </Box>
                       {link.label}
                     </Link>
                   );
                 })}
               </Accordion>
               
-              <div className="my-4 border-t border-gray-200"></div>
+              <Divider my="md" />
+              
               <Button 
-                className="connect-wallet-btn mt-3"
+                className="connect-wallet-btn"
                 radius="xl"
                 fullWidth
+                size="md"
+                style={{
+                  boxShadow: '0 4px 12px rgba(255, 111, 97, 0.3)',
+                  fontWeight: 600
+                }}
               >
                 Connect Wallet
               </Button>
-            </Container>
+            </Box>
           </Paper>
         )}
       </Transition>

@@ -7,7 +7,6 @@ import { motion } from 'framer-motion';
 import { Book, Code as CodeIcon, Server, Terminal, AlertCircle, CheckCircle, HelpCircle, ExternalLink } from 'lucide-react';
 
 const MotionDiv = motion.div;
-const MotionPaper = motion(Paper);
 
 export default function DocsPage() {
   const isMobile = useMediaQuery('(max-width: 768px)');
@@ -29,7 +28,7 @@ export default function DocsPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <MotionPaper 
+          <Paper 
             radius="xl" 
             p={padding} 
             shadow="md" 
@@ -543,7 +542,7 @@ console.log(\`Total earnings: \${stats.totalEarnings} MHN\`);`}
                 </Grid>
               </Tabs.Panel>
             </Tabs>
-          </MotionPaper>
+          </Paper>
         </MotionDiv>
       </Container>
       

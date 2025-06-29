@@ -5,7 +5,7 @@ import { useMediaQuery } from '@mantine/hooks';
 import { Check, Clock, Rocket, Code, Users, Zap, Server, Globe, Lock } from 'lucide-react';
 
 // 使用更具体的类型定义以解决类型错误
-const MotionPaper = motion<any>(Paper);
+const MotionDiv = motion.div;
 
 // Roadmap data with detailed information
 const roadmapData = [
@@ -119,14 +119,14 @@ export default function RoadmapSection() {
         Our journey to build the decentralized AI network of the future, with key milestones and upcoming features.
       </Text>
       
-      <MotionPaper
-        p={isMobile ? rem(20) : rem(40)}
-        radius="lg"
-        shadow="md"
+      <MotionDiv
         style={{
           background: 'rgba(255, 255, 255, 0.7)',
           backdropFilter: 'blur(10px)',
           border: '1px solid rgba(255, 255, 255, 0.3)',
+          padding: isMobile ? rem(20) : rem(40),
+          borderRadius: 'var(--mantine-radius-lg)',
+          boxShadow: 'var(--mantine-shadow-md)',
         }}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -178,7 +178,7 @@ export default function RoadmapSection() {
             </Timeline.Item>
           ))}
         </Timeline>
-      </MotionPaper>
+      </MotionDiv>
       
       <Group justify="center" mt={rem(40)}>
         <Badge size="lg" leftSection={<Clock size={14} />}>

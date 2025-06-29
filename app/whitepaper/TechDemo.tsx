@@ -7,10 +7,8 @@ import { motion } from 'framer-motion';
 import { Shield, Database, Network, Cpu, Bot, Coins, Users, Lock, ChevronRight, Play, FileText, ExternalLink } from 'lucide-react';
 import AINetworkVisualization from '../components/AINetworkVisualization';
 
-const MotionPaper = motion(Paper);
-const MotionGroup = motion(Group);
-const MotionBox = motion(Box);
-const MotionTitle = motion(Title);
+const MotionDiv = motion.div;
+const MotionHeading = motion.h2;
 
 export default function TechDemo() {
   const [activeTab, setActiveTab] = useState<string | null>('network');
@@ -156,7 +154,7 @@ export default function TechDemo() {
   const currentTech = techData[activeTab as keyof typeof techData];
 
   return (
-    <MotionPaper 
+    <Paper
       radius="xl" 
       p={padding} 
       shadow="md" 
@@ -166,222 +164,197 @@ export default function TechDemo() {
         backdropFilter: 'blur(10px)',
         border: '1px solid rgba(255, 255, 255, 0.3)',
       }}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
     >
-      <MotionTitle 
-        order={2} 
-        fz={titleSize} 
-        mb="xl" 
-        ta="center" 
-        style={{
-          background: 'linear-gradient(135deg, var(--mantine-color-coral-6), var(--mantine-color-mint-6))',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text',
-        }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
+      <MotionDiv
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
       >
-        Technology Demonstration
-      </MotionTitle>
-      
-      <Text size={textSize} mb="xl" ta="center">
-        Experience the key technologies powering the MindHive Network ecosystem
-      </Text>
-      
-      <Tabs 
-        value={activeTab} 
-        onChange={setActiveTab} 
-        radius="xl"
-        variant="pills"
-        mb="xl"
-      >
-        <Tabs.List grow>
-          {Object.entries(techData).map(([key, data]) => (
-            <Tabs.Tab 
-              key={key} 
-              value={key} 
-              leftSection={
-                <ThemeIcon size="sm" radius="xl" color={data.color} variant={activeTab === key ? "filled" : "light"}>
-                  {data.icon}
-                </ThemeIcon>
-              }
-            >
-              {isMobile ? '' : data.title.split(' ')[0]}
-            </Tabs.Tab>
-          ))}
-        </Tabs.List>
+        <MotionHeading 
+          style={{
+            fontSize: titleSize,
+            textAlign: 'center',
+            marginBottom: rem(24),
+            background: 'linear-gradient(135deg, var(--mantine-color-coral-6), var(--mantine-color-mint-6))',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+          }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          Technology Demonstration
+        </MotionHeading>
         
-        <Box mt="xl">
-          <MotionBox
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            key={activeTab} // This forces re-render of animation when tab changes
-          >
-            <MotionGroup mb="md" variants={itemVariants}>
-              <ThemeIcon size="xl" radius="md" color={currentTech.color}>
-                {currentTech.icon}
-              </ThemeIcon>
-              <div>
-                <Title order={3} fz={headingSize}>{currentTech.title}</Title>
-                <Badge color={currentTech.color} variant="light">Core Technology</Badge>
-              </div>
-            </MotionGroup>
-            
-            <MotionBox variants={itemVariants}>
-              <Text size={textSize} mb="lg">
-                {currentTech.description}
-              </Text>
-            </MotionBox>
-            
-            <MotionBox variants={itemVariants}>
-              <Title order={4} fz={rem(18)} mb="md">Key Features</Title>
-              <Box mb="xl">
-                {currentTech.features.map((feature, index) => (
-                  <MotionGroup 
-                    key={index} 
-                    mb="xs"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: index * 0.1 }}
-                  >
-                    <ThemeIcon size="sm" radius="xl" color={currentTech.color}>
-                      <ChevronRight size={12} />
-                    </ThemeIcon>
-                    <Text size={textSize}>{feature}</Text>
-                  </MotionGroup>
-                ))}
-              </Box>
-            </MotionBox>
-            
-            <MotionBox variants={itemVariants}>
-              <Accordion variant="separated" mb="xl">
-                <Accordion.Item value="implementation">
-                  <Accordion.Control>
-                    <Text fw={500}>Implementation Details</Text>
-                  </Accordion.Control>
-                  <Accordion.Panel>
-                    <Text size={textSize}>
-                      The {currentTech.title} is implemented using a combination of blockchain technology, 
-                      distributed systems architecture, and advanced cryptographic techniques. 
-                      The system is designed to be scalable, secure, and interoperable with existing 
-                      AI infrastructure.
-                    </Text>
-                    <Group mt="md">
-                      <Badge color={currentTech.color} leftSection={<FileText size={12} />}>
-                        {currentTech.whitepaper}
-                      </Badge>
-                    </Group>
-                  </Accordion.Panel>
-                </Accordion.Item>
-                
-                <Accordion.Item value="use-cases">
-                  <Accordion.Control>
-                    <Text fw={500}>Use Cases</Text>
-                  </Accordion.Control>
-                  <Accordion.Panel>
-                    <Text size={textSize} mb="md">
-                      The {currentTech.title} enables a wide range of applications across industries:
-                    </Text>
-                    <Box pl="md">
-                      <Text size={textSize} mb="xs">• Enterprise data collaboration without compromising privacy</Text>
-                      <Text size={textSize} mb="xs">• Decentralized research and development in AI</Text>
-                      <Text size={textSize} mb="xs">• Community-owned and governed AI services</Text>
-                      <Text size={textSize} mb="xs">• Cross-organizational AI model training and deployment</Text>
-                    </Box>
-                  </Accordion.Panel>
-                </Accordion.Item>
-              </Accordion>
-            </MotionBox>
-            
-            <MotionGroup justify="center" variants={itemVariants}>
-              <Tooltip label="Read whitepaper section">
-                <Button 
-                  variant="light" 
-                  color={currentTech.color} 
-                  radius="xl"
-                  leftSection={<FileText size={16} />}
-                >
-                  Learn More
-                </Button>
-              </Tooltip>
-              <Tooltip label="Try interactive demo">
-                <Button 
-                  variant="filled" 
-                  color={currentTech.color} 
-                  radius="xl"
-                  leftSection={<Play size={16} />}
-                  onClick={() => setShowDemo(true)}
-                >
-                  Try Demo
-                </Button>
-              </Tooltip>
-            </MotionGroup>
-          </MotionBox>
-        </Box>
-      </Tabs>
-      
-      <MotionPaper 
-        radius="lg" 
-        p={0} 
-        withBorder
-        style={{ 
-          height: rem(400),
-          overflow: 'hidden',
-          position: 'relative'
-        }}
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8, delay: 0.3 }}
-      >
-        {showDemo && (
-          <Overlay color="#000" backgroundOpacity={0.85} blur={3}>
-            <Box 
-              style={{ 
-                height: '100%', 
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-                padding: rem(20)
-              }}
+        <Text size={textSize} mb="xl" ta="center">
+          Experience the key technologies powering the MindHive Network ecosystem
+        </Text>
+        
+        <Tabs 
+          value={activeTab} 
+          onChange={setActiveTab} 
+          radius="xl"
+          variant="pills"
+          mb="xl"
+        >
+          <Tabs.List grow>
+            {Object.entries(techData).map(([key, data]) => (
+              <Tabs.Tab 
+                key={key} 
+                value={key} 
+                leftSection={
+                  <ThemeIcon size="sm" radius="xl" color={data.color} variant={activeTab === key ? "filled" : "light"}>
+                    {data.icon}
+                  </ThemeIcon>
+                }
+              >
+                {isMobile ? '' : data.title.split(' ')[0]}
+              </Tabs.Tab>
+            ))}
+          </Tabs.List>
+          
+          <Box mt="xl">
+            <MotionDiv
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              key={activeTab} // This forces re-render of animation when tab changes
             >
-              <Title order={3} c="white" ta="center" mb="xl">
-                Interactive Demo: {currentTech.title}
-              </Title>
-              <Text c="white" size="lg" ta="center" mb="xl">
-                This would launch an interactive demo of the {currentTech.title} technology.
-              </Text>
-              <Group>
-                <Button 
-                  variant="white" 
-                  color="dark"
-                  leftSection={<ExternalLink size={16} />}
-                  onClick={() => window.open(currentTech.demoUrl, '_blank')}
-                >
-                  Open Full Demo
-                </Button>
-                <Button 
-                  variant="subtle" 
-                  color="white"
-                  onClick={() => setShowDemo(false)}
-                >
-                  Close Preview
-                </Button>
-              </Group>
-            </Box>
-          </Overlay>
-        )}
-        <AINetworkVisualization />
-      </MotionPaper>
-      
-      <Text size="sm" c="dimmed" ta="center" mt="md">
-        Interactive visualization of the MindHive Network ecosystem. Hover over nodes to see details.
-      </Text>
-    </MotionPaper>
+              <MotionDiv 
+                style={{ 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  marginBottom: rem(16) 
+                }} 
+                variants={itemVariants}
+              >
+                <ThemeIcon size="xl" radius="md" color={currentTech.color}>
+                  {currentTech.icon}
+                </ThemeIcon>
+                <div style={{ marginLeft: rem(12) }}>
+                  <Title order={3} fz={headingSize}>{currentTech.title}</Title>
+                  <Badge color={currentTech.color} variant="light">Core Technology</Badge>
+                </div>
+              </MotionDiv>
+              
+              <MotionDiv 
+                variants={itemVariants}
+                style={{ marginBottom: rem(16) }}
+              >
+                <Text size={textSize}>
+                  {currentTech.description}
+                </Text>
+              </MotionDiv>
+              
+              <MotionDiv 
+                variants={itemVariants}
+                style={{ marginBottom: rem(24) }}
+              >
+                <Title order={4} fz={rem(18)} mb="md">Key Features</Title>
+                <Box mb="xl">
+                  {currentTech.features.map((feature, index) => (
+                    <MotionDiv 
+                      key={index} 
+                      style={{ 
+                        display: 'flex', 
+                        alignItems: 'center',
+                        marginBottom: rem(8)
+                      }}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3, delay: index * 0.1 }}
+                    >
+                      <ChevronRight size={14} style={{ marginRight: '8px', color: `var(--mantine-color-${currentTech.color}-6)` }} />
+                      <Text size={textSize}>{feature}</Text>
+                    </MotionDiv>
+                  ))}
+                </Box>
+              </MotionDiv>
+              
+              <MotionDiv variants={itemVariants}>
+                <Accordion variant="separated" mb="xl">
+                  <Accordion.Item value="implementation">
+                    <Accordion.Control>Implementation Details</Accordion.Control>
+                    <Accordion.Panel>
+                      <Text size="sm">
+                        This technology is implemented using a combination of blockchain-based smart contracts for verification and governance, along with off-chain components for high-performance computation and data processing.
+                      </Text>
+                    </Accordion.Panel>
+                  </Accordion.Item>
+                </Accordion>
+              </MotionDiv>
+              
+              <MotionDiv variants={itemVariants} style={{ display: 'flex', justifyContent: 'center' }}>
+                <Tooltip label="Read whitepaper section">
+                  <Button 
+                    variant="outline" 
+                    color={currentTech.color} 
+                    radius="xl"
+                    leftSection={<FileText size={16} />}
+                    component="a"
+                    href="#whitepaper"
+                    mr="md"
+                  >
+                    {currentTech.whitepaper}
+                  </Button>
+                </Tooltip>
+                <Tooltip label="View technical demo">
+                  <Button 
+                    variant="light" 
+                    color={currentTech.color}
+                    leftSection={<Play size={16} />}
+                    onClick={() => setShowDemo(true)}
+                  >
+                    View Demo
+                  </Button>
+                </Tooltip>
+              </MotionDiv>
+            </MotionDiv>
+          </Box>
+        </Tabs>
+        
+        <Paper 
+          radius="lg" 
+          p={0} 
+          mt={rem(40)} 
+          withBorder 
+          style={{ 
+            overflow: 'hidden',
+            position: 'relative',
+            height: rem(400),
+            background: 'linear-gradient(135deg, rgba(255,122,92,0.05), rgba(92,219,195,0.05))',
+          }}
+        >
+          {showDemo && (
+            <MotionDiv
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                background: 'rgba(0,0,0,0.7)',
+                zIndex: 10,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexDirection: 'column',
+              }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              <Text color="white" mb="md">Demo functionality will be available in the full release</Text>
+              <Button variant="white" onClick={() => setShowDemo(false)}>Close</Button>
+            </MotionDiv>
+          )}
+          <AINetworkVisualization />
+        </Paper>
+        
+        <Text size="sm" c="dimmed" ta="center" mt="md">
+          Interactive visualization of the MindHive Network ecosystem. Hover over nodes to see details.
+        </Text>
+      </MotionDiv>
+    </Paper>
   );
 } 

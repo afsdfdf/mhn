@@ -10,6 +10,7 @@ import { Stack, UnstyledButton } from '@mantine/core';
 import { ChevronDown, Home, BookOpen, Coins, Info, Mail, Menu, X } from 'lucide-react';
 
 const HEADER_HEIGHT = rem(60);
+const MOBILE_MENU_HEIGHT = rem(50);
 
 export default function MainNavbar() {
   const [opened, { toggle, close }] = useDisclosure(false);
@@ -91,7 +92,119 @@ export default function MainNavbar() {
 
   return (
     <Box style={{ position: 'relative', zIndex: 1000 }}>
-      {/* 导航栏 */}
+      {/* 移动端导航菜单 - 顶部 */}
+      <Box
+        className="md:hidden"
+        style={{
+          backgroundColor: 'var(--color-cream)',
+          height: MOBILE_MENU_HEIGHT,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.3)',
+          position: 'relative'
+        }}
+      >
+        <Group spacing={8} style={{ width: '100%', padding: '0 16px' }}>
+          {links.map((link, index) => {
+            const isActive = pathname === link.link || 
+              (link.links && link.links.some(sublink => pathname === sublink.link));
+            
+            if (link.links && link.label === 'Resources') {
+              return (
+                <Accordion
+                  key={index}
+                  variant="filled"
+                  styles={{
+                    control: {
+                      padding: '0',
+                      border: 'none',
+                      backgroundColor: 'transparent',
+                      '&:hover': { backgroundColor: 'transparent' }
+                    },
+                    item: { border: 'none' },
+                    chevron: { margin: 0 },
+                    panel: {
+                      position: 'absolute',
+                      top: MOBILE_MENU_HEIGHT,
+                      left: 0,
+                      width: '100%',
+                      backgroundColor: 'var(--color-cream)',
+                      zIndex: 1000,
+                      padding: '8px 16px',
+                      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)'
+                    }
+                  }}
+                >
+                  <Accordion.Item value="resources">
+                    <Accordion.Control>
+                      <Text 
+                        size="sm" 
+                        fw={isActive ? 600 : 500}
+                        style={{ 
+                          color: isActive ? 'var(--color-coral)' : '#3a3a3a',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '4px'
+                        }}
+                      >
+                        {link.icon}
+                        <span style={{ fontSize: '14px' }}>{link.label}</span>
+                      </Text>
+                    </Accordion.Control>
+                    <Accordion.Panel>
+                      <Stack>
+                        {link.links.map((sublink, subIndex) => {
+                          const isSubActive = pathname === sublink.link;
+                          return (
+                            <Link
+                              key={subIndex}
+                              href={sublink.link}
+                              style={{
+                                textDecoration: 'none',
+                                padding: '8px',
+                                borderRadius: '4px',
+                                color: isSubActive ? 'var(--color-coral)' : '#3a3a3a',
+                                fontWeight: isSubActive ? 600 : 500,
+                                display: 'block',
+                                fontSize: '14px',
+                                backgroundColor: isSubActive ? 'rgba(255, 122, 92, 0.1)' : 'transparent',
+                              }}
+                            >
+                              {sublink.label}
+                            </Link>
+                          );
+                        })}
+                      </Stack>
+                    </Accordion.Panel>
+                  </Accordion.Item>
+                </Accordion>
+              );
+            }
+            
+            return (
+              <Link
+                key={index}
+                href={link.link}
+                style={{
+                  textDecoration: 'none',
+                  color: isActive ? 'var(--color-coral)' : '#3a3a3a',
+                  fontWeight: isActive ? 600 : 500,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '4px',
+                  fontSize: '14px'
+                }}
+              >
+                {link.icon}
+                <span style={{ fontSize: '14px' }}>{link.label}</span>
+              </Link>
+            );
+          })}
+        </Group>
+      </Box>
+
+      {/* 主导航栏 */}
       <Paper 
         shadow="sm" 
         style={{
@@ -121,148 +234,11 @@ export default function MainNavbar() {
             <Group>
               <ColorSchemeToggle />
               <Button 
-                className="connect-wallet-btn hidden md:block"
+                className="connect-wallet-btn"
                 radius="xl"
               >
                 Connect Wallet
               </Button>
-              
-              {/* 移动端导航按钮 */}
-              <Box className="md:hidden">
-                <Accordion
-                  variant="filled"
-                  chevron={
-                    opened ? 
-                    <X size={18} /> : 
-                    <Menu size={18} />
-                  }
-                  styles={{
-                    control: {
-                      padding: '0',
-                      border: 'none',
-                      backgroundColor: 'transparent',
-                      '&:hover': { backgroundColor: 'transparent' }
-                    },
-                    item: { border: 'none' },
-                    chevron: { margin: 0 },
-                    panel: {
-                      position: 'absolute',
-                      top: HEADER_HEIGHT,
-                      right: 0,
-                      width: '100vw',
-                      backgroundColor: 'var(--color-cream)',
-                      borderRadius: '0 0 16px 16px',
-                      boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)',
-                      padding: '0',
-                      marginLeft: '-16px',
-                      zIndex: 1000
-                    }
-                  }}
-                >
-                  <Accordion.Item value="menu">
-                    <Accordion.Control onClick={toggle}></Accordion.Control>
-                    <Accordion.Panel>
-                      <Box p="md">
-                        {/* 直接导航链接 */}
-                        <Stack>
-                          {links.map((link, index) => {
-                            // 对于所有链接，无论是否有子链接，都创建一个简单的链接
-                            if (link.links) {
-                              // 对于有子链接的项，创建一个包含子链接的组
-                              return (
-                                <Box key={index} mb={8}>
-                                  <Text 
-                                    fw={600} 
-                                    size="md" 
-                                    mb="xs"
-                                    style={{ 
-                                      display: 'flex',
-                                      alignItems: 'center',
-                                      gap: '8px',
-                                      color: '#3a3a3a'
-                                    }}
-                                  >
-                                    <Box style={{ color: '#666' }}>
-                                      {link.icon}
-                                    </Box>
-                                    {link.label}
-                                  </Text>
-                                  <Stack pl="md">
-                                    {link.links.map((sublink, subIndex) => {
-                                      const isSubActive = pathname === sublink.link;
-                                      return (
-                                        <Link
-                                          key={subIndex}
-                                          href={sublink.link}
-                                          style={{
-                                            textDecoration: 'none',
-                                            padding: '8px 12px',
-                                            borderRadius: '6px',
-                                            color: isSubActive ? 'var(--color-coral)' : '#3a3a3a',
-                                            fontWeight: isSubActive ? 600 : 500,
-                                            display: 'block',
-                                            backgroundColor: isSubActive ? 'rgba(255, 122, 92, 0.1)' : 'transparent',
-                                            borderLeft: isSubActive ? '3px solid var(--color-coral)' : '3px solid transparent',
-                                          }}
-                                          onClick={close}
-                                        >
-                                          {sublink.label}
-                                        </Link>
-                                      );
-                                    })}
-                                  </Stack>
-                                </Box>
-                              );
-                            }
-                            
-                            // 如果没有子链接，创建一个简单的链接
-                            const isActive = pathname === link.link;
-                            return (
-                              <Link
-                                key={index}
-                                href={link.link}
-                                style={{
-                                  textDecoration: 'none',
-                                  padding: '12px',
-                                  borderRadius: '8px',
-                                  backgroundColor: isActive ? 'rgba(255, 122, 92, 0.1)' : 'rgba(255, 255, 255, 0.5)',
-                                  color: isActive ? 'var(--color-coral)' : '#3a3a3a',
-                                  fontWeight: isActive ? 600 : 500,
-                                  display: 'flex',
-                                  alignItems: 'center',
-                                  gap: '12px',
-                                  marginBottom: '8px'
-                                }}
-                                onClick={close}
-                              >
-                                <Box style={{ color: isActive ? 'var(--color-coral)' : '#666' }}>
-                                  {link.icon}
-                                </Box>
-                                <Text size="md">{link.label}</Text>
-                              </Link>
-                            );
-                          })}
-                        </Stack>
-                        
-                        <Divider my="md" />
-                        
-                        <Button 
-                          className="connect-wallet-btn"
-                          radius="xl"
-                          fullWidth
-                          size="md"
-                          style={{
-                            boxShadow: '0 4px 12px rgba(255, 111, 97, 0.3)',
-                            fontWeight: 600
-                          }}
-                        >
-                          Connect Wallet
-                        </Button>
-                      </Box>
-                    </Accordion.Panel>
-                  </Accordion.Item>
-                </Accordion>
-              </Box>
             </Group>
           </Group>
         </Container>

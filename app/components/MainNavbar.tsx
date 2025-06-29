@@ -1,5 +1,5 @@
 "use client";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Container, Group, Burger, Paper, Transition, Text, Button, Box, rem } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import Link from 'next/link';
@@ -11,7 +11,13 @@ const HEADER_HEIGHT = rem(60);
 
 export default function MainNavbar() {
   const [opened, { toggle, close }] = useDisclosure(false);
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
+  
+  // 确保组件在客户端渲染
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   
   const links = [
     { link: '/', label: 'Home' },
@@ -32,8 +38,8 @@ export default function MainNavbar() {
         href={link.link}
         className={`py-2 px-5 rounded-md font-medium text-lg transition-colors ${
           isActive 
-            ? 'text-coral-6 bg-coral-0 font-bold' 
-            : 'text-gray-800 hover:bg-gray-50 hover:text-coral-6'
+            ? 'text-[var(--color-coral)] bg-[rgba(255,122,92,0.1)] font-bold' 
+            : 'text-gray-800 hover:bg-gray-50 hover:text-[var(--color-coral)]'
         }`}
         style={{
           letterSpacing: '0.02em',
@@ -56,8 +62,8 @@ export default function MainNavbar() {
         href={link.link}
         className={`block w-full py-3 px-4 text-base font-medium transition-colors ${
           isActive 
-            ? 'text-coral-6 bg-coral-0 font-bold rounded-md' 
-            : 'text-gray-800 hover:bg-gray-50 hover:text-coral-6'
+            ? 'text-[var(--color-coral)] bg-[rgba(255,122,92,0.1)] font-bold rounded-md' 
+            : 'text-gray-800 hover:bg-gray-50 hover:text-[var(--color-coral)]'
         }`}
         style={{
           textDecoration: 'none',
@@ -69,8 +75,11 @@ export default function MainNavbar() {
     );
   });
 
+  // 如果尚未挂载，返回null以避免水合错误
+  if (!mounted) return null;
+
   return (
-    <Box pb={30}>
+    <Box pb={30} style={{ position: 'relative' }}>
       <Paper 
         shadow="sm" 
         p="md"
@@ -110,10 +119,10 @@ export default function MainNavbar() {
               </Link>
             </motion.div>
 
+            {/* 桌面端导航 */}
             <Group 
               gap={16} 
               className="hidden md:flex"
-              style={{ textDecoration: 'none' }}
             >
               {desktopItems}
             </Group>
@@ -129,7 +138,7 @@ export default function MainNavbar() {
               <Burger
                 opened={opened}
                 onClick={toggle}
-                className="md:hidden"
+                className="block md:hidden"
                 size="sm"
               />
             </Group>
@@ -137,6 +146,7 @@ export default function MainNavbar() {
         </Container>
       </Paper>
 
+      {/* 移动端下拉菜单 */}
       <Transition transition="pop-top-right" duration={200} mounted={opened}>
         {(styles) => (
           <Paper
@@ -144,18 +154,17 @@ export default function MainNavbar() {
             style={{
               ...styles,
               position: 'absolute',
-              top: HEADER_HEIGHT,
-              left: 0,
-              right: 0,
-              zIndex: 1,
-              margin: '0 20px',
+              top: `calc(${HEADER_HEIGHT} + 20px)`,
+              left: '20px',
+              right: '20px',
+              zIndex: 100,
               backgroundColor: 'var(--color-cream)',
               borderRadius: 'var(--border-radius-md)',
               boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
             }}
           >
             <Container p="md">
-              <div className="flex flex-col space-y-1">
+              <div className="flex flex-col space-y-2">
                 {mobileItems}
                 <div className="my-2 border-t border-gray-200"></div>
                 <Button 

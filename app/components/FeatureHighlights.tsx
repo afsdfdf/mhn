@@ -100,11 +100,10 @@ export default function FeatureHighlights() {
           {features.map((feature, index) => (
             <Grid.Col key={index} span={{ base: 12, sm: 4 }}>
               <motion.div
-                variants={itemVariants}
+                variants={floatVariants}
                 initial="initial"
                 animate="float"
                 whileHover={{ y: -5 }}
-                variants={floatVariants}
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 <Paper

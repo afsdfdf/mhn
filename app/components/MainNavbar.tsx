@@ -22,7 +22,8 @@ export default function MainNavbar() {
     { link: '/contact', label: 'Contact' },
   ];
   
-  const items = links.map((link) => {
+  // 桌面端导航项
+  const desktopItems = links.map((link) => {
     const isActive = pathname === link.link;
     
     return (
@@ -36,6 +37,29 @@ export default function MainNavbar() {
         }`}
         style={{
           letterSpacing: '0.02em',
+          textDecoration: 'none',
+        }}
+        onClick={close}
+      >
+        {link.label}
+      </Link>
+    );
+  });
+  
+  // 移动端导航项
+  const mobileItems = links.map((link) => {
+    const isActive = pathname === link.link;
+    
+    return (
+      <Link
+        key={link.label}
+        href={link.link}
+        className={`block w-full py-3 px-4 text-base font-medium transition-colors ${
+          isActive 
+            ? 'text-coral-6 bg-coral-0 font-bold rounded-md' 
+            : 'text-gray-800 hover:bg-gray-50 hover:text-coral-6'
+        }`}
+        style={{
           textDecoration: 'none',
         }}
         onClick={close}
@@ -91,7 +115,7 @@ export default function MainNavbar() {
               className="hidden md:flex"
               style={{ textDecoration: 'none' }}
             >
-              {items}
+              {desktopItems}
             </Group>
 
             <Group>
@@ -127,13 +151,15 @@ export default function MainNavbar() {
               margin: '0 20px',
               backgroundColor: 'var(--color-cream)',
               borderRadius: 'var(--border-radius-md)',
+              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
             }}
           >
             <Container p="md">
-              <div className="flex flex-col space-y-2">
-                {items}
+              <div className="flex flex-col space-y-1">
+                {mobileItems}
+                <div className="my-2 border-t border-gray-200"></div>
                 <Button 
-                  className="connect-wallet-btn mt-4"
+                  className="connect-wallet-btn mt-3"
                   radius="xl"
                   fullWidth
                 >

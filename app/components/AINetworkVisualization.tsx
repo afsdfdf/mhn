@@ -7,8 +7,28 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { OrbitControls, Text, Html } from '@react-three/drei';
 import { rem } from '@mantine/core';
 
+// 定义节点类型接口
+interface NodeType {
+  color: string;
+  size: number;
+  label: string;
+}
+
+// 定义节点接口
+interface Node {
+  id: string;
+  position: [number, number, number];
+  type: string;
+  color: string;
+  size: number;
+  connections: number[];
+  active: boolean;
+  pulseSpeed: number;
+  label: string;
+}
+
 // Node types with different colors and properties
-const NODE_TYPES = {
+const NODE_TYPES: Record<string, NodeType> = {
   AI_AGENT: { color: '#FF6F61', size: 0.8, label: 'AI Agent' },
   DATA_NODE: { color: '#3DF5C6', size: 0.6, label: 'Data Node' },
   COMPUTE_NODE: { color: '#9FEFFF', size: 0.7, label: 'Compute Node' },
@@ -17,8 +37,8 @@ const NODE_TYPES = {
 };
 
 // Generate random nodes
-const generateNodes = (count) => {
-  const nodes = [];
+const generateNodes = (count: number): Node[] => {
+  const nodes: Node[] = [];
   const nodeTypes = Object.keys(NODE_TYPES);
   
   for (let i = 0; i < count; i++) {
@@ -56,15 +76,20 @@ const generateNodes = (count) => {
   return nodes;
 };
 
+interface NodeProps {
+  node: Node;
+  setHoveredNode: (node: Node | null) => void;
+}
+
 // Node component with hover effects
-function Node({ node, setHoveredNode }) {
-  const meshRef = useRef();
+function Node({ node, setHoveredNode }: NodeProps) {
+  const meshRef = useRef<THREE.Mesh>(null);
   const [hovered, setHovered] = useState(false);
   const [scale, setScale] = useState(1);
   const [pulse, setPulse] = useState(0);
   
   // Pulse animation
-  useFrame((state) => {
+  useFrame(() => {
     if (meshRef.current && node.active) {
       setPulse((prev) => prev + 0.01 * node.pulseSpeed);
       const pulseFactor = 1 + Math.sin(pulse) * 0.1;
@@ -116,9 +141,15 @@ function Node({ node, setHoveredNode }) {
   );
 }
 
+interface ConnectionProps {
+  start: [number, number, number];
+  end: [number, number, number];
+  color: string;
+}
+
 // Connection component with animation
-function Connection({ start, end, color }) {
-  const ref = useRef();
+function Connection({ start, end, color }: ConnectionProps) {
+  const ref = useRef<THREE.Line>(null);
   const [progress, setProgress] = useState(0);
   
   useFrame(() => {
@@ -156,10 +187,14 @@ function Connection({ start, end, color }) {
   );
 }
 
+interface NetworkProps {
+  nodeCount?: number;
+}
+
 // Network component that manages nodes and connections
-function Network({ nodeCount = 30 }) {
-  const [nodes, setNodes] = useState([]);
-  const [hoveredNode, setHoveredNode] = useState(null);
+function Network({ nodeCount = 30 }: NetworkProps) {
+  const [nodes, setNodes] = useState<Node[]>([]);
+  const [hoveredNode, setHoveredNode] = useState<Node | null>(null);
   const { camera } = useThree();
   
   // Generate nodes on component mount
@@ -235,7 +270,7 @@ function Network({ nodeCount = 30 }) {
 }
 
 export default function AINetworkVisualization() {
-  const containerRef = useRef();
+  const containerRef = useRef<HTMLDivElement>(null);
   const isMobile = useMediaQuery('(max-width: 768px)');
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   

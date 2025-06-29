@@ -36,14 +36,17 @@ export default function MainNavbar() {
       <Link
         key={link.label}
         href={link.link}
-        className={`py-2 px-5 rounded-md font-medium text-lg transition-colors ${
+        className={`py-2 px-5 rounded-md font-medium text-lg transition-colors nav-link ${
           isActive 
-            ? 'text-[var(--color-coral)] bg-[rgba(255,122,92,0.1)] font-bold' 
-            : 'text-gray-800 hover:bg-gray-50 hover:text-[var(--color-coral)]'
+            ? 'active-nav-link' 
+            : 'hover:opacity-80'
         }`}
         style={{
-          letterSpacing: '0.02em',
+          letterSpacing: '0.03em',
           textDecoration: 'none',
+          fontFamily: 'var(--font-playfair)',
+          color: isActive ? 'var(--color-coral)' : '#3a3a3a',
+          textShadow: isActive ? '0 0 1px rgba(255,122,92,0.3)' : 'none',
         }}
         onClick={close}
       >
@@ -62,11 +65,16 @@ export default function MainNavbar() {
         href={link.link}
         className={`block w-full py-3 px-4 text-base font-medium transition-colors ${
           isActive 
-            ? 'text-[var(--color-coral)] bg-[rgba(255,122,92,0.1)] font-bold rounded-md' 
-            : 'text-gray-800 hover:bg-gray-50 hover:text-[var(--color-coral)]'
+            ? 'active-nav-link' 
+            : 'hover:opacity-80'
         }`}
         style={{
           textDecoration: 'none',
+          fontFamily: 'var(--font-playfair)',
+          color: isActive ? 'var(--color-coral)' : '#3a3a3a',
+          textShadow: isActive ? '0 0 1px rgba(255,122,92,0.3)' : 'none',
+          borderLeft: isActive ? '2px solid var(--color-coral)' : 'none',
+          paddingLeft: isActive ? '10px' : '12px',
         }}
         onClick={close}
       >

@@ -131,6 +131,31 @@ main {
   border-radius: 2px;
 }
 
+/* 艺术感导航链接 */
+.nav-link {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  transform: translateY(-2px);
+}
+
+.active-nav-link {
+  position: relative;
+}
+
+.active-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 20%;
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-coral), transparent);
+}
+
 /* 移动导航样式 */
 .mobile-nav {
   max-height: calc(100vh - 100px);

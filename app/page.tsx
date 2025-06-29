@@ -9,6 +9,7 @@ import DemoSection from './components/DemoSection';
 import TeamSection from './components/TeamSection';
 import Footer from './components/Footer';
 import AINetworkVisualization from './components/AINetworkVisualization';
+import FeatureHighlights from './components/FeatureHighlights';
 import { Box } from '@mantine/core';
 
 export default function Home() {
@@ -54,6 +55,10 @@ export default function Home() {
           </Box>
         )}
       </div>
+      
+      <section id="benefits" style={{ padding: '20px 0 40px' }}>
+        <FeatureHighlights />
+      </section>
       
       <section id="features" style={{ padding: '40px 0' }}>
         <FeatureCards />

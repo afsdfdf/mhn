@@ -8,7 +8,6 @@ import RoadmapSection from './components/RoadmapSection';
 import DemoSection from './components/DemoSection';
 import TeamSection from './components/TeamSection';
 import Footer from './components/Footer';
-import AINetworkVisualization from './components/AINetworkVisualization';
 import FeatureHighlights from './components/FeatureHighlights';
 import { Box } from '@mantine/core';
 
@@ -32,29 +31,7 @@ export default function Home() {
     <main>
       <MainNavbar />
       
-      <div style={{ position: 'relative' }}>
-        <HeroSection />
-        {!isMobile && (
-          <Box
-            style={{ 
-              position: 'absolute', 
-              top: 0, 
-              right: 0, 
-              width: '50%', 
-              height: '100%',
-              zIndex: 10
-            }}
-          >
-            <div style={{ 
-              width: '100%', 
-              height: '100%',
-              position: 'relative'
-            }}>
-              <AINetworkVisualization />
-            </div>
-          </Box>
-        )}
-      </div>
+      <HeroSection />
       
       <section id="benefits" style={{ padding: '20px 0 40px' }}>
         <FeatureHighlights />

@@ -267,7 +267,10 @@ export default function AINetworkVisualization() {
         position: 'absolute',
         top: 0,
         left: 0,
+        right: 0,
+        bottom: 0,
         overflow: 'hidden',
+        borderRadius: '16px',
       }}
     >
       <Canvas camera={{ position: [0, 0, 15], fov: 60 }}>

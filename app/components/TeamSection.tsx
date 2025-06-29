@@ -1,15 +1,15 @@
 "use client";
-import { Container, Title, Text, SimpleGrid, Paper, Avatar, Group, Box, rem } from '@mantine/core';
+import { Container, Title, Text, SimpleGrid, Paper, Avatar, Group, Box, rem, Image } from '@mantine/core';
 import { motion } from 'framer-motion';
 import { Github, Twitter, Linkedin } from 'lucide-react';
 
 // Team members data
 const teamMembers = [
   {
-    name: 'Alex Chen',
-    role: 'Founder & CEO',
-    bio: 'Former AI researcher at OpenAI with expertise in decentralized systems and blockchain technology.',
-    image: 'https://i.pravatar.cc/300?img=1',
+    name: 'Dr. Sarah Chen',
+    role: 'Co-Founder & CEO',
+    bio: 'Former AI research lead at DeepMind with a Ph.D. in Computer Science from Stanford University.',
+    image: '/images/team/sarah.jpg',
     social: {
       twitter: 'https://twitter.com',
       github: 'https://github.com',
@@ -17,10 +17,10 @@ const teamMembers = [
     }
   },
   {
-    name: 'Sarah Johnson',
-    role: 'CTO',
-    bio: 'PhD in Computer Science specializing in distributed systems and machine learning algorithms.',
-    image: 'https://i.pravatar.cc/300?img=5',
+    name: 'Marcus Johnson',
+    role: 'Co-Founder & CTO',
+    bio: 'Blockchain architect with experience at Ethereum Foundation and a background in distributed systems.',
+    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop',
     social: {
       twitter: 'https://twitter.com',
       github: 'https://github.com',
@@ -28,10 +28,10 @@ const teamMembers = [
     }
   },
   {
-    name: 'Michael Wong',
-    role: 'Lead Developer',
-    bio: 'Blockchain expert with 10+ years of experience in building decentralized applications.',
-    image: 'https://i.pravatar.cc/300?img=3',
+    name: 'Dr. Aisha Patel',
+    role: 'Chief Research Officer',
+    bio: 'Leading expert in federated learning and privacy-preserving AI with 15+ years of research experience.',
+    image: '/images/team/aisha.jpg',
     social: {
       twitter: 'https://twitter.com',
       github: 'https://github.com',
@@ -39,10 +39,10 @@ const teamMembers = [
     }
   },
   {
-    name: 'Emma Garcia',
-    role: 'AI Research Lead',
-    bio: 'Specializes in reinforcement learning and multi-agent systems for collaborative intelligence.',
-    image: 'https://i.pravatar.cc/300?img=10',
+    name: 'Miguel Rodriguez',
+    role: 'Chief Strategy Officer',
+    bio: 'Former strategy consultant with expertise in tokenomics and DAO governance structures.',
+    image: '/images/team/miguel.jpg',
     social: {
       twitter: 'https://twitter.com',
       github: 'https://github.com',
@@ -80,6 +80,15 @@ export default function TeamSection() {
         initial="hidden"
         animate="visible"
       >
+        <Group justify="center" mb={rem(20)}>
+          <Image 
+            src="/images/leadership/team_logo.png" 
+            alt="MindHive Team" 
+            width={80} 
+            height={80}
+            style={{ borderRadius: '50%' }}
+          />
+        </Group>
         <Title 
           order={2} 
           ta="center" 
@@ -104,12 +113,31 @@ export default function TeamSection() {
               >
                 <Group justify="space-between" mb="md">
                   <Group>
-                    <Avatar 
-                      src={member.image} 
-                      size={80} 
-                      radius={16}
-                      style={{ border: '2px solid var(--color-coral)' }}
-                    />
+                    <div style={{ position: 'relative' }}>
+                      <Avatar 
+                        src={member.image} 
+                        size={80} 
+                        radius={16}
+                        style={{ border: '2px solid var(--color-coral)' }}
+                      />
+                      <div style={{ 
+                        position: 'absolute', 
+                        bottom: -5, 
+                        right: -5, 
+                        width: 24, 
+                        height: 24, 
+                        borderRadius: '50%',
+                        overflow: 'hidden',
+                        border: '1px solid white'
+                      }}>
+                        <Image 
+                          src="/images/leadership/team_logo.png" 
+                          alt="MindHive" 
+                          width={24} 
+                          height={24}
+                        />
+                      </div>
+                    </div>
                     <div>
                       <Text fw={700} size="lg" className="gradient-text">{member.name}</Text>
                       <Text size="sm" c="dimmed">{member.role}</Text>

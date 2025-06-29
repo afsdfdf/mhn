@@ -1,8 +1,9 @@
 "use client";
 
-import { Container, Group, ActionIcon, Text, Title, SimpleGrid, Stack, Anchor, Box } from '@mantine/core';
-import { Github, Twitter, Linkedin, Mail } from 'lucide-react';
+import { Container, Group, ActionIcon, Text, Title, SimpleGrid, Stack, Anchor, Box, rem } from '@mantine/core';
+import { Twitter } from 'lucide-react';
 import Link from 'next/link';
+import { useMediaQuery } from '@mantine/hooks';
 
 const links = [
   { title: 'Product', links: [
@@ -26,19 +27,20 @@ const links = [
 ];
 
 export default function Footer() {
+  const isMobile = useMediaQuery('(max-width: 768px)');
+  
   const groups = links.map((group) => {
     const items = group.links.map((link) => (
-      <Link key={link.label} href={link.link}>
+      <Link key={link.label} href={link.link} style={{ textDecoration: 'none' }}>
         <Anchor
           component="span"
           c="dimmed"
+          underline="never"
           style={{ 
-            textDecoration: 'none',
             transition: 'color 0.2s ease',
-            '&:hover': {
-              color: 'var(--color-coral)',
-            },
+            fontSize: isMobile ? rem(14) : rem(16),
           }}
+          className="footer-link"
         >
           {link.label}
         </Anchor>
@@ -47,8 +49,10 @@ export default function Footer() {
 
     return (
       <div key={group.title}>
-        <Text fw={700} mb="xs" className="gradient-text">{group.title}</Text>
-        <Stack gap="xs" style={{ marginTop: '1rem' }}>
+        <Text fw={700} mb={isMobile ? "0" : "xs"} className="gradient-text" size={isMobile ? "sm" : "md"}>
+          {group.title}
+        </Text>
+        <Stack gap={isMobile ? "xs" : "sm"} mt={isMobile ? rem(8) : rem(16)}>
           {items}
         </Stack>
       </div>
@@ -63,12 +67,16 @@ export default function Footer() {
         borderTop: '1px solid rgba(255, 255, 255, 0.3)',
         backdropFilter: 'blur(10px)',
         borderRadius: '24px 24px 0 0',
-        marginTop: '4rem',
       }}
+      mt={rem(64)}
     >
-      <Container size="lg" py={50}>
-        <SimpleGrid cols={{ base: 1, sm: 2, md: 4 }} spacing={50}>
-          <Stack>
+      <Container size="lg" py={isMobile ? 30 : 50}>
+        <SimpleGrid 
+          cols={{ base: 2, sm: 2, md: 4 }} 
+          spacing={isMobile ? 20 : 50}
+          verticalSpacing={isMobile ? 30 : 50}
+        >
+          <Stack gap={isMobile ? "xs" : "md"} style={{ gridColumn: isMobile ? '1 / -1' : 'auto' }}>
             <Group>
               <Box 
                 style={{ 
@@ -85,73 +93,43 @@ export default function Footer() {
               </Box>
               <Title order={4} className="gradient-text">MindHive</Title>
             </Group>
-            <Text size="sm" c="dimmed" mt="md">
+            <Text size={isMobile ? "xs" : "sm"} c="dimmed" mt={isMobile ? "xs" : "md"}>
               A collaborative network for decentralized artificial intelligence.
-              Build, monetize and govern AI agents on-chain.
+              {!isMobile && " Build, monetize and govern AI agents on-chain."}
             </Text>
-            <Group mt="md">
+            <Group mt={isMobile ? "xs" : "md"} gap={isMobile ? "xs" : "md"}>
               <ActionIcon 
-                size="lg" 
+                size={isMobile ? "md" : "lg"} 
                 variant="subtle" 
                 color="gray" 
                 radius="xl"
-                style={{
-                  '&:hover': {
-                    backgroundColor: 'var(--color-coral)',
-                    color: 'white',
-                  },
-                }}
+                className="social-icon"
+                component="a"
+                href="https://twitter.com/mindhivenetwork"
+                target="_blank"
               >
-                <Twitter size={20} />
+                <Twitter size={isMobile ? 16 : 20} />
               </ActionIcon>
               <ActionIcon 
-                size="lg" 
+                size={isMobile ? "md" : "lg"} 
                 variant="subtle" 
                 color="gray" 
                 radius="xl"
-                style={{
-                  '&:hover': {
-                    backgroundColor: 'var(--color-coral)',
-                    color: 'white',
-                  },
-                }}
+                className="social-icon"
+                component="a"
+                href="https://t.me/mindhivenetwork"
+                target="_blank"
               >
-                <Github size={20} />
-              </ActionIcon>
-              <ActionIcon 
-                size="lg" 
-                variant="subtle" 
-                color="gray" 
-                radius="xl"
-                style={{
-                  '&:hover': {
-                    backgroundColor: 'var(--color-coral)',
-                    color: 'white',
-                  },
-                }}
-              >
-                <Linkedin size={20} />
-              </ActionIcon>
-              <ActionIcon 
-                size="lg" 
-                variant="subtle" 
-                color="gray" 
-                radius="xl"
-                style={{
-                  '&:hover': {
-                    backgroundColor: 'var(--color-coral)',
-                    color: 'white',
-                  },
-                }}
-              >
-                <Mail size={20} />
+                <svg xmlns="http://www.w3.org/2000/svg" width={isMobile ? 16 : 20} height={isMobile ? 16 : 20} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21.198 2.433a2.242 2.242 0 0 0-1.022.215l-16.5 7.5a2.25 2.25 0 0 0 .126 4.073l3.9 1.205 2.25 6a2.25 2.25 0 0 0 4.153.4l2.01-4.03 4.42 2.21a2.25 2.25 0 0 0 3.236-1.363l3-13.5a2.25 2.25 0 0 0-1.573-2.71z"></path>
+                </svg>
               </ActionIcon>
             </Group>
           </Stack>
           {groups}
         </SimpleGrid>
         
-        <Text c="dimmed" size="sm" ta="center" mt={50}>
+        <Text c="dimmed" size={isMobile ? "xs" : "sm"} ta="center" mt={isMobile ? 30 : 50}>
           © {new Date().getFullYear()} MindHive Network. All rights reserved.
         </Text>
       </Container>

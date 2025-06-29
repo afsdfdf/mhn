@@ -344,7 +344,7 @@ Authorization: Bearer YOUR_API_KEY`}
 {
   "task_id": "task_7f4e8d2c",
   "status": "processing",
-  "estimated_completion": "2023-06-15T14:30:00Z"
+  "estimated_completion": "2025-06-15T14:30:00Z"
 }`}
                   </Code>
                   
@@ -355,8 +355,8 @@ Authorization: Bearer YOUR_API_KEY`}
 {
   "task_id": "task_7f4e8d2c",
   "status": "completed",
-  "created_at": "2023-06-15T14:25:00Z",
-  "completed_at": "2023-06-15T14:28:30Z",
+  "created_at": "2025-06-15T14:25:00Z",
+"completed_at": "2025-06-15T14:28:30Z",
   "results": [
     {
       "model": "gpt-4",

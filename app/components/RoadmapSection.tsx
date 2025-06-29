@@ -4,15 +4,16 @@ import { motion } from 'framer-motion';
 import { useMediaQuery } from '@mantine/hooks';
 import { Check, Clock, Rocket, Code, Users, Zap, Server, Globe, Lock } from 'lucide-react';
 
-const MotionPaper = motion(Paper);
+// 使用更具体的类型定义以解决类型错误
+const MotionPaper = motion<any>(Paper);
 
 // Roadmap data with detailed information
 const roadmapData = [
   {
     title: 'Protocol Development',
-    date: 'Q1 2023',
+    date: 'Q2 2025',
     description: 'Development of core protocol architecture and smart contracts for on-chain verification of AI computations.',
-    status: 'completed',
+    status: 'planned',
     icon: <Code size={16} />,
     color: 'coral',
     achievements: [
@@ -24,9 +25,9 @@ const roadmapData = [
   },
   {
     title: 'Testnet Launch',
-    date: 'Q3 2023',
+    date: 'Q4 2025',
     description: 'Launch of the MindHive testnet with initial AI agent deployment capabilities and basic network operations.',
-    status: 'completed',
+    status: 'planned',
     icon: <Server size={16} />,
     color: 'mint',
     achievements: [
@@ -38,9 +39,9 @@ const roadmapData = [
   },
   {
     title: 'Mainnet Alpha',
-    date: 'Q1 2024',
+    date: 'Q1 2026',
     description: 'Limited mainnet launch with core features and initial token distribution to early supporters and contributors.',
-    status: 'in-progress',
+    status: 'planned',
     icon: <Rocket size={16} />,
     color: 'ice',
     achievements: [
@@ -52,7 +53,7 @@ const roadmapData = [
   },
   {
     title: 'DataDAO Framework',
-    date: 'Q3 2024',
+    date: 'Q3 2026',
     description: 'Introduction of the DataDAO framework for collective ownership and governance of AI training datasets.',
     status: 'planned',
     icon: <Users size={16} />,
@@ -66,7 +67,7 @@ const roadmapData = [
   },
   {
     title: 'Full Mainnet Launch',
-    date: 'Q4 2024',
+    date: 'Q4 2026',
     description: 'Complete mainnet launch with all core features, expanded marketplace, and comprehensive developer tools.',
     status: 'planned',
     icon: <Globe size={16} />,
@@ -80,7 +81,7 @@ const roadmapData = [
   },
   {
     title: 'Advanced Features',
-    date: 'Q2 2025',
+    date: 'Q2 2027',
     description: 'Introduction of advanced features including zero-knowledge proofs for private AI computations and cross-chain integration.',
     status: 'planned',
     icon: <Lock size={16} />,

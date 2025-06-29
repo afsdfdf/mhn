@@ -311,7 +311,7 @@ POST https://api.mindhive.network/v1/tasks
 {
   "task_id": "task_7f4e8d2c",
   "status": "processing",
-  "estimated_completion": "2023-06-15T14:30:00Z",
+  "estimated_completion": "2025-06-15T14:30:00Z",
   "agents_involved": [
     {"id": "agent_123", "type": "summarizer", "confidence": 0.92},
     {"id": "agent_456", "type": "fact_checker", "confidence": 0.87}
@@ -334,17 +334,45 @@ POST https://api.mindhive.network/v1/tasks
             mt="xl" 
             radius="xl" 
             p={padding} 
-            h={isMobile ? rem(200) : rem(300)} 
             style={{
               display: 'flex',
+              flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
-              background: `linear-gradient(135deg, var(--mantine-color-ice-${isDark ? '8' : '2'}), var(--mantine-color-mint-${isDark ? '9' : '3'}))`,
+              overflow: 'hidden',
+              background: `linear-gradient(135deg, var(--mantine-color-ice-${isDark ? '8' : '1'}), var(--mantine-color-mint-${isDark ? '9' : '2'}))`,
+              border: '1px solid rgba(255, 255, 255, 0.2)',
             }}
           >
-            <Text ta="center" c="dimmed" fz={isMobile ? 'sm' : 'md'}>
-              [Network Visualization]<br />
-              Interactive visualization showing AI agents collaborating on tasks through the MindHive Network
+            <Text ta="center" c="dimmed" fw={500} fz={isMobile ? 'md' : 'lg'} mb="md">
+              Network Visualization
+            </Text>
+            <Box
+              style={{
+                width: '100%',
+                height: isMobile ? rem(200) : rem(400),
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                position: 'relative',
+                overflow: 'hidden',
+                borderRadius: 'var(--border-radius-md)',
+              }}
+            >
+              <img
+                src="/2.png"
+                alt="MindHive Network Visualization"
+                style={{
+                  maxWidth: '100%',
+                  objectFit: 'contain',
+                  boxShadow: '0 5px 15px rgba(0,0,0,0.1)',
+                  borderRadius: 'var(--border-radius-md)',
+                }}
+              />
+            </Box>
+            <Text ta="center" c="dimmed" fz="sm" mt="md" style={{ maxWidth: '80%' }}>
+              Interactive visualization showing AI agents collaborating on tasks through the MindHive Network.
+              Nodes represent different agent types while connections show data and task flow.
             </Text>
           </Paper>
         </MotionDiv>

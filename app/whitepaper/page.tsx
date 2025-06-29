@@ -10,9 +10,8 @@ import Link from 'next/link';
 
 // Motion components
 const MotionDiv = motion.div;
-const MotionPaper = motion(Paper);
-const MotionTitle = motion(Title);
-const MotionText = motion(Text);
+const MotionTitle = motion.h1;
+const MotionText = motion.p;
 
 // Animation variants
 const containerVariants: Variants = {
@@ -100,7 +99,11 @@ export default function WhitepaperPage() {
           animate="visible"
           variants={containerVariants}
         >
-          <MotionPaper 
+          <div id="introduction">
+            <MotionDiv
+              variants={fadeInVariants}
+            >
+              <Paper 
             radius="xl" 
             p={padding} 
             shadow="md" 
@@ -108,9 +111,8 @@ export default function WhitepaperPage() {
               background: 'rgba(255, 255, 255, 0.7)',
               backdropFilter: 'blur(10px)',
               border: '1px solid rgba(255, 255, 255, 0.3)',
-              marginBottom: rem(40),
             }}
-            variants={fadeInVariants}
+            mb={rem(40)}
           >
             <MotionDiv 
               variants={floatVariants}
@@ -124,26 +126,28 @@ export default function WhitepaperPage() {
             </MotionDiv>
             
             <MotionTitle 
-              order={1} 
-              mb="xl" 
-              ta="center" 
-              variants={fadeInVariants}
               style={{
                 fontSize: titleSize,
                 background: 'linear-gradient(135deg, var(--mantine-color-coral-6), var(--mantine-color-mint-6))',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
+                textAlign: 'center',
+                fontWeight: 700,
+                marginBottom: rem(24)
               }}
+              variants={fadeInVariants}
             >
               MindHive Network Whitepaper
             </MotionTitle>
             
             <MotionText 
-              size="lg" 
-              mb="xl" 
-              ta="center" 
-              fw={500}
+              style={{
+                fontSize: '1.25rem',
+                textAlign: 'center',
+                fontWeight: 500,
+                marginBottom: rem(24)
+              }}
               variants={fadeInVariants}
             >
               A Decentralized Collaborative AI Network
@@ -220,21 +224,7 @@ export default function WhitepaperPage() {
                 </Paper>
               </Grid.Col>
             </Grid>
-          </MotionPaper>
-          
-          <MotionPaper 
-            radius="xl" 
-            p={padding} 
-            shadow="md" 
-            style={{
-              background: 'rgba(255, 255, 255, 0.7)',
-              backdropFilter: 'blur(10px)',
-              border: '1px solid rgba(255, 255, 255, 0.3)',
-              marginBottom: rem(40),
-            }}
-            variants={fadeInVariants}
-            id="introduction"
-          >
+                
             <MotionDiv variants={fadeInVariants}>
               <Group mb="md">
                 <ThemeIcon size="xl" radius="md" color="coral">
@@ -296,9 +286,15 @@ export default function WhitepaperPage() {
                 The future of AI should not be determined by a handful of corporations. It should be a collaborative endeavor that reflects the diversity of human knowledge, values, and needs.
               </Blockquote>
             </MotionDiv>
-          </MotionPaper>
+              </Paper>
+            </MotionDiv>
+          </div>
           
-          <MotionPaper 
+          <div id="architecture">
+            <MotionDiv
+              variants={fadeInVariants}
+            >
+              <Paper 
             radius="xl" 
             p={padding} 
             shadow="md" 
@@ -308,8 +304,6 @@ export default function WhitepaperPage() {
               border: '1px solid rgba(255, 255, 255, 0.3)',
               marginBottom: rem(40),
             }}
-            variants={fadeInVariants}
-            id="architecture"
           >
             <MotionDiv variants={fadeInVariants}>
               <Group mb="md">
@@ -455,9 +449,15 @@ export default function WhitepaperPage() {
               
               <TechDemo />
             </MotionDiv>
-          </MotionPaper>
+              </Paper>
+            </MotionDiv>
+          </div>
           
-          <MotionPaper 
+          <div id="token">
+            <MotionDiv
+              variants={fadeInVariants}
+            >
+              <Paper 
             radius="xl" 
             p={padding} 
             shadow="md" 
@@ -467,8 +467,6 @@ export default function WhitepaperPage() {
               border: '1px solid rgba(255, 255, 255, 0.3)',
               marginBottom: rem(40),
             }}
-            variants={fadeInVariants}
-            id="token"
           >
             <MotionDiv variants={fadeInVariants}>
               <Group mb="md">
@@ -582,9 +580,14 @@ export default function WhitepaperPage() {
                 ))}
               </List>
             </MotionDiv>
-          </MotionPaper>
+              </Paper>
+            </MotionDiv>
+          </div>
           
-          <MotionPaper 
+          <MotionDiv
+            variants={fadeInVariants}
+          >
+            <Paper 
             radius="xl" 
             p={padding} 
             shadow="md" 
@@ -593,7 +596,6 @@ export default function WhitepaperPage() {
               backdropFilter: 'blur(10px)',
               border: '1px solid rgba(255, 255, 255, 0.3)',
             }}
-            variants={fadeInVariants}
           >
             <Group justify="center" mb="md">
               <Title order={2} fz={subtitleSize}>Join the MindHive Network</Title>
@@ -625,7 +627,8 @@ export default function WhitepaperPage() {
                 Learn About MHN Token
               </Button>
             </Group>
-          </MotionPaper>
+            </Paper>
+          </MotionDiv>
         </MotionDiv>
       </Container>
       

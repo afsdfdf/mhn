@@ -114,14 +114,6 @@ export default function TokenPage() {
                         <Table.Td fw={700}>Total Supply</Table.Td>
                         <Table.Td>1,000,000,000 MHN</Table.Td>
                       </Table.Tr>
-                      <Table.Tr>
-                        <Table.Td fw={700}>Blockchain</Table.Td>
-                        <Table.Td>Ethereum (ERC-20)</Table.Td>
-                      </Table.Tr>
-                      <Table.Tr>
-                        <Table.Td fw={700}>Token Contract</Table.Td>
-                        <Table.Td>0x1234...5678 (Example)</Table.Td>
-                      </Table.Tr>
                     </Table.Tbody>
                   </Table>
                 </Grid.Col>
@@ -579,11 +571,11 @@ export default function TokenPage() {
                     
                     <Text fw={700} ta="center" mb="xs">Upcoming Events:</Text>
                     <List withPadding size={textSize} ta="center" center>
-                      <List.Item>Private Sale: Q3 2025 (Completed)</List.Item>
-                      <List.Item>Strategic Round: Q4 2025 (Completed)</List.Item>
-                      <List.Item>Public Sale: Q1 2026</List.Item>
-                      <List.Item>Initial DEX Offering: Q2 2026</List.Item>
-                      <List.Item>Exchange Listings: Q2 2026</List.Item>
+                      <List.Item>Private Sale: Q2 2025</List.Item>
+                      <List.Item>Strategic Round: Q3 2025</List.Item>
+                      <List.Item>Public Sale: Q4 2025</List.Item>
+                      <List.Item>Initial DEX Offering: Q1 2026</List.Item>
+                      <List.Item>Exchange Listings: Q1 2026</List.Item>
                     </List>
                   </Card>
                 </Grid.Col>

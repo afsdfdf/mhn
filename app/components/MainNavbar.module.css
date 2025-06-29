@@ -1,0 +1,107 @@
+.header {
+  position: sticky;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #eaeaea;
+  z-index: 100;
+}
+
+.inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+}
+
+.logoContainer {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  object-fit: contain;
+}
+
+.links {
+  flex: 1;
+  margin-left: var(--mantine-spacing-xl);
+  margin-right: var(--mantine-spacing-xl);
+}
+
+.link {
+  display: block;
+  line-height: 1;
+  padding: 8px 12px;
+  border-radius: var(--mantine-radius-sm);
+  text-decoration: none;
+  color: var(--mantine-color-gray-7);
+  font-size: var(--mantine-font-size-sm);
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.link:hover {
+  background-color: var(--mantine-color-gray-0);
+  color: var(--mantine-color-coral-6);
+}
+
+.linkInner {
+  display: flex;
+  align-items: center;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  padding: var(--mantine-spacing-xs) 0;
+  background-color: white;
+  border-radius: var(--mantine-radius-sm);
+  box-shadow: var(--mantine-shadow-md);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: opacity 0.2s, transform 0.2s;
+  z-index: 10;
+}
+
+.dropdown:hover .dropdownMenu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.chevron {
+  transition: transform 0.2s;
+}
+
+.dropdown:hover .chevron {
+  transform: rotate(180deg);
+}
+
+.mobileLinks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mantine-spacing-sm);
+}
+
+.mobileLink {
+  display: block;
+  padding: var(--mantine-spacing-sm);
+  text-decoration: none;
+  color: var(--mantine-color-gray-7);
+  font-weight: 500;
+  border-radius: var(--mantine-radius-sm);
+  transition: background-color 0.2s;
+}
+
+.mobileLink:hover {
+  background-color: var(--mantine-color-gray-0);
+} 

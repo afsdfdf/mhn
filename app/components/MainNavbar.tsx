@@ -1,11 +1,13 @@
 "use client";
 import { useState, useEffect } from 'react';
-import { Container, Group, Burger, Paper, Transition, Text, Button, Box, rem } from '@mantine/core';
+import { Container, Group, Burger, Paper, Transition, Text, Button, Box, rem, Image } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import ColorSchemeToggle from './ColorSchemeToggle';
 import { motion } from 'framer-motion';
+import classes from './MainNavbar.module.css';
+import { Stack, UnstyledButton } from '@mantine/core';
 
 const HEADER_HEIGHT = rem(60);
 
@@ -13,6 +15,7 @@ export default function MainNavbar() {
   const [opened, { toggle, close }] = useDisclosure(false);
   const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
+  const [activeLink, setActiveLink] = useState('');
   
   // 确保组件在客户端渲染
   useEffect(() => {
@@ -21,10 +24,16 @@ export default function MainNavbar() {
   
   const links = [
     { link: '/', label: 'Home' },
-    { link: '/about', label: 'About' },
-    { link: '/docs', label: 'Docs' },
+    { 
+      link: '#', 
+      label: 'Resources',
+      links: [
     { link: '/whitepaper', label: 'Whitepaper' },
+        { link: '/docs', label: 'Documentation' },
+      ],
+    },
     { link: '/token', label: 'Token' },
+    { link: '/about', label: 'About' },
     { link: '/contact', label: 'Contact' },
   ];
   
@@ -32,23 +41,43 @@ export default function MainNavbar() {
   const desktopItems = links.map((link) => {
     const isActive = pathname === link.link;
     
+    const menuItems = link.links?.map((item) => (
+      <Link
+        key={item.link}
+        href={item.link}
+        className={classes.link}
+        onClick={() => setActiveLink(item.link)}
+      >
+        {item.label}
+      </Link>
+    ));
+
+    if (menuItems) {
+      return (
+        <div className={classes.dropdown} key={link.label}>
+          <UnstyledButton
+            className={classes.link}
+            onClick={() => setActiveLink(activeLink === link.link ? '' : link.link)}
+          >
+            <Group gap={5} className={classes.linkInner}>
+              <span>{link.label}</span>
+              <span 
+                style={{ width: rem(16), height: rem(16) }}
+                className={classes.chevron}
+              >▼</span>
+            </Group>
+          </UnstyledButton>
+          <div className={classes.dropdownMenu}>{menuItems}</div>
+        </div>
+      );
+    }
+    
     return (
       <Link
-        key={link.label}
+        key={link.link}
         href={link.link}
-        className={`py-2 px-5 rounded-md font-medium text-lg transition-colors nav-link ${
-          isActive 
-            ? 'active-nav-link' 
-            : 'hover:opacity-80'
-        }`}
-        style={{
-          letterSpacing: '0.03em',
-          textDecoration: 'none',
-          fontFamily: 'var(--font-playfair)',
-          color: isActive ? 'var(--color-coral)' : '#3a3a3a',
-          textShadow: isActive ? '0 0 1px rgba(255,122,92,0.3)' : 'none',
-        }}
-        onClick={close}
+        className={classes.link}
+        onClick={() => setActiveLink(link.link)}
       >
         {link.label}
       </Link>
@@ -107,23 +136,8 @@ export default function MainNavbar() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <Link href="/" style={{ textDecoration: 'none' }}>
-                <Group>
-                  <Box 
-                    style={{ 
-                      width: '30px', 
-                      height: '30px', 
-                      backgroundColor: 'var(--color-mint)',
-                      borderRadius: '8px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center'
-                    }}
-                  >
-                    <Text fw={700} c="white">M</Text>
-                  </Box>
-                  <Text fw={700} size="lg" className="gradient-text">MindHive</Text>
-                </Group>
+              <Link href="/" className={classes.logoContainer}>
+                <Image src="/logo1.png" alt="MindHive Network" height={40} className={classes.logo} />
               </Link>
             </motion.div>
 

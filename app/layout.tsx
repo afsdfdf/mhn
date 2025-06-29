@@ -88,6 +88,19 @@ export const metadata = {
     description: 'Decentralized AI Hivemind - Build, monetize and govern collaborative AI agents on-chain',
     images: ['/og-image.png'],
   },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icons/icon-192.png', type: 'image/png', sizes: '192x192' },
+      { url: '/icons/icon-512.png', type: 'image/png', sizes: '512x512' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    other: [
+      { rel: 'mask-icon', url: '/icons/icon-512.png' }
+    ],
+  },
 };
 
 export const viewport = {
@@ -104,11 +117,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
-      <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <meta name="theme-color" content="#FF6F61" />
-      </head>
+      <head />
       <body>
         <MantineProvider theme={theme} defaultColorScheme="light">
           <Suspense fallback={null}>

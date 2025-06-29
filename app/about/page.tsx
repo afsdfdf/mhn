@@ -93,19 +93,31 @@ export default function AboutPage() {
                 <Grid.Col span={{ base: 12, md: 6 }}>
                   <Paper 
                     radius="xl" 
-                    p={0} 
-                    h={rem(400)} 
+                    p={0}
                     style={{
-                      background: 'linear-gradient(135deg, var(--mantine-color-coral-1), var(--mantine-color-mint-2))',
+                      overflow: 'hidden',
+                      height: rem(400),
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      overflow: 'hidden',
+                      position: 'relative',
+                      border: '1px solid rgba(255, 255, 255, 0.3)',
                     }}
                   >
-                    <Text ta="center" c="dimmed">
-                      [Vision Image Placeholder]
-                    </Text>
+                    <video 
+                      autoPlay 
+                      loop 
+                      muted 
+                      playsInline
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                      }}
+                    >
+                      <source src="/3712c921919_3.mp4" type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
                   </Paper>
                 </Grid.Col>
               </Grid>
@@ -188,6 +200,35 @@ export default function AboutPage() {
             </Paper>
           </MotionDiv>
           
+          {/* Video Showcase Section */}
+          <MotionDiv variants={fadeInVariants}>
+            <Paper 
+              radius="xl" 
+              p={0} 
+              mb={rem(40)}
+              style={{
+                overflow: 'hidden',
+                height: rem(500),
+                position: 'relative',
+              }}
+            >
+              <video 
+                autoPlay 
+                loop 
+                muted 
+                playsInline
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                }}
+              >
+                <source src="/3712c921919_3.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </Paper>
+          </MotionDiv>
+          
           {/* Our Story Section */}
           <MotionDiv variants={fadeInVariants}>
             <Paper 
@@ -203,38 +244,103 @@ export default function AboutPage() {
             >
               <Title order={2} fz={subtitleSize} mb="xl" ta="center">Our Story</Title>
               
-              <Timeline active={3} bulletSize={24} lineWidth={2} color="coral">
-                <Timeline.Item title="The Idea" lineVariant="dashed">
-                  <Text size={textSize} mb="xs">Q1 2022</Text>
+              <Timeline active={0} bulletSize={24} lineWidth={2} color="coral">
+                <Timeline.Item title="MindHive 2.0 Launch">
+                  <Text size={textSize} mb="xs" fw={700}>Q2 2025</Text>
                   <Text size={textSize}>
-                    MindHive began as a research project exploring the intersection of blockchain technology 
-                    and artificial intelligence. Our founders, a group of AI researchers and blockchain 
-                    developers, recognized the need for a more open and collaborative approach to AI development.
+                    Launch of MindHive 2.0, featuring enhanced scalability, improved governance mechanisms, 
+                    and new tools for collaborative AI model development. This major upgrade will support the next 
+                    phase of growth for the network.
                   </Text>
                 </Timeline.Item>
                 
-                <Timeline.Item title="Foundation Formation">
-                  <Text size={textSize} mb="xs">Q3 2022</Text>
+                <Timeline.Item title="Enterprise Partnership Program">
+                  <Text size={textSize} mb="xs" fw={700}>Q3 2025</Text>
                   <Text size={textSize}>
-                    The MindHive Foundation was established as a non-profit organization dedicated to 
-                    developing the core protocol and governance framework for a decentralized AI network.
+                    Introduction of our Enterprise Partnership Program, designed to accelerate adoption of 
+                    MindHive technology in key industries including healthcare, finance, and manufacturing. 
+                    The program will provide specialized integration support and compliance frameworks.
                   </Text>
                 </Timeline.Item>
                 
-                <Timeline.Item title="Protocol Development">
-                  <Text size={textSize} mb="xs">Q1 2023</Text>
+                <Timeline.Item title="Decentralized AGI Research Initiative">
+                  <Text size={textSize} mb="xs" fw={700}>Q4 2025</Text>
                   <Text size={textSize}>
-                    Our team developed the initial version of the MindHive protocol, focusing on secure 
-                    on-chain verification of AI computations and a token-based incentive system for network 
-                    participants.
+                    Launch of the Decentralized AGI Research initiative, bringing together researchers from 
+                    around the world to collaboratively advance artificial general intelligence in an open, 
+                    transparent, and safety-focused manner.
                   </Text>
                 </Timeline.Item>
                 
-                <Timeline.Item title="Network Launch">
-                  <Text size={textSize} mb="xs">Q4 2023</Text>
+                <Timeline.Item title="Global Developer Conference">
+                  <Text size={textSize} mb="xs" fw={700}>Q1 2026</Text>
                   <Text size={textSize}>
-                    The MindHive Network launched its mainnet, enabling developers to deploy AI agents, 
-                    contribute to collaborative model training, and participate in network governance.
+                    The first annual MindHive Global Developer Conference, bringing together thousands of 
+                    developers, researchers, and industry partners to showcase innovations, share knowledge, 
+                    and shape the future of decentralized AI development.
+                  </Text>
+                </Timeline.Item>
+                
+                <Timeline.Item title="Cross-Chain Integration">
+                  <Text size={textSize} mb="xs" fw={700}>Q1 2026</Text>
+                  <Text size={textSize}>
+                    Implementation of comprehensive cross-chain integration, allowing MindHive to operate 
+                    seamlessly across multiple blockchain ecosystems. This will expand our reach and enable 
+                    new forms of collaboration with other decentralized networks.
+                  </Text>
+                </Timeline.Item>
+                
+                <Timeline.Item title="Specialized Industry Solutions">
+                  <Text size={textSize} mb="xs" fw={700}>Q2 2026</Text>
+                  <Text size={textSize}>
+                    Release of specialized AI solution packages for key industries, including healthcare 
+                    diagnostic tools, financial risk assessment systems, and manufacturing optimization 
+                    frameworks, all built on the MindHive decentralized infrastructure.
+                  </Text>
+                </Timeline.Item>
+                
+                <Timeline.Item title="Regulatory Framework Initiative">
+                  <Text size={textSize} mb="xs" fw={700}>Q3 2026</Text>
+                  <Text size={textSize}>
+                    Launch of the MindHive Regulatory Framework Initiative, working with policymakers 
+                    globally to develop appropriate governance standards for decentralized AI systems. 
+                    This initiative aims to ensure responsible innovation while protecting user rights.
+                  </Text>
+                </Timeline.Item>
+                
+                <Timeline.Item title="MindHive 3.0 Development">
+                  <Text size={textSize} mb="xs" fw={700}>Q4 2026</Text>
+                  <Text size={textSize}>
+                    Beginning of development for MindHive 3.0, which will introduce revolutionary 
+                    advancements in decentralized computing, privacy-preserving AI training, and 
+                    autonomous agent coordination. Community feedback sessions will guide the design process.
+                  </Text>
+                </Timeline.Item>
+                
+                <Timeline.Item title="Global AI Commons">
+                  <Text size={textSize} mb="xs" fw={700}>Q1 2027</Text>
+                  <Text size={textSize}>
+                    Establishment of the Global AI Commons, a shared repository of open-source AI models, 
+                    datasets, and tools governed by the MindHive community. This resource will accelerate 
+                    innovation while ensuring equitable access to advanced AI capabilities.
+                  </Text>
+                </Timeline.Item>
+                
+                <Timeline.Item title="Quantum Computing Integration">
+                  <Text size={textSize} mb="xs" fw={700}>Q2 2027</Text>
+                  <Text size={textSize}>
+                    Integration of quantum computing capabilities into the MindHive network, enabling 
+                    unprecedented computational power for solving complex AI problems. Early access will be 
+                    provided to research partners working on critical global challenges.
+                  </Text>
+                </Timeline.Item>
+                
+                <Timeline.Item title="MindHive 3.0 Launch">
+                  <Text size={textSize} mb="xs" fw={700}>Q4 2027</Text>
+                  <Text size={textSize}>
+                    Official launch of MindHive 3.0, representing the culmination of our vision for a fully 
+                    decentralized, democratically governed AI ecosystem. This version will feature breakthrough 
+                    capabilities in autonomous agent coordination and collective intelligence.
                   </Text>
                 </Timeline.Item>
               </Timeline>
@@ -272,14 +378,38 @@ export default function AboutPage() {
                         width: rem(120),
                         height: rem(120),
                         borderRadius: '50%',
-                        background: 'linear-gradient(135deg, var(--mantine-color-coral-2), var(--mantine-color-coral-4))',
                         marginBottom: rem(16),
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
+                        position: 'relative',
+                        overflow: 'hidden',
                       }}
                     >
-                      <Text c="white">[Photo]</Text>
+                      <Image 
+                        src="/images/team/sarah.jpg"
+                        alt="Dr. Sarah Chen"
+                        width="100%"
+                        height="100%"
+                        style={{ objectFit: 'cover' }}
+                      />
+                      <div style={{ 
+                        position: 'absolute', 
+                        bottom: 0, 
+                        right: 0, 
+                        width: rem(30), 
+                        height: rem(30), 
+                        borderRadius: '50%',
+                        overflow: 'hidden',
+                        border: '2px solid white'
+                      }}>
+                        <Image 
+                          src="/images/leadership/team_logo.png" 
+                          alt="MindHive" 
+                          width={rem(30)} 
+                          height={rem(30)}
+                        />
+                      </div>
                     </div>
                     <Title order={3} fz={headingSize} mb="xs" ta="center">Dr. Sarah Chen</Title>
                     <Text size="sm" c="dimmed" mb="md" ta="center">Co-Founder & CEO</Text>
@@ -305,14 +435,38 @@ export default function AboutPage() {
                         width: rem(120),
                         height: rem(120),
                         borderRadius: '50%',
-                        background: 'linear-gradient(135deg, var(--mantine-color-mint-2), var(--mantine-color-mint-4))',
                         marginBottom: rem(16),
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
+                        position: 'relative',
+                        overflow: 'hidden',
                       }}
                     >
-                      <Text c="white">[Photo]</Text>
+                      <Image 
+                        src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop"
+                        alt="Marcus Johnson"
+                        width="100%"
+                        height="100%"
+                        style={{ objectFit: 'cover' }}
+                      />
+                      <div style={{ 
+                        position: 'absolute', 
+                        bottom: 0, 
+                        right: 0, 
+                        width: rem(30), 
+                        height: rem(30), 
+                        borderRadius: '50%',
+                        overflow: 'hidden',
+                        border: '2px solid white'
+                      }}>
+                        <Image 
+                          src="/images/leadership/team_logo.png" 
+                          alt="MindHive" 
+                          width={rem(30)} 
+                          height={rem(30)}
+                        />
+                      </div>
                     </div>
                     <Title order={3} fz={headingSize} mb="xs" ta="center">Marcus Johnson</Title>
                     <Text size="sm" c="dimmed" mb="md" ta="center">Co-Founder & CTO</Text>
@@ -338,14 +492,38 @@ export default function AboutPage() {
                         width: rem(120),
                         height: rem(120),
                         borderRadius: '50%',
-                        background: 'linear-gradient(135deg, var(--mantine-color-ice-2), var(--mantine-color-ice-4))',
                         marginBottom: rem(16),
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
+                        position: 'relative',
+                        overflow: 'hidden',
                       }}
                     >
-                      <Text c="white">[Photo]</Text>
+                      <Image 
+                        src="/images/team/aisha.jpg"
+                        alt="Dr. Aisha Patel"
+                        width="100%"
+                        height="100%"
+                        style={{ objectFit: 'cover' }}
+                      />
+                      <div style={{ 
+                        position: 'absolute', 
+                        bottom: 0, 
+                        right: 0, 
+                        width: rem(30), 
+                        height: rem(30), 
+                        borderRadius: '50%',
+                        overflow: 'hidden',
+                        border: '2px solid white'
+                      }}>
+                        <Image 
+                          src="/images/leadership/team_logo.png" 
+                          alt="MindHive" 
+                          width={rem(30)} 
+                          height={rem(30)}
+                        />
+                      </div>
                     </div>
                     <Title order={3} fz={headingSize} mb="xs" ta="center">Dr. Aisha Patel</Title>
                     <Text size="sm" c="dimmed" mb="md" ta="center">Chief Research Officer</Text>
@@ -371,14 +549,38 @@ export default function AboutPage() {
                         width: rem(120),
                         height: rem(120),
                         borderRadius: '50%',
-                        background: 'linear-gradient(135deg, var(--mantine-color-coral-3), var(--mantine-color-mint-3))',
                         marginBottom: rem(16),
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
+                        position: 'relative',
+                        overflow: 'hidden',
                       }}
                     >
-                      <Text c="white">[Photo]</Text>
+                      <Image 
+                        src="/images/team/miguel.jpg"
+                        alt="Miguel Rodriguez"
+                        width="100%"
+                        height="100%"
+                        style={{ objectFit: 'cover' }}
+                      />
+                      <div style={{ 
+                        position: 'absolute', 
+                        bottom: 0, 
+                        right: 0, 
+                        width: rem(30), 
+                        height: rem(30), 
+                        borderRadius: '50%',
+                        overflow: 'hidden',
+                        border: '2px solid white'
+                      }}>
+                        <Image 
+                          src="/images/leadership/team_logo.png" 
+                          alt="MindHive" 
+                          width={rem(30)} 
+                          height={rem(30)}
+                        />
+                      </div>
                     </div>
                     <Title order={3} fz={headingSize} mb="xs" ta="center">Miguel Rodriguez</Title>
                     <Text size="sm" c="dimmed" mb="md" ta="center">Chief Strategy Officer</Text>

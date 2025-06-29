@@ -64,7 +64,7 @@ export default function NewsletterBar() {
             <Group 
               justify={isMobile ? 'apart' : 'center'} 
               gap={isMobile ? 'xs' : 'md'}
-              direction={isMobile ? 'column' : 'row'}
+              style={{ flexDirection: isMobile ? 'column' : 'row' }}
             >
               <TextInput
                 placeholder="Enter your email"

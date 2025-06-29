@@ -3,7 +3,7 @@
 import { useRef, useEffect, useState } from 'react';
 import { useMediaQuery } from '@mantine/hooks';
 import * as THREE from 'three';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { Canvas, useFrame, useThree, ThreeElements } from '@react-three/fiber';
 import { OrbitControls, Text, Html } from '@react-three/drei';
 import { rem } from '@mantine/core';
 
@@ -149,7 +149,7 @@ interface ConnectionProps {
 
 // Connection component with animation
 function Connection({ start, end, color }: ConnectionProps) {
-  const ref = useRef<THREE.Line>(null);
+  const ref = useRef<THREE.BufferGeometry>(null);
   const [progress, setProgress] = useState(0);
   
   useFrame(() => {
@@ -161,16 +161,18 @@ function Connection({ start, end, color }: ConnectionProps) {
       points.push(new THREE.Vector3(...start));
       points.push(new THREE.Vector3(...end));
       
-      ref.current.geometry.setFromPoints(points);
+      ref.current.setFromPoints(points);
     }
   });
   
   return (
     <>
-      <line ref={ref}>
-        <bufferGeometry />
-        <lineBasicMaterial color={color} transparent opacity={0.3} />
-      </line>
+      <group>
+        <line>
+          <bufferGeometry ref={ref} />
+          <lineBasicMaterial color={color} transparent opacity={0.3} />
+        </line>
+      </group>
       
       {/* Animated particle moving along the connection */}
       <mesh

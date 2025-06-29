@@ -1,6 +1,9 @@
 @import "tailwindcss/preflight";
 @tailwind utilities;
 
+/* 导入全局样式 */
+@import "./styles/global.css";
+
 :root {
   --background: #ffffff;
   --foreground: #171717;

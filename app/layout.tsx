@@ -1,5 +1,5 @@
 import '@mantine/core/styles.css';
-import './styles/global.css';
+import './globals.css';
 import { MantineProvider, createTheme } from '@mantine/core';
 import { Inter, Playfair_Display } from 'next/font/google';
 import Analytics from './components/Analytics';

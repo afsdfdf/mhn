@@ -173,7 +173,7 @@ export default function MainNavbar() {
           >
             <Box p="md">
               {/* 移动导航标题 */}
-              <Group mb="md" position="apart">
+              <Group mb="md" justify="apart">
                 <Text fw={600} size="lg" style={{ fontFamily: 'var(--font-playfair)' }}>
                   Menu
                 </Text>

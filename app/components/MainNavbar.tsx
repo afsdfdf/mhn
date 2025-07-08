@@ -8,7 +8,7 @@ import ColorSchemeToggle from './ColorSchemeToggle';
 import { motion } from 'framer-motion';
 import classes from './MainNavbar.module.css';
 import { Stack, UnstyledButton } from '@mantine/core';
-import { ChevronDown, Home, BookOpen, Coins, Info, Mail, Menu, X } from 'lucide-react';
+import { ChevronDown, Home, BookOpen, Coins, Info, Mail, Menu, X, FileText } from 'lucide-react';
 
 const HEADER_HEIGHT = rem(60);
 
@@ -42,7 +42,7 @@ export default function MainNavbar() {
       label: 'Resources',
       icon: <BookOpen size={18} />,
       links: [
-    { link: '/whitepaper', label: 'Whitepaper' },
+        { link: '/whitepaper', label: 'Whitepaper' },
         { link: '/docs', label: 'Documentation' },
       ],
     },

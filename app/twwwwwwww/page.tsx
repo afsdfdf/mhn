@@ -83,7 +83,7 @@ export default function TwwwwwwwwPage() {
                 <Divider my="sm" />
                 <Text size="sm" fw={600} mb="xs">图片提示词：</Text>
                 <Text size="sm">
-                  A futuristic digital network visualization with interconnected nodes glowing in coral and mint colors against a dark blue background. The nodes represent AI agents in a decentralized network, with visible data flows between them. The MindHive Network logo appears subtly in the corner (bottom right, taking up about 10% of the image). The image should have a clean, professional look with a slight vapor/claymorphism aesthetic. The central node should be approximately 30% larger than others, with 15-20 smaller nodes arranged in a balanced composition. 16:9 ratio, high resolution (at least 1920x1080px), detailed rendering of connection points with subtle light bloom effects.
+                  A futuristic digital network visualization with interconnected nodes glowing in coral and mint colors against a dynamic gradient background that transitions from deep purple to electric blue with subtle nebula-like effects. The nodes represent AI agents in a decentralized network, with visible data flows between them shown as animated light trails. The image should have a clean, professional look with a modern vapor/claymorphism aesthetic. The central node should be approximately 30% larger than others, with 15-20 smaller nodes arranged in a balanced composition. Add subtle depth with light bloom effects and soft shadows. 16:9 ratio, high resolution (at least 1920x1080px), detailed rendering with a sense of movement and energy.
                 </Text>
               </Card>
 
@@ -113,7 +113,7 @@ export default function TwwwwwwwwPage() {
                 <Divider my="sm" />
                 <Text size="sm" fw={600} mb="xs">图片提示词：</Text>
                 <Text size="sm">
-                  A split-screen comparison image. On the left: a centralized AI system shown as a single large server with data flowing into it from users who receive nothing in return, rendered in cold blue tones. On the right: the MindHive Network depicted as an interconnected web of nodes with bidirectional arrows showing value flowing in all directions, rendered in warm coral and mint tones. The image should have a clean, infographic style with a slight 3D effect. 16:9 ratio, high detail, professional design with subtle branding elements.
+                  A split-screen comparison image with dramatic lighting. On the left: a centralized AI system shown as a single large server with data flowing into it from users who receive nothing in return, rendered in cold blue tones against a dark, industrial background with harsh shadows. On the right: the MindHive Network depicted as an interconnected web of nodes with bidirectional arrows showing value flowing in all directions, rendered in warm coral and mint tones against a background with soft, organic patterns and gentle light rays. The transition between the two sides should create visual tension. Use depth-of-field effects to emphasize key elements. 16:9 ratio, high detail, cinematic style with strong contrast between the two approaches.
                 </Text>
               </Card>
               
@@ -143,7 +143,7 @@ export default function TwwwwwwwwPage() {
                 <Divider my="sm" />
                 <Text size="sm" fw={600} mb="xs">图片提示词：</Text>
                 <Text size="sm">
-                  A visual representation of the DataDAO concept. A circular arrangement of diverse user icons (representing data contributors) connected to a central, transparent vault symbol containing data icons. Digital tokens flow from the vault back to the users, illustrating the reward mechanism. Clean, modern design with MindHive's coral and mint color palette. Include subtle blockchain elements like connected blocks in the background. 16:9 ratio, high detail, professional infographic style with minimal text labels.
+                  A visual metaphor showing the relationship between data quality and AI performance. Design a split image: on one side, poor quality data (represented by jumbled, messy puzzle pieces) leading to a confused/glitchy AI (represented by a robot with question marks); on the other side, high-quality, diverse data (represented by well-organized, colorful puzzle pieces) leading to a functional, accurate AI (represented by a confident robot). Use a vibrant color palette with a gradient background that transitions from rich amber to deep crimson. 16:9 ratio, professional design with clear visual storytelling about the importance of data quality.
                 </Text>
               </Card>
               
@@ -173,7 +173,7 @@ export default function TwwwwwwwwPage() {
                 <Divider my="sm" />
                 <Text size="sm" fw={600} mb="xs">图片提示词：</Text>
                 <Text size="sm">
-                  A technical illustration showing the verification process of AI computations on blockchain. Display a neural network structure on the left, with data flowing through it, then arrows pointing to blockchain blocks on the right that contain cryptographic hashes. Use a blue-to-coral gradient for the neural network and mint green for the verified blocks. Include small magnifying glass icons near the verification points. The background should be subtle with a tech-inspired pattern. 16:9 ratio, clean technical style with minimal text, professional appearance with the MindHive logo subtly placed.
+                  A technical illustration showing the verification process of AI computations on blockchain. Display a neural network structure on the left, with data flowing through it as glowing energy pulses, then arrows pointing to blockchain blocks on the right that contain cryptographic hashes. Use a blue-to-coral gradient for the neural network and mint green for the verified blocks. Include small magnifying glass icons near the verification points. The background should feature a complex digital landscape with varying levels of depth - from dark foreground elements to a lighter horizon with a subtle matrix-like pattern. Add floating mathematical symbols and code fragments to enhance the technical feel. 16:9 ratio, detailed technical style with a futuristic aesthetic.
                 </Text>
               </Card>
               
@@ -203,7 +203,7 @@ export default function TwwwwwwwwPage() {
                 <Divider my="sm" />
                 <Text size="sm" fw={600} mb="xs">图片提示词：</Text>
                 <Text size="sm">
-                  A stylized token economy flow diagram showing the MHN token (a circular coin with the MindHive logo) at the center, with different arrows flowing in and out connecting to icons representing: data providers, model developers, compute providers, and governance participants. Each arrow should be labeled with the value exchange. Use MindHive's brand colors (coral, mint, ice blue) with a clean, professional design. Include subtle blockchain elements in the background and a global network pattern suggesting worldwide collaboration. 16:9 ratio, high detail, infographic style with modern aesthetics.
+                  A stylized token economy flow diagram showing the MHN token (a circular coin with the MindHive logo) at the center, with different arrows flowing in and out connecting to icons representing: data providers, model developers, compute providers, and governance participants. Each arrow should be labeled with the value exchange. Use a vibrant color palette with coral, mint, and ice blue accents. The background should feature a dramatic cosmic gradient from deep space black to nebula purple with subtle particle effects and glowing grid lines that create a sense of infinite space. Add depth with subtle lens flare effects around key connection points. 16:9 ratio, high detail, modern digital art style with a sense of technological sophistication.
                 </Text>
               </Card>
               
@@ -233,7 +233,7 @@ export default function TwwwwwwwwPage() {
                 <Divider my="sm" />
                 <Text size="sm" fw={600} mb="xs">图片提示词：</Text>
                 <Text size="sm">
-                  A visual metaphor showing the relationship between data quality and AI performance. Design a split image: on one side, poor quality data (represented by jumbled, messy puzzle pieces) leading to a confused/glitchy AI (represented by a robot with question marks); on the other side, high-quality, diverse data (represented by well-organized, colorful puzzle pieces) leading to a functional, accurate AI (represented by a confident robot). Use MindHive's brand colors and a clean, educational infographic style. Include subtle DataDAO branding elements. 16:9 ratio, professional design with clear visual storytelling about the importance of data quality.
+                  A visual metaphor showing the relationship between data quality and AI performance. Design a split image: on one side, poor quality data (represented by jumbled, messy puzzle pieces) leading to a confused/glitchy AI (represented by a robot with question marks); on the other side, high-quality, diverse data (represented by well-organized, colorful puzzle pieces) leading to a functional, accurate AI (represented by a confident robot). Use a vibrant color palette with a gradient background that transitions from rich amber to deep crimson. 16:9 ratio, professional design with clear visual storytelling about the importance of data quality.
                 </Text>
               </Card>
               
@@ -267,7 +267,7 @@ export default function TwwwwwwwwPage() {
                 <Divider my="sm" />
                 <Text size="sm" fw={600} mb="xs">图片提示词：</Text>
                 <Text size="sm">
-                  A technical diagram illustrating the concept of federated learning enhanced by blockchain. Show multiple devices/organizations on the edges of the image, each with their own local data and model. In the center, show a blockchain structure that connects them, with arrows indicating model updates (not raw data) flowing between the devices and the chain. Use MindHive's brand colors (coral, mint, dark blue) with a clean, technical aesthetic. Include small lock symbols near the data to represent privacy protection, and token symbols near the blockchain to represent incentives. 16:9 ratio, professional technical illustration style with clear visual explanation of the concept.
+                  A technical diagram illustrating the concept of federated learning enhanced by blockchain. Show multiple devices/organizations on the edges of the image, each with their own local data and model, surrounded by protective auras. In the center, show a blockchain structure that connects them, with arrows indicating model updates (not raw data) flowing between the devices and the chain as animated light trails. Use coral, mint, and dark blue colors with a clean, technical aesthetic. The background should feature a dramatic landscape with mountains and valleys created from digital wireframes, transitioning from deep forest green in the valleys to bright teal at the peaks. Add atmospheric perspective with fog effects in the distance. Include small lock symbols near the data to represent privacy protection, and token symbols near the blockchain to represent incentives. 16:9 ratio, cinematic technical illustration with depth and dimension.
                 </Text>
               </Card>
               
@@ -297,7 +297,7 @@ export default function TwwwwwwwwPage() {
                 <Divider my="sm" />
                 <Text size="sm" fw={600} mb="xs">图片提示词：</Text>
                 <Text size="sm">
-                  A visual representation of AI model collaboration. Show multiple distinct AI models (represented by different colored neural network structures) contributing to a larger, more complex central model. Use connecting lines with glowing particles flowing between the models to represent knowledge transfer. Each model should have a small token/badge symbol next to it representing its preserved IP rights. Use MindHive's brand colors with a focus on the collaborative aspects. The background should suggest a digital ecosystem with subtle grid patterns. 16:9 ratio, modern tech visualization style with a clean, professional aesthetic that emphasizes the concept of collaboration while maintaining individual identity.
+                  A visual representation of AI model collaboration. Show multiple distinct AI models (represented by different colored neural network structures) contributing to a larger, more complex central model. Use connecting lines with glowing particles flowing between the models to represent knowledge transfer, creating a sense of movement and energy. Each model should have a small token/badge symbol next to it representing its preserved IP rights. The background should feature a rich abstract digital landscape with varying depths - from dark foreground elements to a vibrant horizon that transitions from deep violet to electric blue, with floating geometric shapes and subtle code fragments creating texture and interest. Add volumetric lighting effects with light rays highlighting the central model. 16:9 ratio, modern tech visualization with cinematic quality.
                 </Text>
               </Card>
             </Stack>
@@ -331,78 +331,30 @@ export default function TwwwwwwwwPage() {
                 <Divider my="sm" />
                 <Text size="sm" fw={600} mb="xs">图片提示词：</Text>
                 <Text size="sm">
-                  A professional partnership announcement image showing the MindHive Network logo and the DataCollective logo side by side with a handshake icon between them. Behind the logos is a stylized visualization of a massive dataset represented as glowing points forming a globe, with highlighted connections between clusters. Use MindHive's brand colors (coral and mint) along with DataCollective's brand colors. The background should be a gradient from dark blue to black with subtle digital patterns. Include text "Partnership Announcement" in a modern sans-serif font. 16:9 ratio, high resolution, professional corporate announcement style.
+                  A professional partnership announcement image showing the MindHive Network logo and the DataCollective logo side by side with a handshake icon between them, illuminated by dramatic lighting. Behind the logos is a stylized visualization of a massive dataset represented as a dynamic sphere of glowing points forming a globe, with highlighted connections between clusters creating a constellation effect. Use coral and mint colors along with DataCollective's brand colors. The background should feature a rich cosmic gradient that transitions from deep emerald at the bottom to bright azure at the top, with nebula-like clouds and particle effects creating depth and movement. Include text "Partnership Announcement" in a modern sans-serif font with a subtle glow effect. 16:9 ratio, high resolution, premium visual style with cinematic lighting.
                 </Text>
               </Card>
 
               {/* 7月13日第一条 */}
               <Card withBorder p="lg" radius="md">
-                <Text fw={700} mb="xs">2025年7月13日 - 14:00 UTC</Text>
+                <Text fw={700} mb="xs">2025年7月13日 - 14:00 UTC 至 14:15 UTC</Text>
                 <Text mb="md">
-                  🔬 Technical Deep Dive: How MindHive's federated learning approach enables AI models to learn collaboratively while keeping data private and secure. Our approach combines zero-knowledge proofs with secure multi-party computation to ensure data never leaves its source. 1/4 🧵
+                  🔬 Technical Deep Dive: How MindHive's federated learning approach enables AI models to learn collaboratively while keeping data private and secure.
+                  
+                  Our approach combines zero-knowledge proofs with secure multi-party computation to ensure data never leaves its source. In traditional ML, data must be centralized for training. With MindHive, models travel to the data instead.
+                  
+                  Our zero-knowledge proofs allow participants to verify that model updates follow protocol rules without revealing the underlying data. This prevents poisoning attacks while maintaining data sovereignty. The blockchain provides an immutable record of all verified contributions.
+                  
+                  The result? AI models that learn from diverse data sources without compromising privacy or security. This enables collaboration between organizations that couldn't previously share data due to competitive or regulatory concerns. Join our technical community: mindhive.network/developers 💡
                 </Text>
                 <Text mb="md" c="dimmed" size="sm">
-                  🔬 技术深度解析：MindHive 的联邦学习方法如何使 AI 模型能够协作学习，同时保持数据的私密性和安全性。我们的方法结合了零知识证明和安全多方计算，确保数据永远不会离开其源头。1/4 🧵
-                </Text>
-                <Divider my="sm" />
-                <Text size="sm" fw={600} mb="xs">用户评论：</Text>
-                <Stack gap="xs">
-                  <Text size="sm">@PrivacyTech: This is the right approach. Federated learning is essential for privacy-preserving AI.</Text>
-                  <Text size="sm">@ZKProofExpert: Interesting implementation! Are you using any specific ZKP protocol?</Text>
-                  <Text size="sm">@AIResearcher: The combination of FL with ZKPs is cutting edge. Excited to see the implementation details.</Text>
-                  <Text size="sm">@CryptographyProfessor: This could solve many of the privacy concerns in current AI systems.</Text>
-                  <Text size="sm">@DataScientist: How do you handle the communication overhead of federated learning?</Text>
-                  <Text size="sm">@BlockchainDev: Are these proofs verified on-chain or off-chain?</Text>
-                  <Text size="sm">@AIEngineer: Looking forward to the rest of this thread. This is exactly what the industry needs.</Text>
-                  <Text size="sm">@PrivacyAdvocate: If this works as described, it could be revolutionary for privacy-preserving AI.</Text>
-                  <Text size="sm">@TechInnovator: The technical challenges here are significant. Curious how you've solved them.</Text>
-                  <Text size="sm">@SecurityExpert: The devil is in the details with secure MPC. Eager to see your approach.</Text>
-                </Stack>
-                <Divider my="sm" />
-                <Text size="sm" fw={600} mb="xs">图片提示词：</Text>
-                <Text size="sm">
-                  A technical diagram illustrating federated learning with privacy protection. Show multiple devices/data sources on the left side, each with a small neural network icon and a lock symbol. In the center, show arrows pointing to a cloud where model updates (not raw data) are being aggregated. On the right side, show the improved global model being distributed back to the devices. Use a color scheme of blue, coral, and mint with a white background. Include small ZKP (zero-knowledge proof) symbols near the arrows to indicate privacy protection. The style should be clean, technical, and educational with minimal text labels. 16:9 ratio, high detail, professional infographic style.
-                </Text>
-              </Card>
-              
-              {/* 7月13日第二条 */}
-              <Card withBorder p="lg" radius="md">
-                <Text fw={700} mb="xs">2025年7月13日 - 14:05 UTC</Text>
-                <Text mb="md">
-                  🔐 In traditional ML, data must be centralized for training. With MindHive's approach, models travel to the data instead. Each participant trains on their local data, then shares only encrypted model updates—never the raw data itself. This preserves privacy while enabling collaborative learning. 2/4 🧵
-                </Text>
-                <Text mb="md" c="dimmed" size="sm">
-                  🔐 在传统机器学习中，数据必须集中起来进行训练。而在 MindHive 的方法中，模型会前往数据所在地。每个参与者在其本地数据上进行训练，然后只共享加密的模型更新—而非原始数据本身。这在实现协作学习的同时保护了隐私。2/4 🧵
-                </Text>
-                <Divider my="sm" />
-                <Text size="sm" fw={600} mb="xs">用户评论：</Text>
-                <Stack gap="xs">
-                  <Text size="sm">@MLResearcher: This is the future of machine learning. Moving computation to data rather than data to computation.</Text>
-                  <Text size="sm">@PrivacyEngineer: The "models to data" approach solves so many privacy issues in one go.</Text>
-                  <Text size="sm">@DataScientist: How do you handle the heterogeneity of data across different sources?</Text>
-                  <Text size="sm">@FederatedLearningExpert: This is similar to Google's approach but with blockchain for trust. Very interesting!</Text>
-                  <Text size="sm">@AIGovernance: This architecture could help with regulatory compliance in heavily regulated industries.</Text>
-                  <Text size="sm">@CryptoResearcher: How are the model updates verified before incorporation?</Text>
-                  <Text size="sm">@DistributedSystems: The network topology for this kind of system is fascinating. Looking forward to more details.</Text>
-                  <Text size="sm">@AIEthics: This could help democratize AI by allowing smaller players to participate without giving up their data.</Text>
-                  <Text size="sm">@BlockchainDeveloper: Are you using homomorphic encryption for the model updates?</Text>
-                  <Text size="sm">@PrivacyAdvocate: If implemented correctly, this could be a watershed moment for privacy-preserving AI.</Text>
-                </Stack>
-                <Divider my="sm" />
-                <Text size="sm" fw={600} mb="xs">图片提示词：</Text>
-                <Text size="sm">
-                  A comparison diagram with two parts. On the left labeled "Traditional ML": show data from multiple sources flowing into a central server with a neural network icon. On the right labeled "MindHive Approach": show a neural network icon moving between different data sources, with only encrypted update packets flowing back to a central point. Use icons to represent data sources (hospital, smartphone, company, etc.). Use a clean, minimalist style with MindHive's brand colors. Include small lock icons to represent encryption. 16:9 ratio, educational infographic style with clear labels and arrows showing data/model flow.
-                </Text>
-              </Card>
-              
-              {/* 7月13日第三条 */}
-              <Card withBorder p="lg" radius="md">
-                <Text fw={700} mb="xs">2025年7月13日 - 14:10 UTC</Text>
-                <Text mb="md">
-                  🧮 Our zero-knowledge proofs allow participants to verify that model updates follow protocol rules without revealing the underlying data. This prevents poisoning attacks while maintaining data sovereignty. The blockchain provides an immutable record of all verified contributions. 3/4 🧵
-                </Text>
-                <Text mb="md" c="dimmed" size="sm">
-                  🧮 我们的零知识证明允许参与者验证模型更新是否遵循协议规则，而无需揭示底层数据。这防止了投毒攻击，同时维护了数据主权。区块链提供了所有经过验证的贡献的不可篡改记录。3/4 🧵
+                  🔬 技术深度解析：MindHive 的联邦学习方法如何使 AI 模型能够协作学习，同时保持数据的私密性和安全性。
+                  
+                  我们的方法结合了零知识证明和安全多方计算，确保数据永远不会离开其源头。在传统机器学习中，数据必须集中起来进行训练。而在 MindHive 的方法中，模型会前往数据所在地。
+                  
+                  我们的零知识证明允许参与者验证模型更新是否遵循协议规则，而无需揭示底层数据。这防止了投毒攻击，同时维护了数据主权。区块链提供了所有经过验证的贡献的不可篡改记录。
+                  
+                  结果如何？能够从多样化数据源学习而不损害隐私或安全的 AI 模型。这使得之前由于竞争或监管问题而无法共享数据的组织之间能够进行协作。加入我们的技术社区：mindhive.network/developers 💡
                 </Text>
                 <Divider my="sm" />
                 <Text size="sm" fw={600} mb="xs">用户评论：</Text>
@@ -417,41 +369,16 @@ export default function TwwwwwwwwPage() {
                   <Text size="sm">@AISecurityExpert: Poisoning attacks are a major concern in federated systems. Great to see this addressed.</Text>
                   <Text size="sm">@DistributedSystems: The verification mechanism is key. Looking forward to seeing technical details.</Text>
                   <Text size="sm">@CryptoAIResearcher: This is where crypto and AI truly complement each other - trust and verification.</Text>
-                </Stack>
-                <Divider my="sm" />
-                <Text size="sm" fw={600} mb="xs">图片提示词：</Text>
-                <Text size="sm">
-                  A technical illustration of zero-knowledge proof verification in a federated learning system. Show a data source on the left with a local model, connected to a verification layer in the middle (represented by a shield or verification symbol), which connects to a blockchain on the right. Include mathematical symbols and cryptographic elements around the verification layer. Use MindHive's brand colors with emphasis on the security aspects in mint green. The background should be a subtle grid pattern. Add small "valid/invalid" indicators showing how updates are filtered. 16:9 ratio, technical diagram style with moderate detail and a focus on the verification process.
-                </Text>
-              </Card>
-              
-              {/* 7月13日第四条 */}
-              <Card withBorder p="lg" radius="md">
-                <Text fw={700} mb="xs">2025年7月13日 - 14:15 UTC</Text>
-                <Text mb="md">
-                  🚀 The result? AI models that learn from diverse data sources without compromising privacy or security. This enables collaboration between organizations that couldn't previously share data due to competitive or regulatory concerns. Join our technical community to learn more: mindhive.network/developers 4/4 💡
-                </Text>
-                <Text mb="md" c="dimmed" size="sm">
-                  🚀 结果如何？能够从多样化数据源学习而不损害隐私或安全的 AI 模型。这使得之前由于竞争或监管问题而无法共享数据的组织之间能够进行协作。加入我们的技术社区了解更多：mindhive.network/developers 4/4 💡
-                </Text>
-                <Divider my="sm" />
-                <Text size="sm" fw={600} mb="xs">用户评论：</Text>
-                <Stack gap="xs">
                   <Text size="sm">@dev_alice: Just signed up for the developer community. This is exactly what I've been looking for! 🙌</Text>
                   <Text size="sm">@HealthcareAI: This could revolutionize medical AI where data sharing is heavily restricted.</Text>
                   <Text size="sm">@privacy_tech: Great thread! The combination of these technologies is very promising. 👏</Text>
                   <Text size="sm">@0xBuildoor: Looking forward to exploring the developer docs. Is there a testnet we can play with?</Text>
                   <Text size="sm">@DataScientist: This could solve so many problems in cross-organizational ML projects.</Text>
-                  <Text size="sm">@AIResearcher: The potential applications for sensitive industries are enormous.</Text>
-                  <Text size="sm">@crypto_maxi_2025: This is the kind of real-world utility that will drive blockchain adoption. WAGMI 🚀</Text>
-                  <Text size="sm">@TechInnovator: Excellent thread! Clear explanation of a complex topic.</Text>
-                  <Text size="sm">@FinTech_Expert: Financial institutions could benefit enormously from this approach.</Text>
-                  <Text size="sm">@dev_advocate: Just checked out the developer docs - very comprehensive! Looking forward to the SDK.</Text>
                 </Stack>
                 <Divider my="sm" />
                 <Text size="sm" fw={600} mb="xs">图片提示词：</Text>
                 <Text size="sm">
-                  An illustration showing diverse organizations (represented by different building icons - hospital, bank, research lab, etc.) connected to the MindHive Network cloud in the center. Each organization has a glowing AI model icon and data symbol with a shield protecting it. From the central cloud, improved models flow back to all organizations. The buildings should be arranged in a circular pattern around the central cloud (which takes up 25% of the image), with connecting lines showing bidirectional data flow. Use a vibrant, optimistic color palette with MindHive's brand colors (coral #FF6B6B, mint #4ECDC4, dark blue #1A535C). Include a "Join Our Developer Community" call-to-action button at the bottom. The style should be modern and slightly futuristic with clean lines and subtle gradients. 16:9 ratio, professional marketing style with an emphasis on collaboration and shared benefits.
+                  A comprehensive technical illustration of the complete federated learning and verification system. Create a multi-layered visualization showing: 1) At the bottom layer - diverse data sources with privacy shields, 2) Middle layer - the federated learning process with models traveling to data sources, 3) Top layer - the blockchain verification system with ZK-proofs. Use animated light paths to show the flow of model updates (not raw data) between layers. The background should feature a dramatic digital landscape that transitions from deep navy at the bottom through rich royal blue in the middle to vibrant cyan at the top, with varying depths created by floating code fragments, mathematical symbols, and circuit patterns. Add volumetric lighting with light rays highlighting key components of the system. Include small explanatory labels for each major component. 16:9 ratio, premium technical visualization with cinematic quality and depth.
                 </Text>
               </Card>
               
@@ -481,7 +408,7 @@ export default function TwwwwwwwwPage() {
                 <Divider my="sm" />
                 <Text size="sm" fw={600} mb="xs">图片提示词：</Text>
                 <Text size="sm">
-                  A video thumbnail showing a professional woman (representing Sarah Chen) in a modern tech office environment demonstrating a platform on multiple screens. The screens should show: 1) A network diagram of connected healthcare organizations, 2) A performance chart showing the 22% improvement, and 3) A user interface of the MindHive platform. The MindHive logo should be visible in the corner. The image should have a clean, professional look with good lighting and a play button overlay indicating it's a video. 16:9 ratio, high quality, professional tech demo appearance with MindHive's brand colors subtly incorporated in the UI elements.
+                  A video thumbnail showing a professional woman (representing Sarah Chen) in a modern tech office environment demonstrating a platform on multiple screens, illuminated by dramatic studio lighting. The screens should show: 1) A network diagram of connected healthcare organizations with animated data flows, 2) A performance chart showing the 22% improvement with dynamic growth elements, and 3) A user interface of the MindHive platform with active visualizations. The image should have a clean, professional look with cinematic lighting that creates depth and focus. The background should feature a rich gradient from deep teal to bright azure with subtle bokeh effects and soft-focus tech elements creating depth. Add a play button overlay with a subtle glow effect indicating it's a video. 16:9 ratio, high quality, premium production value with professional color grading.
                 </Text>
               </Card>
               
@@ -525,7 +452,7 @@ export default function TwwwwwwwwPage() {
                 <Divider my="sm" />
                 <Text size="sm" fw={600} mb="xs">图片提示词：</Text>
                 <Text size="sm">
-                  A professional case study visualization for financial fraud detection. Create a split image showing before and after implementation of MindHive Network. On the left side, show isolated bank systems with high false positive rates and missed fraud (represented by red warning symbols and question marks). On the right side, show the connected MindHive Network approach with banks collaborating while maintaining data privacy (represented by lock symbols), with clear visual indicators of improved fraud detection (green checkmarks) and reduced false positives. Include a small chart or graph showing the percentage improvements. Use a professional financial services color palette incorporating MindHive's brand colors. Add subtle bank/finance icons and security elements. 16:9 ratio, clean infographic style suitable for financial industry communication with clear metrics visualization.
+                  A professional case study visualization for financial fraud detection with cinematic quality. Create a split image showing before and after implementation of MindHive Network. On the left side, show isolated bank systems with high false positive rates and missed fraud (represented by red warning symbols and question marks) against a dark, chaotic background with fragmented data flows. On the right side, show the connected MindHive Network approach with banks collaborating while maintaining data privacy (represented by lock symbols with protective auras), with clear visual indicators of improved fraud detection (green checkmarks with subtle glow effects) and reduced false positives. The transition between sides should be dramatic and clear. Include a detailed chart showing the percentage improvements with animated growth elements. The background should feature a rich gradient from deep slate blue to navy with subtle financial data visualizations and circuit patterns creating texture and depth. Add volumetric lighting effects to highlight key elements. 16:9 ratio, premium visualization with professional lighting and depth.
                 </Text>
               </Card>
               
@@ -555,7 +482,7 @@ export default function TwwwwwwwwPage() {
                 <Divider my="sm" />
                 <Text size="sm" fw={600} mb="xs">图片提示词：</Text>
                 <Text size="sm">
-                  A developer-focused image showcasing the MindHive SDK. Display clean, elegant code snippets on the left side (showing Python or JavaScript integration code with the MindHive platform) and the resulting privacy-preserving AI application visualization on the right side. Use a dark code editor theme with syntax highlighting for the code. Include the MindHive logo and "SDK" text prominently. The background should have subtle tech/code elements without being distracting. Add small icons representing key features: privacy (lock), collaboration (handshake), and easy integration (puzzle pieces). 16:9 ratio, developer-friendly aesthetic with professional polish. The style should appeal to technical audiences while clearly communicating the ease of integration.
+                  A developer-focused image showcasing the MindHive SDK with premium production quality. Display clean, elegant code snippets on the left side (showing Python or JavaScript integration code with the MindHive platform) with syntax highlighting and subtle glow effects on key functions. On the right side, show the resulting privacy-preserving AI application visualization with animated data flows and connection points. Use a dark code editor theme with rich contrast for the code. Include the MindHive logo and "SDK" text prominently with a subtle metallic effect. The background should feature a dramatic gradient from deep charcoal to midnight blue with varying depths created by floating code fragments, circuit board patterns, and subtle matrix-like elements that suggest depth and complexity. Add volumetric lighting with light rays highlighting key features. Include small icons representing key features: privacy (lock), collaboration (handshake), and easy integration (puzzle pieces) with subtle glow effects. 16:9 ratio, premium technical visualization with cinematic quality.
                 </Text>
               </Card>
             </Stack>
@@ -589,7 +516,7 @@ export default function TwwwwwwwwPage() {
                 <Divider my="sm" />
                 <Text size="sm" fw={600} mb="xs">图片提示词：</Text>
                 <Text size="sm">
-                  A professional partnership announcement image showing the MindHive Network logo in the center, surrounded by the logos of partner organizations arranged in a circular pattern. Connect the logos with subtle lines forming a network. Use MindHive's brand colors (coral and mint) for the connecting lines and background elements. Include text "Strategic Partnerships" prominently displayed. The background should be a gradient from dark blue to black with subtle digital patterns. The overall style should be corporate and professional while maintaining the tech/blockchain aesthetic. 16:9 ratio, high resolution, suitable for a major partnership announcement.
+                  A professional partnership announcement image with cinematic quality showing the MindHive Network logo in the center, surrounded by the logos of partner organizations arranged in a circular pattern. Connect the logos with glowing lines forming a network with animated particle effects flowing along the connections. Use coral and mint colors for the connecting lines and accent elements. Include text "Strategic Partnerships" prominently displayed with a subtle metallic effect. The background should feature a rich cosmic gradient that transitions from deep sapphire at the bottom to bright royal blue at the top, with nebula-like clouds, subtle lens flares, and floating particles creating a sense of depth and movement. Add volumetric lighting with light rays highlighting the central logo. The overall style should be premium and professional while maintaining the tech/blockchain aesthetic. 16:9 ratio, high resolution, suitable for a major partnership announcement.
                 </Text>
               </Card>
 
@@ -633,7 +560,7 @@ export default function TwwwwwwwwPage() {
                 <Divider my="sm" />
                 <Text size="sm" fw={600} mb="xs">图片提示词：</Text>
                 <Text size="sm">
-                  A governance framework visualization showing the different components of MindHive's governance system. Design it as a circular or hexagonal structure with different sections representing token voting, DataDAO representation, proposal process, and decentralization roadmap. Use icons to represent each component (voting ballot, organization structure, document, and roadmap). Connect these elements to show their relationships. Use MindHive's brand colors (coral, mint, dark blue) with a clean, professional design. Include small human figures or avatars representing community participation. 16:9 ratio, professional infographic style that clearly communicates the governance structure with a focus on accessibility and participation.
+                  A governance framework visualization with premium production quality showing the different components of MindHive's governance system. Design it as a multi-layered circular or hexagonal structure with different sections representing token voting, DataDAO representation, proposal process, and decentralization roadmap. Use icons to represent each component (voting ballot, organization structure, document, and roadmap) with subtle glow effects. Connect these elements with animated flow lines showing their relationships and interdependencies. Use coral, mint, and dark blue colors with a clean, professional design. Include small human figures or avatars representing community participation at different points in the structure. The background should feature a rich gradient from deep slate to midnight blue with varying depths created by floating governance-related symbols, subtle grid patterns, and particle effects that suggest a dynamic ecosystem. Add volumetric lighting with light rays highlighting key governance components. 16:9 ratio, premium infographic style with cinematic quality and depth.
                 </Text>
               </Card>
               
@@ -663,7 +590,7 @@ export default function TwwwwwwwwPage() {
                 <Divider my="sm" />
                 <Text size="sm" fw={600} mb="xs">图片提示词：</Text>
                 <Text size="sm">
-                  A powerful visual metaphor showing the global AI divide. Create a split world image: on one side, a small portion of the world with bright, concentrated AI technology (represented by glowing neural network patterns) accessible to only a few figures; on the other side, the MindHive approach showing AI technology (in the brand's coral and mint colors) distributed evenly across the globe with many diverse figures having access. Use a gradient from dark to light to emphasize the contrast between exclusion and inclusion. Include subtle elements representing equality and access. The style should be impactful and thought-provoking while maintaining professional aesthetics. 16:9 ratio, high quality visualization that clearly communicates the concept of democratizing AI access globally.
+                  A powerful visual metaphor showing the global AI divide with cinematic impact. Create a split world image with dramatic lighting: on one side, a small portion of the world with bright, concentrated AI technology (represented by glowing neural network patterns with intense light sources) accessible to only a few figures cast in sharp shadows; on the other side, the MindHive approach showing AI technology (in coral and mint colors with soft glow effects) distributed evenly across the globe with many diverse figures having access, illuminated by gentle, inclusive lighting. The transition between the two sides should be striking and clear. Use a rich background gradient from deep indigo to vibrant violet with varying depths created by floating technological elements, subtle globe contours, and particle effects suggesting digital transformation. Add volumetric lighting with light rays highlighting the contrast between exclusion and inclusion. Include subtle elements representing equality and access with animated flow effects. 16:9 ratio, premium visualization with professional lighting and cinematic quality.
                 </Text>
               </Card>
               
@@ -709,7 +636,7 @@ export default function TwwwwwwwwPage() {
                 <Divider my="sm" />
                 <Text size="sm" fw={600} mb="xs">图片提示词：</Text>
                 <Text size="sm">
-                  A data-rich infographic titled "Network Growth" with five key metrics beautifully visualized. Include a world map showing node distribution across 64 countries with glowing points. Create elegant charts/visualizations for each metric with appropriate icons. Use MindHive's brand colors (coral, mint, dark blue) with a clean, modern data visualization style. Add growth arrows or percentage increases to emphasize the rapid adoption. Include the MindHive logo and a "Thank You Community" message. The style should be professional, data-focused, and visually impressive, clearly communicating the project's successful growth. 16:9 ratio, high quality infographic design with attention to detail in the data presentation.
+                  A data-rich infographic titled "Network Growth" with cinematic quality showing five key metrics beautifully visualized. Include a detailed 3D world map showing node distribution across 64 countries with glowing points and connection lines with animated particle effects. Create elegant charts/visualizations for each metric with appropriate icons and dynamic growth elements. Use coral, mint, and dark blue colors with a clean, modern data visualization style. Add growth arrows or percentage increases with subtle animation effects to emphasize the rapid adoption. Include a "Thank You Community" message with a premium typographic treatment. The background should feature a rich gradient from deep teal to midnight blue with varying depths created by floating data points, subtle grid patterns, and particle effects suggesting a growing ecosystem. Add volumetric lighting with light rays highlighting key metrics and achievements. 16:9 ratio, premium infographic design with cinematic quality and professional data visualization techniques.
                 </Text>
               </Card>
               
@@ -751,7 +678,7 @@ export default function TwwwwwwwwPage() {
                 <Divider my="sm" />
                 <Text size="sm" fw={600} mb="xs">图片提示词：</Text>
                 <Text size="sm">
-                  A professional grant program announcement image featuring a large "$5M" text prominently displayed. Design three distinct sections representing the grant categories, each with its own icon (brain for AI models, database for DataDAOs, tools/wrench for developer tools). Use MindHive's brand colors (coral, mint, dark blue) with a clean, modern design. Include a "MindHive Grants" header and a "Apply Now" button at the bottom. The background should incorporate subtle blockchain and AI visual elements. The style should be professional and inviting, clearly communicating the opportunity. 16:9 ratio, high quality marketing design suitable for a major funding announcement.
+                  A professional grant program announcement image with cinematic impact featuring a large "$5M" text prominently displayed with a subtle metallic effect and dimensional lighting. Design three distinct sections representing the grant categories, each with its own detailed icon (brain with neural connections for AI models, database with flowing data for DataDAOs, tools/wrench with mechanical details for developer tools). Use coral, mint, and dark blue colors with a clean, modern design and subtle glow effects. Include a "MindHive Grants" header with premium typography and a "Apply Now" button at the bottom with a subtle animation effect. The background should feature a rich gradient from deep violet to royal blue with varying depths created by floating blockchain elements, subtle code fragments, and particle effects suggesting innovation and opportunity. Add volumetric lighting with light rays highlighting the grant amount and key categories. 16:9 ratio, premium marketing design with cinematic quality suitable for a major funding announcement.
                 </Text>
               </Card>
               
@@ -795,7 +722,7 @@ export default function TwwwwwwwwPage() {
                 <Divider my="sm" />
                 <Text size="sm" fw={600} mb="xs">图片提示词：</Text>
                 <Text size="sm">
-                  A professional roadmap visualization showing a timeline from Q3 2025 to Q2 2026 with four distinct sections. Design it as a path/journey with milestone markers for each quarter, each featuring icons representing the key developments (chain links for cross-chain, shield for compliance, etc.). Use MindHive's brand colors (coral, mint, dark blue) with a gradient progression showing advancement through time. Include the MindHive logo and "2025-2026 ROADMAP" as a header. The style should be clean, professional, and forward-looking with a tech aesthetic. Add small visual details representing each feature in an iconic style. 16:9 ratio, high quality strategic roadmap design that clearly communicates the development plan.
+                  A professional roadmap visualization with cinematic quality showing a timeline from Q3 2025 to Q2 2026 with four distinct sections. Design it as a journey through a futuristic landscape with milestone markers for each quarter, each featuring detailed icons representing the key developments (chain links with animated connections for cross-chain, shield with protective aura for compliance, etc.). Use coral, mint, and dark blue colors with a gradient progression showing advancement through time, with increasing brightness toward future milestones. Include "2025-2026 ROADMAP" as a header with premium typography. The background should feature a rich gradient from deep indigo to midnight blue with varying depths created by floating technological elements, subtle timeline markers, and particle effects suggesting forward movement. Add volumetric lighting with light rays highlighting key milestones and achievements. The style should be premium and forward-looking with a tech aesthetic. Add small visual details representing each feature in an iconic style with subtle animation effects. 16:9 ratio, premium strategic roadmap design with cinematic quality and depth.
                 </Text>
               </Card>
             </Stack>
